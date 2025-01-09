@@ -42,7 +42,7 @@ async function deleteUserByUserId(userId) {
   try {
     return await prisma.user.delete({
       where: {
-        id: userId,
+        id: +userId,
       },
     });
   } catch(err) {
