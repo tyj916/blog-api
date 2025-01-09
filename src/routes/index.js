@@ -1,6 +1,6 @@
-import post from './post';
-import user from './user';
-import comment from './comment';
+const post = require('./post');
+const user = require('./user');
+const comment = require('./comment');
 
 module.exports = {
   post,
