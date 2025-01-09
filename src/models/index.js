@@ -10,6 +10,19 @@ async function getAllPosts() {
   }
 }
 
+async function getUserByUsername(username) {
+  try {
+    return await prisma.user.findUnique({
+      where: {
+        username
+      },
+    });
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   getAllPosts,
+  getUserByUsername,
 }
