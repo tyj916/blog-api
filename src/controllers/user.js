@@ -8,7 +8,9 @@ async function createUser(req, res) {
       displayName: req.body.displayName || null,
     }
 
-    return await db.createUser(data);
+    const user = await db.createUser(data);
+
+    return res.send(user);
   } catch(err) {
     console.error(err);
   }
