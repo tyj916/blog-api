@@ -1,5 +1,14 @@
 const db = require('../models');
 
+async function getAllUsers(req, res) {
+  try {
+    const users = await db.getAllUsers();
+    return res.send(users);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function createUser(req, res) {
   try {
     const data = {
@@ -26,6 +35,7 @@ async function deleteUser(req, res) {
 }
 
 module.exports = {
+  getAllUsers,
   createUser,
   deleteUser,
 }
