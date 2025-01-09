@@ -15,7 +15,7 @@ datasource db {
 
 model User {
   id             Int       @id @default(autoincrement())
-  userId         String    @unique
+  username       String    @unique
   displayName    String?
   password       String
   writtenPost    Post[]    @relation("writtenPost")
