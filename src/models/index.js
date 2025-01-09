@@ -10,6 +10,14 @@ async function getAllPosts() {
   }
 }
 
+async function createUser(data) {
+  try {
+    return await prisma.user.create({data});
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function getUserByUsername(username) {
   try {
     return await prisma.user.findUnique({
@@ -24,5 +32,6 @@ async function getUserByUsername(username) {
 
 module.exports = {
   getAllPosts,
+  createUser,
   getUserByUsername,
 }
