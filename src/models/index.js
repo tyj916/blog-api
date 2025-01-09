@@ -30,8 +30,21 @@ async function getUserByUsername(username) {
   }
 }
 
+async function deleteUserByUserId(userId) {
+  try {
+    return await prisma.user.delete({
+      where: {
+        id: userId,
+      },
+    });
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   getAllPosts,
   createUser,
   getUserByUsername,
+  deleteUserByUserId,
 }
