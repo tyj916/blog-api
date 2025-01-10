@@ -1,10 +1,18 @@
+require('dotenv').config();
 const { Router } = require('express');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
 const bcrypt = require('bcryptjs');
+const controllers = require('../controllers');
 const db = require('../db');
 
 const router = Router();
+const jwtStrategyOptions = {
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  secretOrKey: process.env.JWT_SECRET,
+}
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
@@ -40,15 +48,28 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
+passport.use(
+  new JwtStrategy(jwtStrategyOptions, async (jwt_payload, done) => {
+    try {
+      const user = await db.getUserByUserId(jwt_payload.user.id);
+
+      if (user) {
+        return done(null, user);
+      } else {
+        return done(null, false);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  })
+);
+
 router.post(
   '/login',
   passport.authenticate("local", {
     failureRedirect: "/login",
   }),
-  (req, res) => {
-    res.send(req.user);
-    // jwt.sign();
-  }
+  controllers.auth.signJWT,
 );
 
 module.exports = router;
