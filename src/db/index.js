@@ -26,6 +26,18 @@ async function createUser(data) {
   }
 }
 
+async function getUserByUserId(userId) {
+  try {
+    return await prisma.user.findUnique({
+      where: {
+        id: +userId,
+      },
+    });
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function getUserByUsername(username) {
   try {
     return await prisma.user.findUnique({
@@ -54,6 +66,7 @@ module.exports = {
   getAllPosts,
   getAllUsers,
   createUser,
+  getUserByUserId,
   getUserByUsername,
   deleteUserByUserId,
 }
