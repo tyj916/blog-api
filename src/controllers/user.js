@@ -13,7 +13,7 @@ async function createUser(req, res) {
   try {
     const data = {
       username: req.body.username,
-      password: req.body.password,
+      password: req.context.hashedPassword,
       displayName: req.body.displayName || null,
     }
 
