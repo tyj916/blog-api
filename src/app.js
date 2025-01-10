@@ -7,8 +7,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/posts', routes.post);
-app.use('/users', routes.user);
-app.use('/posts/:postId/comments', routes.comment);
+app.use('/api', routes);
 
 app.listen(process.env.PORT, () => console.log(`Listening to port ${process.env.PORT}...`));
