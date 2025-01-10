@@ -1,4 +1,4 @@
-const db = require('../models');
+const db = require('../db');
 
 async function getAllPosts(req, res) {
   try {
