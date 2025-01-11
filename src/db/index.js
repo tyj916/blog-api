@@ -2,6 +2,14 @@ const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
+async function createPost(data) {
+  try {
+    return await prisma.post.create({data});
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function getAllPosts() {
   try {
     return await prisma.post.findMany();
@@ -10,9 +18,13 @@ async function getAllPosts() {
   }
 }
 
-async function createPost(data) {
+async function getPostByPostId(postId) {
   try {
-    return await prisma.post.create({data});
+    return await prisma.post.findUnique({
+      where: {
+        id: +postId,
+      },
+    });
   } catch(err) {
     console.error(err);
   }
@@ -71,8 +83,9 @@ async function deleteUserByUserId(userId) {
 }
 
 module.exports = {
-  getAllPosts,
   createPost,
+  getAllPosts,
+  getPostByPostId,
   getAllUsers,
   createUser,
   getUserByUserId,

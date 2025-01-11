@@ -1,14 +1,5 @@
 const db = require('../db');
 
-async function getAllPosts(req, res) {
-  try {
-    const allPosts = await db.getAllPosts();
-    res.send(allPosts);
-  } catch(err) {
-    console.error(err);
-  }
-}
-
 async function createPost(req, res) {
   try {
     const data = {
@@ -25,7 +16,27 @@ async function createPost(req, res) {
   }
 }
 
+async function getAllPosts(req, res) {
+  try {
+    const allPosts = await db.getAllPosts();
+    res.send(allPosts);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
+async function getPostByPostId(req, res) {
+  try {
+    const postId = req.params.postId;
+    const post = await db.getPostByPostId(postId);
+    res.send(post);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
-  getAllPosts,
   createPost,
+  getAllPosts,
+  getPostByPostId,
 }
