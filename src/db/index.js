@@ -30,6 +30,19 @@ async function getPostByPostId(postId) {
   }
 }
 
+async function updatePost(postId, data) {
+  try {
+    return await prisma.post.update({
+      where: {
+        id: +postId,
+      },
+      data,
+    });
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function getAllUsers() {
   try {
     return await prisma.user.findMany();
@@ -86,6 +99,7 @@ module.exports = {
   createPost,
   getAllPosts,
   getPostByPostId,
+  updatePost,
   getAllUsers,
   createUser,
   getUserByUserId,

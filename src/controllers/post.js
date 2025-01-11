@@ -35,8 +35,24 @@ async function getPostByPostId(req, res) {
   }
 }
 
+async function updatePost(req, res) {
+  try {
+    const postId = req.params.postId;
+    const data = {
+      title: req.body.title,
+      content: req.body.content,
+      status: req.body.status,
+    }
+    const post = await db.updatePost(postId, data);
+    res.send(post);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   createPost,
   getAllPosts,
   getPostByPostId,
+  updatePost,
 }
