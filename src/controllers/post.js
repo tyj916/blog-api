@@ -9,8 +9,8 @@ async function createPost(req, res) {
       authorId: req.user.id,
     }
 
-    const post = await db.createPost(data);
-    res.send(post);
+    const createdPost = await db.createPost(data);
+    res.send(createdPost);
   } catch(err) {
     console.error(err);
   }
@@ -43,8 +43,9 @@ async function updatePost(req, res) {
       content: req.body.content,
       status: req.body.status,
     }
-    const post = await db.updatePost(postId, data);
-    res.send(post);
+    
+    const updatedPost = await db.updatePost(postId, data);
+    res.send(updatedPost);
   } catch(err) {
     console.error(err);
   }
@@ -53,8 +54,8 @@ async function updatePost(req, res) {
 async function deletePost(req, res) {
   try {
     const postId = req.params.postId;
-    const post = await db.deletePostByPostId(postId);
-    res.send(post);
+    const deletedPost = await db.deletePostByPostId(postId);
+    res.send(deletedPost);
   } catch(err) {
     console.error(err);
   }
