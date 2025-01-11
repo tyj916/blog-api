@@ -43,6 +43,18 @@ async function updatePost(postId, data) {
   }
 }
 
+async function deletePostByPostId(postId) {
+  try {
+    return await prisma.post.delete({
+      where: {
+        id: +postId,
+      },
+    });
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function getAllUsers() {
   try {
     return await prisma.user.findMany();
@@ -100,6 +112,7 @@ module.exports = {
   getAllPosts,
   getPostByPostId,
   updatePost,
+  deletePostByPostId,
   getAllUsers,
   createUser,
   getUserByUserId,

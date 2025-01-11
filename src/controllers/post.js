@@ -50,9 +50,20 @@ async function updatePost(req, res) {
   }
 }
 
+async function deletePost(req, res) {
+  try {
+    const postId = req.params.postId;
+    const post = await db.deletePostByPostId(postId);
+    res.send(post);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   createPost,
   getAllPosts,
   getPostByPostId,
   updatePost,
+  deletePost,
 }
