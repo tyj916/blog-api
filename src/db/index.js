@@ -10,6 +10,14 @@ async function getAllPosts() {
   }
 }
 
+async function createPost(data) {
+  try {
+    return await prisma.post.create({data});
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function getAllUsers() {
   try {
     return await prisma.user.findMany();
@@ -64,6 +72,7 @@ async function deleteUserByUserId(userId) {
 
 module.exports = {
   getAllPosts,
+  createPost,
   getAllUsers,
   createUser,
   getUserByUserId,

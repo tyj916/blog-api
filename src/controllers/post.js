@@ -17,7 +17,9 @@ async function createPost(req, res) {
       status: req.body.status,
       authorId: req.user.id,
     }
-    return await db.insertPost(data);
+
+    const post = await db.createPost(data);
+    res.send(post);
   } catch(err) {
     console.error(err);
   }
