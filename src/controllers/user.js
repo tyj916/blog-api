@@ -1,14 +1,5 @@
 const db = require('../db');
 
-async function getAllUsers(req, res) {
-  try {
-    const users = await db.getAllUsers();
-    return res.send(users);
-  } catch(err) {
-    console.error(err);
-  }
-}
-
 async function createUser(req, res) {
   try {
     const data = {
@@ -25,6 +16,25 @@ async function createUser(req, res) {
   }
 }
 
+async function getAllUsers(req, res) {
+  try {
+    const users = await db.getAllUsers();
+    return res.send(users);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
+async function getUserByUserId(req, res) {
+  try {
+    const userId = req.params.userId;
+    const user = await db.getUserByUserId(userId);
+    return res.send(user);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function deleteUser(req, res) {
   try {
     const deletedUser = await db.deleteUserByUserId(req.params.userId);
@@ -35,7 +45,8 @@ async function deleteUser(req, res) {
 }
 
 module.exports = {
-  getAllUsers,
   createUser,
+  getAllUsers,
+  getUserByUserId,
   deleteUser,
 }

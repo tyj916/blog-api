@@ -4,6 +4,7 @@ const controllers = require('../controllers');
 const router = Router();
 
 router.get('/', controllers.user.getAllUsers);
+router.get('/:userId', controllers.user.getUserByUserId);
 router.post(
   '/', 
   controllers.auth.hashPassword,
