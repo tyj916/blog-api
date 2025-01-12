@@ -35,6 +35,22 @@ async function getUserByUserId(req, res) {
   }
 }
 
+async function updateUser(req, res) {
+  try {
+    const userId = req.params.userId;
+    const data = {
+      username: req.body.username,
+      password: req.context.hashedPassword,
+      displayName: req.body.displayName || null,
+    }
+
+    const updatedUser = await db.updateUser(userId, data);
+    return res.send(updatedUser);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function deleteUser(req, res) {
   try {
     const deletedUser = await db.deleteUserByUserId(req.params.userId);
@@ -48,5 +64,6 @@ module.exports = {
   createUser,
   getAllUsers,
   getUserByUserId,
+  updateUser,
   deleteUser,
 }
