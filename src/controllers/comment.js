@@ -44,9 +44,23 @@ async function getCommentByCommentId(req, res) {
   }
 }
 
+async function updateComment(req, res) {
+  try {
+    const commentId = req.params.commentId;
+    const data = {
+      content: req.body.content,
+    };
+    const updatedComment = await db.updateComment(commentId, data);
+    return res.send(updatedComment);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   createComment,
   getAllComments,
   getCommentsByPostId,
   getCommentByCommentId,
+  updateComment,
 }

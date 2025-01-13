@@ -178,6 +178,19 @@ async function getCommentByCommentId(commentId) {
   }
 }
 
+async function updateComment(commentId, data) {
+  try {
+    return await prisma.comment.update({
+      where: {
+        id: +commentId,
+      },
+      data
+    });
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   createPost,
   getAllPosts,
@@ -195,4 +208,5 @@ module.exports = {
   getAllComments,
   getCommentsByPostId,
   getCommentByCommentId,
+  updateComment,
 }
