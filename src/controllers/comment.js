@@ -15,6 +15,15 @@ async function createComment(req, res) {
   }
 }
 
+async function getAllComments(req, res) {
+  try {
+    const comments = await db.getAllComments();
+    return res.send(comments);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function getCommentsByPostId(req, res) {
   try {
     const postId = req.params.postId;
@@ -27,5 +36,6 @@ async function getCommentsByPostId(req, res) {
 
 module.exports = {
   createComment,
+  getAllComments,
   getCommentsByPostId,
 }

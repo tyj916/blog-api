@@ -143,6 +143,14 @@ async function createComment(data) {
   }
 }
 
+async function getAllComments() {
+  try {
+    return await prisma.comment.findMany();
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function getCommentsByPostId(postId) {
   try {
     return await prisma.comment.findMany({
@@ -169,5 +177,6 @@ module.exports = {
   updateUser,
   deleteUserByUserId,
   createComment,
+  getAllComments,
   getCommentsByPostId,
 }
