@@ -57,10 +57,21 @@ async function updateComment(req, res) {
   }
 }
 
+async function deleteComment(req, res) {
+  try {
+    const commentId = req.params.commentId;
+    const deletedComment = await db.deleteComment(commentId);
+    return res.send(deletedComment);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   createComment,
   getAllComments,
   getCommentsByPostId,
   getCommentByCommentId,
   updateComment,
+  deleteComment,
 }
