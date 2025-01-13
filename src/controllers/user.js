@@ -35,6 +35,16 @@ async function getUserByUserId(req, res) {
   }
 }
 
+async function getUserPostsByUserId(req, res) {
+  try {
+    const userId = req.params.userId;
+    const posts = await db.getUserPostsByUserId(userId);
+    return res.send(posts);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function updateUser(req, res) {
   try {
     const userId = req.params.userId;
@@ -64,6 +74,7 @@ module.exports = {
   createUser,
   getAllUsers,
   getUserByUserId,
+  getUserPostsByUserId,
   updateUser,
   deleteUser,
 }
