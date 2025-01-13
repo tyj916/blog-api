@@ -135,6 +135,14 @@ async function deleteUserByUserId(userId) {
   }
 }
 
+async function createComment(data) {
+  try {
+    return await prisma.comment.create({data});
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   createPost,
   getAllPosts,
@@ -148,4 +156,5 @@ module.exports = {
   getUserPostsByUserId,
   updateUser,
   deleteUserByUserId,
+  createComment,
 }
