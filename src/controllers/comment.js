@@ -34,8 +34,19 @@ async function getCommentsByPostId(req, res) {
   }
 }
 
+async function getCommentByCommentId(req, res) {
+  try {
+    const commentId = req.params.commentId;
+    const comment = await db.getCommentByCommentId(commentId);
+    return res.send(comment);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   createComment,
   getAllComments,
   getCommentsByPostId,
+  getCommentByCommentId,
 }

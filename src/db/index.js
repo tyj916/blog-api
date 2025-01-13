@@ -163,6 +163,21 @@ async function getCommentsByPostId(postId) {
   }
 }
 
+async function getCommentByCommentId(commentId) {
+  try {
+    return await prisma.comment.findUnique({
+      where: {
+        id: +commentId,
+      },
+      include: {
+        child: true,
+      }
+    });
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 module.exports = {
   createPost,
   getAllPosts,
@@ -179,4 +194,5 @@ module.exports = {
   createComment,
   getAllComments,
   getCommentsByPostId,
+  getCommentByCommentId,
 }
