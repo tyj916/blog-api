@@ -46,4 +46,7 @@ model Comment {
   author      User      @relation("writtenComment", fields: [authorId], references: [id])
   authorId    Int
   upvotedUser User[]
+  parentId    Int?
+  parent      Comment?  @relation("parentChild", fields: [parentId], references: [id])
+  child       Comment[] @relation("parentChild")
 }
