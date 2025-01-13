@@ -6,6 +6,7 @@ async function createComment(req, res) {
       content: req.body.content,
       postId: +req.params.postId,
       authorId: req.user.id,
+      parentId: +req.params.commentId || null,
     }
     const comment = await db.createComment(data);
     return res.send(comment);
