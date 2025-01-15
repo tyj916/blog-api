@@ -34,6 +34,16 @@ async function getCommentsByPostId(req, res) {
   }
 }
 
+async function getCommentsByAuthorId(req, res) {
+  try {
+    const authorId = req.params.authorId;
+    const comments = await db.getCommentsByAuthorId(authorId);
+    return res.send(comments);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function getCommentByCommentId(req, res) {
   try {
     const commentId = req.params.commentId;
@@ -72,6 +82,7 @@ module.exports = {
   getAllComments,
   getCommentsByPostId,
   getCommentByCommentId,
+  getCommentsByAuthorId,
   updateComment,
   deleteComment,
 }
