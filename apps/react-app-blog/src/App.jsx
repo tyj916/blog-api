@@ -51,11 +51,22 @@ function Main() {
   );
 }
 
+function Footer() {
+  return (
+    <footer>
+      <p className="copyright">
+        &copy; 2025 <a href="https://github.com/tyj916">tyj916</a>
+      </p>
+    </footer>
+  );
+}
+
 function App() {
   return (
     <>
       <Header />
       <Main />
+      <Footer />
     </>
   )
 }
