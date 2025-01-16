@@ -25,14 +25,16 @@ function AuthenticationForm({closeForm}) {
   );
 }
 
-function displayAuthenticationModal() {
-  const modalContainer = createRoot(document.querySelector("#modal-container"));
+function closeForm() {
+  window.modalRoot.render();
+}
 
-  const closeForm = () => {
-    modalContainer.render();
+function displayAuthenticationModal() {
+  if (!window.modalRoot) {
+    window.modalRoot = createRoot(document.querySelector("#modal-container"));
   }
 
-  modalContainer.render(<AuthenticationForm closeForm={closeForm}/>);
+  window.modalRoot.render(<AuthenticationForm closeForm={closeForm}/>);
 }
 
 AuthenticationForm.propTypes = {
