@@ -1,4 +1,6 @@
-function AuthenticationForm() {
+import { createRoot } from "react-dom/client";
+
+function AuthenticationForm({closeForm}) {
   return (
     <div className="log-in-form-container">
       <form action="/login" method="POST">
@@ -11,10 +13,26 @@ function AuthenticationForm() {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" required />
           </li>
+          <li>
+            <button type="submit">Submit</button>
+          </li>
         </ul>
       </form>
+      <button type="button" onClick={closeForm}>Close</button>
     </div>
   );
 }
 
-export default AuthenticationForm;
+function displayAuthenticationModal() {
+  if (!window.modalContainer) {
+    window.modalContainer = createRoot(document.querySelector("#modal-container"));
+  }
+
+  const closeForm = () => {
+    window.modalContainer.render();
+  }
+
+  window.modalContainer.render(<AuthenticationForm closeForm={closeForm}/>);
+}
+
+export default displayAuthenticationModal;

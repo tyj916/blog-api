@@ -1,3 +1,5 @@
+import displayAuthenticationModal from "./Authentication";
+
 function Logo() {
   return (
     <a href="/">
@@ -7,22 +9,10 @@ function Logo() {
 }
 
 function Menu() {
-  const links = [
-    {
-      name: "Home",
-      url: "/",
-    },
-    {
-      name: "Sign In",
-      url: "/login",
-    }
-  ];
-
   return (
     <ul>
-      {links.map((link) => {
-        return <li key={link.name}><a href={link.url}>{link.name}</a></li>
-      })}
+      <li><a href="/">Home</a></li>
+      <li><button type="button" onClick={displayAuthenticationModal}>Log In</button></li>
     </ul>
   );
 }
