@@ -1,45 +1,7 @@
 import { useState } from 'react'
+import Header from './components/Header';
+import Footer from './components/Footer';
 import './App.css'
-
-function Logo() {
-  return (
-    <a href="/">
-      <h1>Logo</h1>
-    </a>
-  );
-}
-
-function Menu() {
-  const links = [
-    {
-      name: "Home",
-      url: "/",
-    },
-    {
-      name: "Sign In",
-      url: "/login",
-    }
-  ];
-
-  return (
-    <ul>
-      {links.map((link) => {
-        return <li key={link.name}><a href={link.url}>{link.name}</a></li>
-      })}
-    </ul>
-  );
-}
-
-function Header() {
-  return (
-    <header>
-      <div className='container'>
-        <Logo />
-        <Menu />
-      </div>
-    </header>
-  );
-}
 
 function Main() {
   return (
@@ -48,16 +10,6 @@ function Main() {
         <p>Temporary</p>
       </div>
     </main>
-  );
-}
-
-function Footer() {
-  return (
-    <footer>
-      <p className="copyright">
-        &copy; 2025 <a href="https://github.com/tyj916">tyj916</a>
-      </p>
-    </footer>
   );
 }
 
