@@ -10,7 +10,7 @@ function Logo() {
 }
 
 function Menu() {
-  const menuList = [
+  const links = [
     {
       name: "Home",
       url: "/",
@@ -23,8 +23,8 @@ function Menu() {
 
   return (
     <ul>
-      {menuList.map((item) => {
-        return <li key={item.name}><a href={item.url}>{item.name}</a></li>
+      {links.map((link) => {
+        return <li key={link.name}><a href={link.url}>{link.name}</a></li>
       })}
     </ul>
   );
