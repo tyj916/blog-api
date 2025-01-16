@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css'
@@ -16,12 +15,12 @@ function Main() {
 function App() {
   return (
     <div>
+      <div id='modal-container'></div>
       <Header />
       <Main />
       <Footer />
-      <div id='modal-container'></div>
     </div>
   )
 }
 
-export default App
+export default App;

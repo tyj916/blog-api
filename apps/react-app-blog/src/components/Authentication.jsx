@@ -1,5 +1,7 @@
 import { createRoot } from "react-dom/client";
+import PropTypes from "prop-types";
 
+// eslint-disable-next-line react-refresh/only-export-components
 function AuthenticationForm({closeForm}) {
   return (
     <div className="log-in-form-container">
@@ -24,15 +26,17 @@ function AuthenticationForm({closeForm}) {
 }
 
 function displayAuthenticationModal() {
-  if (!window.modalContainer) {
-    window.modalContainer = createRoot(document.querySelector("#modal-container"));
-  }
+  const modalContainer = createRoot(document.querySelector("#modal-container"));
 
   const closeForm = () => {
-    window.modalContainer.render();
+    modalContainer.render();
   }
 
-  window.modalContainer.render(<AuthenticationForm closeForm={closeForm}/>);
+  modalContainer.render(<AuthenticationForm closeForm={closeForm}/>);
+}
+
+AuthenticationForm.propTypes = {
+  closeForm: PropTypes.func,
 }
 
 export default displayAuthenticationModal;
