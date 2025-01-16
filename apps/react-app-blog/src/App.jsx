@@ -41,10 +41,21 @@ function Header() {
   );
 }
 
+function Main() {
+  return (
+    <main>
+      <div className='container'>
+        <p>Temporary</p>
+      </div>
+    </main>
+  );
+}
+
 function App() {
   return (
     <>
       <Header />
+      <Main />
     </>
   )
 }
