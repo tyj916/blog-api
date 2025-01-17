@@ -15,7 +15,6 @@ function Main() {
 function App() {
   return (
     <div>
-      <div id='modal-container'></div>
       <Header />
       <Main />
       <Footer />

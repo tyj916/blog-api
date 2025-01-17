@@ -9,5 +9,6 @@ const root = createRoot(rootNode);
 root.render(
   <StrictMode>
     <App />
+    <div id='modal-container'></div>
   </StrictMode>,
 )

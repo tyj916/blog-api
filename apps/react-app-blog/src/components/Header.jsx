@@ -1,4 +1,5 @@
-import displayAuthenticationModal from "./Authentication";
+import createModal from "../utils/index";
+import AuthenticationForm from "./Authentication";
 
 function Logo() {
   return (
@@ -12,7 +13,7 @@ function Menu() {
   return (
     <ul>
       <li><a href="/">Home</a></li>
-      <li><button type="button" onClick={displayAuthenticationModal}>Log In</button></li>
+      <li><button type="button" onClick={() => createModal(<AuthenticationForm />)}>Log In</button></li>
     </ul>
   );
 }
