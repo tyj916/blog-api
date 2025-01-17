@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import createModal from "../utils";
 
 function AuthenticationForm({type, text}) {
   return (
@@ -29,6 +30,10 @@ function AuthenticationForm({type, text}) {
           <li>
             <button type="submit">{type === 'login' ? 'Log In' : 'Sign Up'}</button>
           </li>
+          {
+            type === 'login' ? <p>No Account? <button onClick={() => createModal(<AuthenticationForm type='signUp' text='Join Us.' />)}>Create One</button></p>
+              : <p>Already have an account? <button onClick={() => createModal(<AuthenticationForm type='login' text='Welcome Back.' />)}>Log In</button></p>
+          }
         </ul>
       </form>
     </div>

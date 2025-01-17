@@ -14,6 +14,11 @@ function Menu() {
     <ul>
       <li><a href="/">Home</a></li>
       <li>
+        <button onClick={() => createModal(<AuthenticationForm type='signUp' text='Create an account to start writing.' />)}>
+          Write
+        </button>
+      </li>
+      <li>
         <button onClick={() => createModal(<AuthenticationForm type='login' text='Welcome Back.' />)}>
           Log In
         </button>
