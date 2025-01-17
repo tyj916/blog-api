@@ -13,7 +13,16 @@ function Menu() {
   return (
     <ul>
       <li><a href="/">Home</a></li>
-      <li><button type="button" onClick={() => createModal(<AuthenticationForm />)}>Log In</button></li>
+      <li>
+        <button onClick={() => createModal(<AuthenticationForm type='login' text='Welcome Back.' />)}>
+          Log In
+        </button>
+      </li>
+      <li>
+        <button onClick={() => createModal(<AuthenticationForm type='signUp' text='Join Us.' />)}>
+          Get Started
+        </button>
+      </li>
     </ul>
   );
 }
