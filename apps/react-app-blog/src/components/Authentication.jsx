@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function AuthenticationForm({type, text}) {
   return (
     <div className="authentication-form-container">
@@ -31,6 +33,11 @@ function AuthenticationForm({type, text}) {
       </form>
     </div>
   );
+}
+
+AuthenticationForm.propTypes = {
+  type: PropTypes.string,
+  text: PropTypes.string,
 }
 
 export default AuthenticationForm;
