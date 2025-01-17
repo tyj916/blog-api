@@ -10,7 +10,7 @@ function Modal({content, closeModal}) {
 }
 
 Modal.propTypes = {
-  content: PropTypes.func,
+  content: PropTypes.object,
   closeModal: PropTypes.func,
 }
 
