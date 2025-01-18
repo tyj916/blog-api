@@ -34,7 +34,7 @@ async function processLogin(req, res) {
   const user = await db.getUserByUsername(username);
 
   if (!user) {
-    return res.status(401).send({
+    return res.status(400).send({
       message: "Incorrect username",
     });
   }
@@ -42,7 +42,7 @@ async function processLogin(req, res) {
   const match = await bcrypt.compare(password, user.password);
 
   if (!match) {
-    return res.status(401).send({
+    return res.status(400).send({
       message: "Incorrect password",
     });
   }
