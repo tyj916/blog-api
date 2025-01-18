@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getTimeDifference } from '../utils';
+import PropTypes from 'prop-types';
 
 function Post({data}) {
   const { author, title, content, updatedAt } = data;
@@ -41,6 +42,10 @@ function Posts() {
       )}
     </div>
   );
+}
+
+Post.propTypes = {
+  data: PropTypes.object,
 }
 
 export default Posts;
