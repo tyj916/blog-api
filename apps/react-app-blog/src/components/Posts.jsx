@@ -19,14 +19,26 @@ function Post({data}) {
 }
 
 function Posts() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/posts", {mode: 'cors'})
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status >= 400) {
+          throw new Error("Something is wrong with the server... Please try again later.");
+        }
+
+        return response.json();
+      })
       .then((response) => setPosts(response))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        setError(err);
+      });
   }, []);
+
+  if (error) return <p>A network error was encountered. Please try again later.</p>
 
   return (
     <div className="posts">
