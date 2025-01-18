@@ -1,4 +1,4 @@
-import createModal from "../utils/index";
+import { createModal } from "../utils/index";
 import AuthenticationForm from "./Authentication";
 
 function Logo() {

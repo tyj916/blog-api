@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import createModal from "../utils";
+import { createModal } from "../utils";
 
 function AuthenticationForm({type, text}) {
   return (
