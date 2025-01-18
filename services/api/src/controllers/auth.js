@@ -39,6 +39,10 @@ async function processLogin(req, res) {
   }
 
   jwt.sign({user}, process.env.JWT_SECRET, options, (err, token) => {
+    if (err) {
+      return res.send(err);
+    }
+
     res.send({
       message: "Login Successful",
       username: user.username,
