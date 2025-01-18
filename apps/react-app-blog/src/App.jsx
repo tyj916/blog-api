@@ -2,14 +2,19 @@ import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css'
+import { getTimeDifference } from './utils';
 
-function Post() {
+function Post({data}) {
+  const { author, title, content, updatedAt } = data;
+  const authorName = author.displayName || author.username;
+  const time = getTimeDifference(updatedAt);
+
   return (
     <div>
-      <p>Author</p>
-      <h3>Post Title</h3>
-      <p>Short Description</p>
-      <p>Posted Time</p>
+      <p>{authorName}</p>
+      <h3>{title}</h3>
+      <p>description</p>
+      <p>{time}</p>
     </div>
   );
 }
@@ -30,7 +35,7 @@ function Posts() {
       {posts && posts.length > 0 && (
         <div>
           {posts.map((post) => {
-            return <Post key={post.id} />
+            return <Post key={post.id} data={post} />
           })}
         </div>
       )}
