@@ -10,14 +10,16 @@ const router = Router();
 const jwtStrategyOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: process.env.JWT_SECRET,
+  passReqToCallback: true,
 }
 
 passport.use(
-  new JwtStrategy(jwtStrategyOptions, async (jwt_payload, done) => {
+  new JwtStrategy(jwtStrategyOptions, async (req, jwt_payload, done) => {
     try {
       const user = await db.getUserByUserId(jwt_payload.user.id);
 
       if (user) {
+        req.user = user;
         return done(null, user);
       } else {
         return done(null, false);
@@ -28,9 +30,6 @@ passport.use(
   })
 );
 
-router.post(
-  '/login',
-  controllers.auth.processLogin,
-);
+router.post('/login', controllers.auth.processLogin);
 
 module.exports = router;

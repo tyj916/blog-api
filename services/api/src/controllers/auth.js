@@ -14,7 +14,7 @@ function hashPassword(req, res, next) {
       next();
     }
   });
-} 
+}
 
 async function processLogin(req, res) {
   const { username, password } = req.body;
@@ -45,7 +45,6 @@ async function processLogin(req, res) {
 
     res.send({
       message: "Login Successful",
-      username: user.username,
       token,
     });
   });
