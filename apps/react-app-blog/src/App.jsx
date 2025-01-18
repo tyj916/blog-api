@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css'
@@ -14,7 +15,14 @@ function Post() {
 }
 
 function Posts() {
-  const posts = [];
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/posts", {mode: 'cors'})
+      .then((response) => response.json())
+      .then((response) => setPosts(response))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <div className="posts">
