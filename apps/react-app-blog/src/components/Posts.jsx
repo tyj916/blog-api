@@ -21,6 +21,7 @@ function Post({data}) {
 function Posts() {
   const [posts, setPosts] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:3000/api/posts", {mode: 'cors'})
@@ -35,14 +36,15 @@ function Posts() {
       .catch((err) => {
         console.error(err);
         setError(err);
-      });
+      })
+      .finally(() => setLoading(false));
   }, []);
 
-  if (error) return <p>A network error was encountered. Please try again later.</p>
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>A network error was encountered. Please try again later.</p>;
 
   return (
     <div className="posts">
-      {!posts && <p>Loading...</p>}
       {posts && posts.length > 0 && (
         <div>
           {posts.map((post) => {
