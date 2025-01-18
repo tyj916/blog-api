@@ -3,6 +3,19 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('../db');
 
+async function handleRegister(req, res, next) {
+  const { username } = req.body;
+  const user = await db.getUserByUsername(username);
+
+  if (user) {
+    return res.status(400).send({
+      message: "Username already exists"
+    });
+  }
+
+  next();
+}
+
 function hashPassword(req, res, next) {
   bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
     if (err) {
@@ -51,6 +64,7 @@ async function processLogin(req, res) {
 }
 
 module.exports = {
+  handleRegister,
   hashPassword,
   processLogin,
 }

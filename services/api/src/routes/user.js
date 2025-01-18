@@ -11,7 +11,7 @@ router.get('/:authorId/comments', controllers.comment.getCommentsByAuthorId);
 
 router.use(passport.authenticate('jwt', { session: false }));
 
-router.post('/', controllers.auth.hashPassword, controllers.user.createUser);
+router.post('/', controllers.auth.handleRegister, controllers.auth.hashPassword, controllers.user.createUser);
 router.put('/:userId', controllers.auth.hashPassword, controllers.user.updateUser);
 router.delete('/:userId', controllers.user.deleteUser);
 

@@ -30,6 +30,7 @@ passport.use(
   })
 );
 
+router.post('/register', controllers.auth.handleRegister, controllers.auth.hashPassword, controllers.user.createUser);
 router.post('/login', controllers.auth.processLogin);
 
 module.exports = router;
