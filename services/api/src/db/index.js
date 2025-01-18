@@ -12,7 +12,16 @@ async function createPost(data) {
 
 async function getAllPosts() {
   try {
-    return await prisma.post.findMany();
+    return await prisma.post.findMany({
+      include: {
+        author: {
+          select: {
+            displayName: true,
+            username: true,
+          }
+        },
+      },
+    });
   } catch(err) {
     console.error(err);
   }
