@@ -35,7 +35,7 @@ function AuthenticationForm({type, text}) {
     .then((response) => {
       if (response.token) {
         localStorage.setItem('jwt', response.token);
-        window.location.href = '/';
+        location.reload();
         return;
       }
 
