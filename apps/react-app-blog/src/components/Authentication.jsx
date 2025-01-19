@@ -5,9 +5,13 @@ import { useState } from "react";
 function AuthenticationForm({type, text}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError(null);
+    setLoading(true);
 
     fetch('http://localhost:3000/api/login', {
       method: 'post',
@@ -21,19 +25,23 @@ function AuthenticationForm({type, text}) {
       })
     })
     .then((response) => {
-      if (response.status >= 400) {
+      if (response.status >= 500) {
         throw new Error("Something is wrong with the server... Please try again later.");
       }
 
       return response.json();
     })
     .then((response) => {
-      console.log(response);
       if (response.token) {
-        localStorage.setItem('jwt', response.token);
+        return localStorage.setItem('jwt', response.token);
       }
+      setError(response.message);
     })
-    .catch(err => console.error(err));
+    .catch(err => {
+      console.error(err);
+      setError(err);
+    })
+    .finally(() => setLoading(false));
   }
 
   return (
@@ -75,6 +83,8 @@ function AuthenticationForm({type, text}) {
               </li>
             </>
           }
+          {error && <li><p>{error}</p></li>}
+          {loading && <li><p>Loading...</p></li>}
           <li>
             <button type="submit">{type === 'login' ? 'Log In' : 'Sign Up'}</button>
           </li>
