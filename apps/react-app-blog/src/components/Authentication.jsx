@@ -22,7 +22,8 @@ function AuthenticationForm({type, text}) {
       body: JSON.stringify({
         username,
         password,
-      })
+      }),
+      redirect: 'manual'
     })
     .then((response) => {
       if (response.status >= 500) {
@@ -33,8 +34,11 @@ function AuthenticationForm({type, text}) {
     })
     .then((response) => {
       if (response.token) {
-        return localStorage.setItem('jwt', response.token);
+        localStorage.setItem('jwt', response.token);
+        window.location.href = '/';
+        return;
       }
+
       setError(response.message);
     })
     .catch(err => {
@@ -47,7 +51,7 @@ function AuthenticationForm({type, text}) {
   return (
     <div className="authentication-form-container">
       <h1 className="form-title">{text}</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} >
         <ul>
           <li>
             <label htmlFor="username">Username</label>
