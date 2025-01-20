@@ -73,9 +73,10 @@ function SignUpForm({text}) {
     .then((response) => {
       if (response.username) {
         setMessage("You are registered! You'll be login automatically in 5 sec...");
-        return setInterval(() => {
+        setTimeout(() => {
           sendLoginRequest(username, password, setMessage);
         }, 5000);
+        return;
       }
       setMessage(response.message);
     })
