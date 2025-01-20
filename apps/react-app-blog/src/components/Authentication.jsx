@@ -197,6 +197,14 @@ function AuthenticationForm({type, text}) {
   }
 }
 
+LoginForm.propTypes = {
+  text: PropTypes.string,
+}
+
+SignUpForm.propTypes = {
+  text: PropTypes.string,
+}
+
 AuthenticationForm.propTypes = {
   type: PropTypes.string,
   text: PropTypes.string,
