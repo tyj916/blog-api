@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { createModal } from "../utils";
 import { useState } from "react";
 
-function sendLoginRequest(username, password, setMessage) {
+function sendLoginRequest(username, password, setMessage, setLoading) {
   fetch('http://localhost:3000/api/login', {
     method: 'post',
     headers: {
@@ -35,7 +35,7 @@ function sendLoginRequest(username, password, setMessage) {
     console.error(err);
     setMessage(err);
   })
-  .finally(() => setMessage(null));
+  .finally(() => setLoading(false));
 }
 
 function SignUpForm({text}) {
@@ -44,7 +44,7 @@ function SignUpForm({text}) {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,7 +74,7 @@ function SignUpForm({text}) {
       if (response.username) {
         setMessage("You are registered! You'll be login automatically in 5 sec...");
         setTimeout(() => {
-          sendLoginRequest(username, password, setMessage);
+          sendLoginRequest(username, password, setMessage, setLoading);
         }, 5000);
         return;
       }
@@ -84,7 +84,7 @@ function SignUpForm({text}) {
       console.error(err);
       setMessage(err);
     })
-    .finally(() => setLoading(null));
+    .finally(() => setLoading(false));
   }
 
   return (
@@ -151,47 +151,15 @@ function SignUpForm({text}) {
 function LoginForm({text}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(null);
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError(null);
+    setMessage('');
     setLoading(true);
 
-    fetch('http://localhost:3000/api/login', {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-      redirect: 'manual'
-    })
-    .then((response) => {
-      if (response.status >= 500) {
-        throw new Error("Something is wrong with the server... Please try again later.");
-      }
-
-      return response.json();
-    })
-    .then((response) => {
-      if (response.token) {
-        localStorage.setItem('jwt', response.token);
-        location.reload();
-        return;
-      }
-
-      setError(response.message);
-    })
-    .catch(err => {
-      console.error(err);
-      setError(err);
-    })
-    .finally(() => setLoading(false));
+    sendLoginRequest(username, password, setMessage, setLoading);
   }
 
   return (
@@ -221,8 +189,8 @@ function LoginForm({text}) {
               required 
             />
           </li>
-          {error && <li><p>{error}</p></li>}
           {loading && <li><p>Loading...</p></li>}
+          {message && <li><p>{message}</p></li>}
           <li>
             <button type="submit">Log In</button>
           </li>
