@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { createModal } from "../utils";
 import { useState } from "react";
 
-function AuthenticationForm({type, text}) {
+function LoginForm({text}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -75,31 +75,22 @@ function AuthenticationForm({type, text}) {
               required 
             />
           </li>
-          {
-            type === 'signUp' && <>
-              <li>
-                <label htmlFor="confirm-password">Confirm Password</label>
-                <input name="confirmPassword" type="password" id="confirm-password" required />
-              </li>
-              <li>
-                <label htmlFor="display-name">Display Name (optional)</label>
-                <input name="displayName" type="password" id="display-name" />
-              </li>
-            </>
-          }
           {error && <li><p>{error}</p></li>}
           {loading && <li><p>Loading...</p></li>}
           <li>
-            <button type="submit">{type === 'login' ? 'Log In' : 'Sign Up'}</button>
+            <button type="submit">Log In</button>
           </li>
-          {
-            type === 'login' ? <p>No Account? <button onClick={() => createModal(<AuthenticationForm type='signUp' text='Join Us.' />)}>Create One</button></p>
-              : <p>Already have an account? <button onClick={() => createModal(<AuthenticationForm type='login' text='Welcome Back.' />)}>Log In</button></p>
-          }
+          <p>No Account? <button onClick={() => createModal(<AuthenticationForm type='signUp' text='Join Us.' />)}>Create One</button></p>
         </ul>
       </form>
     </div>
   );
+}
+
+function AuthenticationForm({type, text}) {
+  if (type === 'login') {
+    return <LoginForm text={text} />
+  }
 }
 
 AuthenticationForm.propTypes = {
