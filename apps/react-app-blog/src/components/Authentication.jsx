@@ -2,6 +2,42 @@ import PropTypes from "prop-types";
 import { createModal } from "../utils";
 import { useState } from "react";
 
+function sendLoginRequest(username, password, setMessage) {
+  fetch('http://localhost:3000/api/login', {
+    method: 'post',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username,
+      password,
+    }),
+    redirect: 'manual'
+  })
+  .then((response) => {
+    if (response.status >= 500) {
+      throw new Error("Something is wrong with the server... Please try again later.");
+    }
+
+    return response.json();
+  })
+  .then((response) => {
+    if (response.token) {
+      localStorage.setItem('jwt', response.token);
+      location.reload();
+      return;
+    }
+
+    setMessage(response.message);
+  })
+  .catch(err => {
+    console.error(err);
+    setMessage(err);
+  })
+  .finally(() => setMessage(null));
+}
+
 function SignUpForm({text}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -33,7 +69,12 @@ function SignUpForm({text}) {
       return response.json();
     })
     .then((response) => {
-      console.log(response);
+      if (response.username) {
+        setMessage("You are registered! You'll be login automatically in 5 sec...");
+        setInterval(() => {
+          sendLoginRequest(username, password, setMessage);
+        }, 5000);
+      }
     })
     .catch(err => {
       console.error(err);
