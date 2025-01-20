@@ -81,6 +81,7 @@ function SignUpForm({text}) {
               onChange={e => setConfirmPassword(e.target.value)}
               required 
             />
+            {confirmPassword && password !== confirmPassword && <p>Password doesn&apos;t match.</p>}
           </li>
           <li>
             <label htmlFor="display-name">Display Name (optional)</label>
