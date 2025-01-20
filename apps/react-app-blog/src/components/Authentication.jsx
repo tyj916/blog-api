@@ -7,13 +7,11 @@ function SignUpForm({text}) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(null);
+  const [message, setMessage] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError(null);
-    setLoading(true);
+    setMessage(null);
 
     fetch('http://localhost:3000/api/register', {
       method: 'post',
@@ -39,9 +37,9 @@ function SignUpForm({text}) {
     })
     .catch(err => {
       console.error(err);
-      setError(err);
+      setMessage(err);
     })
-    .finally(() => setLoading(false));
+    .finally(() => setMessage(null));
   }
 
   return (
@@ -93,8 +91,7 @@ function SignUpForm({text}) {
               onChange={e => setDisplayName(e.target.value)}
             />
           </li>
-          {error && <li><p>{error}</p></li>}
-          {loading && <li><p>Loading...</p></li>}
+          {message && <li><p>{message}</p></li>}
           <li>
             <button type="submit">Sign Up</button>
           </li>
