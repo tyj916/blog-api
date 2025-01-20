@@ -72,10 +72,18 @@ function SignUpForm({text}) {
     })
     .then((response) => {
       if (response.username) {
-        setMessage("You are registered! You'll be login automatically in 5 sec...");
-        setTimeout(() => {
-          sendLoginRequest(username, password, setMessage, setLoading);
-        }, 5000);
+        setMessage(`You are registered! You'll be login automatically in 5 sec...`);
+
+        let count = 5;
+        const countdown = setInterval(() => {
+          if (count > 0) {
+            count--;
+            setMessage(`You are registered! You'll be login automatically in ${count} sec...`);
+          } else {
+            clearInterval(countdown);
+            sendLoginRequest(username, password, setMessage, setLoading);
+          }
+        }, 1000);
         return;
       }
       setMessage(response.message);
