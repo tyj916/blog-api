@@ -43,11 +43,13 @@ function SignUpForm({text}) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [displayName, setDisplayName] = useState('');
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setMessage(null);
+    setMessage('');
+    setLoading(true);
 
     fetch('http://localhost:3000/api/register', {
       method: 'post',
@@ -71,16 +73,17 @@ function SignUpForm({text}) {
     .then((response) => {
       if (response.username) {
         setMessage("You are registered! You'll be login automatically in 5 sec...");
-        setInterval(() => {
+        return setInterval(() => {
           sendLoginRequest(username, password, setMessage);
         }, 5000);
       }
+      setMessage(response.message);
     })
     .catch(err => {
       console.error(err);
       setMessage(err);
     })
-    .finally(() => setMessage(null));
+    .finally(() => setLoading(null));
   }
 
   return (
@@ -132,6 +135,7 @@ function SignUpForm({text}) {
               onChange={e => setDisplayName(e.target.value)}
             />
           </li>
+          {loading && <li><p>Loading...</p></li>}
           {message && <li><p>{message}</p></li>}
           <li>
             <button type="submit">Sign Up</button>
