@@ -149,7 +149,7 @@ function SignUpForm({text}) {
           <li>
             <button type="submit">Sign Up</button>
           </li>
-          <p>Already have an account? <button onClick={() => createModal(<AuthenticationForm type='login' text='Welcome Back.' />)}>Log In</button></p>
+          <p>Already have an account? <button type="button" onClick={() => createModal(<AuthenticationForm type='login' text='Welcome Back.' />)}>Log In</button></p>
         </ul>
       </form>
     </div>
@@ -202,7 +202,7 @@ function LoginForm({text}) {
           <li>
             <button type="submit">Log In</button>
           </li>
-          <p>No Account? <button onClick={() => createModal(<AuthenticationForm type='signUp' text='Join Us.' />)}>Create One</button></p>
+          <p>No Account? <button type="button" onClick={() => createModal(<AuthenticationForm type='signUp' text='Join Us.' />)}>Create One</button></p>
         </ul>
       </form>
     </div>
