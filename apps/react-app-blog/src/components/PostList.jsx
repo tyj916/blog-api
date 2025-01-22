@@ -3,17 +3,19 @@ import { getTimeDifference } from '../utils';
 import PropTypes from 'prop-types';
 
 function Post({data}) {
-  const { author, title, content, updatedAt } = data;
+  const { id, author, title, content, updatedAt } = data;
   const authorName = author.displayName || author.username;
   const description = content.length > 20 ? content.slice(0, 20) + '...' : content;
   const time = getTimeDifference(updatedAt);
 
   return (
     <div>
-      <p>{authorName}</p>
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <p>{time}</p>
+      <a href={`/posts/${id}`}>
+        <p>{authorName}</p>
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <p>{time}</p>
+      </a>
     </div>
   );
 }
