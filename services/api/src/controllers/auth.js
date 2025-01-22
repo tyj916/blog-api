@@ -48,7 +48,7 @@ async function processLogin(req, res) {
   }
 
   const options = {
-    expiresIn: '1h'
+    expiresIn: '7d'
   }
 
   jwt.sign({user}, process.env.JWT_SECRET, options, (err, token) => {
