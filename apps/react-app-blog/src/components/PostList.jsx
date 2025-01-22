@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getTimeDifference } from '../utils';
 import PropTypes from 'prop-types';
 
@@ -10,12 +11,12 @@ function Post({data}) {
 
   return (
     <div>
-      <a href={`/posts/${id}`}>
+      <Link to={`/posts/${id}`}>
         <p>{authorName}</p>
         <h3>{title}</h3>
         <p>{description}</p>
         <p>{time}</p>
-      </a>
+      </Link>
     </div>
   );
 }
