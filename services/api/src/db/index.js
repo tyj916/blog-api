@@ -33,6 +33,9 @@ async function getPostByPostId(postId) {
       where: {
         id: +postId,
       },
+      include: {
+        author: true,
+      },
     });
   } catch(err) {
     console.error(err);
