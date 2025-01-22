@@ -1,4 +1,4 @@
-import { createModal } from "../utils/index";
+import { createModal, isJwtExpired } from "../utils/index";
 import AuthenticationForm from "./Authentication";
 
 function Logo() {
@@ -10,6 +10,26 @@ function Logo() {
 }
 
 function Menu() {
+  const logOut = () => {
+    localStorage.removeItem('jwt');
+    location.reload();
+  }
+
+  if (localStorage.getItem('jwt') && !isJwtExpired()) {
+    return (
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/write">Write</a></li>
+        <li><a href='/profile'>Profile</a></li>
+        <li>
+          <button onClick={logOut}>
+            Log Out
+          </button>
+        </li>
+      </ul>
+    );
+  }
+
   return (
     <ul>
       <li><a href="/">Home</a></li>

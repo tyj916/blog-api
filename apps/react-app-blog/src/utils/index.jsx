@@ -52,7 +52,13 @@ function getTimeDifference(timestamp) {
   return Math.round(timeDifference / (1000)) + ' s';
 }
 
+function isJwtExpired() {
+  const jwt = localStorage.getItem('jwt');
+  return (new Date() - jwt.timestamp) < (7 * 24  * 60 * 60 * 1000);
+}
+
 export {
   createModal,
   getTimeDifference,
+  isJwtExpired,
 }
