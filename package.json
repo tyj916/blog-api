@@ -1,0 +1,15 @@
+{
+  "name": "blog-api",
+  "version": "1.0.0",
+  "description": "A blog with a back-end and two different front-ends. One for read blog posts and comments, while the other one will be just for user to write, edit and publish blog posts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd apps/react-app-blog && npm run dev",
+    "api": "cd services/api && node src/app.js",
+    "start": "concurrently \"npm run client\" \"npm run api\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

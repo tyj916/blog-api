@@ -18,8 +18,8 @@ function Post({data}) {
   );
 }
 
-function Posts() {
-  const [posts, setPosts] = useState(null);
+function PostList() {
+  const [postList, setPostList] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -32,7 +32,7 @@ function Posts() {
 
         return response.json();
       })
-      .then((response) => setPosts(response))
+      .then((response) => setPostList(response))
       .catch((err) => {
         console.error(err);
         setError(err);
@@ -45,14 +45,14 @@ function Posts() {
 
   return (
     <div className="posts">
-      {posts && posts.length > 0 && (
+      {postList && postList.length > 0 && (
         <div>
-          {posts.map((post) => {
+          {postList.map((post) => {
             return <Post key={post.id} data={post} />
           })}
         </div>
       )}
-      {posts && posts.length === 0 && (
+      {postList && postList.length === 0 && (
         <p>No posts yet.</p>
       )}
     </div>
@@ -63,4 +63,4 @@ Post.propTypes = {
   data: PropTypes.object,
 }
 
-export default Posts;
+export default PostList;
