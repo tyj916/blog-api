@@ -8,6 +8,8 @@ function Post() {
   const [time, setTime] = useState(null);
   const [content, setContent] = useState(null);
   const [author, setAuthor] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/posts/${postId}`, {mode: 'cors'})
@@ -30,8 +32,13 @@ function Post() {
       })
       .catch(err => {
         console.error(err);
+        setErrorMessage(err);
       })
+      .finally(() => setLoading(false));
   }, [postId]);
+
+  if (errorMessage) return <p>{errorMessage}</p>
+  if (loading) return <p>Loading...</p>
 
   return (
     <div>
