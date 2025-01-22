@@ -34,7 +34,12 @@ async function getPostByPostId(postId) {
         id: +postId,
       },
       include: {
-        author: true,
+        author: {
+          select: {
+            displayName: true,
+            username: true,
+          }
+        }
       },
     });
   } catch(err) {
