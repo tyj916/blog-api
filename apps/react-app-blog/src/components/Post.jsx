@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getTimeDifference } from "../utils";
+import Comment from "./Comment";
 
 function Post() {
   const { postId } = useParams();
@@ -8,6 +9,7 @@ function Post() {
   const [time, setTime] = useState(null);
   const [content, setContent] = useState(null);
   const [author, setAuthor] = useState(null);
+  const [comment, setComment] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -21,14 +23,15 @@ function Post() {
         return response.json();
       })
       .then(response => {
-        const time = getTimeDifference(response.updatedAt);
-        const author = response.author;
+        const { author, content, comment } = response;
         const authorName = author.displayName || author.username;
+        const time = getTimeDifference(response.updatedAt);
 
         setTitle(response.title);
-        setTime(time);
-        setContent(response.content);
         setAuthor(authorName);
+        setTime(time);
+        setContent(content);
+        setComment(comment);
       })
       .catch(err => {
         console.error(err);
@@ -45,6 +48,7 @@ function Post() {
       <h1>{title}</h1>
       <p>{author} {time}</p>
       <section>{content}</section>
+      <Comment commentList={comment} />
     </div>
   );
 }
