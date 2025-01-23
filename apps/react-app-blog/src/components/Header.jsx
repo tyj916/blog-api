@@ -1,4 +1,4 @@
-import { createModal, isJwtExpired } from "../utils/index";
+import { createModal, isLoggedIn } from "../utils/index";
 import AuthenticationForm from "./Authentication";
 
 function Logo() {
@@ -15,7 +15,7 @@ function Menu() {
     location.reload();
   }
 
-  if (localStorage.getItem('jwt') && !isJwtExpired()) {
+  if (isLoggedIn()) {
     return (
       <ul>
         <li><a href="/">Home</a></li>
