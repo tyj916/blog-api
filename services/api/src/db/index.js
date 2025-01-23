@@ -40,7 +40,16 @@ async function getPostByPostId(postId) {
             username: true,
           }
         },
-        comment: true,
+        comment: {
+          include: {
+            author: {
+              select: {
+                displayName: true,
+                username: true,
+              }
+            }
+          }
+        },
       },
     });
   } catch(err) {
