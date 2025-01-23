@@ -1,7 +1,24 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getTimeDifference } from "../utils";
-import Comment from "./Comment";
+
+function Comment({commentList}) {
+  return (
+    <section>
+      {commentList.map(comment => {
+        const { author } = comment;
+        const authorName = author.displayName || author.username;
+
+        return (
+          <div key={comment.id}>
+            <p>{authorName}</p>
+            <p>{comment.content}</p>
+          </div>
+        );
+      })}
+    </section>
+  )
+}
 
 function Post() {
   const { postId } = useParams();
