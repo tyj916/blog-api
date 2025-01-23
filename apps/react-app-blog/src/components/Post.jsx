@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getTimeDifference } from "../utils";
+import PropTypes from "prop-types";
 
 function Comment({comment}) {
   const { author } = comment;
@@ -72,6 +73,14 @@ function Post() {
       <CommentSection commentList={comment} />
     </div>
   );
+}
+
+Comment.propTypes = {
+  comment: PropTypes.object,
+}
+
+CommentSection.propTypes = {
+  commentList: PropTypes.array,
 }
 
 export default Post;
