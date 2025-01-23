@@ -39,7 +39,8 @@ async function getPostByPostId(postId) {
             displayName: true,
             username: true,
           }
-        }
+        },
+        comment: true,
       },
     });
   } catch(err) {
