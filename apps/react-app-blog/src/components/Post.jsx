@@ -2,19 +2,23 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getTimeDifference } from "../utils";
 
-function Comment({commentList}) {
+function Comment({comment}) {
+  const { author } = comment;
+  const authorName = author.displayName || author.username;
+
+  return (
+    <div key={comment.id}>
+      <p>{authorName}</p>
+      <p>{comment.content}</p>
+    </div>
+  );
+}
+
+function CommentSection({commentList}) {
   return (
     <section>
       {commentList.map(comment => {
-        const { author } = comment;
-        const authorName = author.displayName || author.username;
-
-        return (
-          <div key={comment.id}>
-            <p>{authorName}</p>
-            <p>{comment.content}</p>
-          </div>
-        );
+        <Comment comment={comment} />
       })}
     </section>
   )
@@ -65,7 +69,7 @@ function Post() {
       <h1>{title}</h1>
       <p>{author} {time}</p>
       <section>{content}</section>
-      <Comment commentList={comment} />
+      <CommentSection commentList={comment} />
     </div>
   );
 }
