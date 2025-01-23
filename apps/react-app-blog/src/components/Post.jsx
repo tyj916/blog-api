@@ -8,7 +8,7 @@ function Comment({comment}) {
   const authorName = author.displayName || author.username;
 
   return (
-    <div key={comment.id}>
+    <div>
       <p>{authorName}</p>
       <p>{comment.content}</p>
     </div>
@@ -19,7 +19,7 @@ function CommentSection({commentList}) {
   return (
     <section>
       {commentList.map(comment => {
-        <Comment comment={comment} />
+        return <Comment key={comment.id} comment={comment} />
       })}
     </section>
   )
