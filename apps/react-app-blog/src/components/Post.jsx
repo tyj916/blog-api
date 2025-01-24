@@ -4,13 +4,14 @@ import { getTimeDifference } from "../utils";
 import PropTypes from "prop-types";
 
 function Comment({comment}) {
-  const { author } = comment;
+  const { author, createdAt, content } = comment;
   const authorName = author.displayName || author.username;
+  const time = getTimeDifference(createdAt);
 
   return (
     <div>
-      <p>{authorName}</p>
-      <p>{comment.content}</p>
+      <p>{authorName} {time}</p>
+      <p>{content}</p>
     </div>
   );
 }
