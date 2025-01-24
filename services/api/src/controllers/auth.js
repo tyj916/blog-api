@@ -58,6 +58,8 @@ async function processLogin(req, res) {
 
     res.send({
       message: "Login Successful",
+      userId: user.id,
+      username: user.username,
       token,
     });
   });

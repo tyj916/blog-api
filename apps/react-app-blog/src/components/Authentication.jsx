@@ -24,7 +24,13 @@ function sendLoginRequest(username, password, setMessage, setLoading) {
   })
   .then((response) => {
     if (response.token) {
-      localStorage.setItem('jwt', JSON.stringify({ token: response.token, timestamp: new Date() }));
+      const { userId, username, token } = response;
+      localStorage.setItem('jwt', JSON.stringify({
+        userId,
+        username,
+        token,
+        timestamp: new Date(),
+      }));
       location.reload();
       return;
     }
