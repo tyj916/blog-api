@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getTimeDifference } from "../utils";
+import { getTimestamp } from "../utils";
 import PropTypes from "prop-types";
 
 function Comment({comment}) {
   const { author, createdAt, content } = comment;
   const authorName = author.displayName || author.username;
-  const time = getTimeDifference(createdAt);
+  const time = getTimestamp(createdAt);
 
   return (
     <div>
@@ -48,7 +48,7 @@ function Post() {
       .then(response => {
         const { author, content, comment } = response;
         const authorName = author.displayName || author.username;
-        const time = getTimeDifference(response.updatedAt);
+        const time = getTimestamp(response.updatedAt);
 
         setTitle(response.title);
         setAuthor(authorName);

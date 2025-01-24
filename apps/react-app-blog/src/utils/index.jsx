@@ -13,7 +13,7 @@ function createModal(content) {
   window.modalRoot.render(<Modal content={content} closeModal={closeModal} />);
 }
 
-function getTimeDifference(timestamp) {
+function getTimestamp(timestamp) {
   const timeDifference = new Date() - new Date(timestamp);
 
   const PER_MINUTE = 60 * 1000;
@@ -68,6 +68,6 @@ function isLoggedIn() {
 
 export {
   createModal,
-  getTimeDifference,
+  getTimestamp,
   isLoggedIn,
 }

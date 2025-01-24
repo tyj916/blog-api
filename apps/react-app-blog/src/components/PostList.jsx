@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getTimeDifference } from '../utils';
+import { getTimestamp } from '../utils';
 import PropTypes from 'prop-types';
 
 function Post({data}) {
   const { id, author, title, content, updatedAt } = data;
   const authorName = author.displayName || author.username;
   const description = content.length > 20 ? content.slice(0, 20) + '...' : content;
-  const time = getTimeDifference(updatedAt);
+  const time = getTimestamp(updatedAt);
 
   return (
     <div>
