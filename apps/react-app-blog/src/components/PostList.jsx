@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getTimestamp } from '../utils';
 import PropTypes from 'prop-types';
@@ -23,7 +22,7 @@ function Post({data}) {
 
 function PostList({posts}) {
   return (
-    <div className="posts">
+    <section className="posts">
       {posts && posts.length > 0 && (
         <div>
           {posts.map((post) => {
@@ -34,12 +33,16 @@ function PostList({posts}) {
       {posts && posts.length === 0 && (
         <p>No posts yet.</p>
       )}
-    </div>
+    </section>
   );
 }
 
 Post.propTypes = {
   data: PropTypes.object,
+}
+
+PostList.propTypes = {
+  posts: PropTypes.array,
 }
 
 export default PostList;
