@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { createModal, isLoggedIn } from "../utils/index";
 import AuthenticationForm from "./Authentication";
 
@@ -10,9 +11,11 @@ function Logo() {
 }
 
 function Menu() {
+  const navigate = useNavigate();
+
   const logOut = () => {
     localStorage.removeItem('jwt');
-    location.reload();
+    navigate('/');
   }
 
   if (isLoggedIn()) {
