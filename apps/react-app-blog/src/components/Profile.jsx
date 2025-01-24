@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PostList from "./PostList";
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -32,7 +33,9 @@ function Profile() {
     <section>
       <h1>{user.username}</h1>
       <h2>{user.displayName}</h2>
-      {user.writtenPost.length > 0 ? <p>Have posts</p>  : <p>No post yet.</p>}
+      <PostList posts={user.writtenPost.map((post) => {
+        return {...post, author: user}
+      })} />
     </section>
   );
 }
