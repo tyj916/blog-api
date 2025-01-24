@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.jsx'
 import Post from './components/Post.jsx'
 import PostList from './components/PostList.jsx'
+import Profile from './components/Profile.jsx'
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,8 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: '/', element: <PostList /> },
-      { path: '/posts/:postId', element: <Post /> }
+      { path: '/posts/:postId', element: <Post /> },
+      { path: '/profile', element: <Profile /> }
     ]
   },
 ]);
