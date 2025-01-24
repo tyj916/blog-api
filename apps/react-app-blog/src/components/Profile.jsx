@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 function Profile() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     const jwt = JSON.parse(localStorage.getItem('jwt'));
@@ -19,11 +20,13 @@ function Profile() {
       .then((response) => setUser(response))
       .catch((err) => {
         console.error(err);
+        setErrorMessage(err);
       })
       .finally(() => setLoading(false));
   }, []);
 
   if (loading) return <p>Loading...</p>;
+  if (errorMessage) return <p>{errorMessage}</p>
 
   return (
     <section>
