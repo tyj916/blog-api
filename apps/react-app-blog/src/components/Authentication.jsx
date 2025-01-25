@@ -159,16 +159,10 @@ function LoginForm({text}) {
       }),
       redirect: 'manual'
     })
-      .then((response) => {
-        if (response.status >= 500) {
-          throw new Error("Something is wrong with the server... Please try again later.");
-        }
-    
-        return response.json();
-      })
-      .then((response) => {
-        if (response.token) {
-          const { userId, username, token } = response;
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.token) {
+          const { userId, username, token } = data;
           localStorage.setItem('jwt', JSON.stringify({
             userId,
             username,
@@ -178,12 +172,9 @@ function LoginForm({text}) {
           navigate('/');
         }
     
-        setMessage(response.message);
+        setMessage(data.message);
       })
-      .catch(err => {
-        console.error(err);
-        setMessage(err);
-      })
+      .catch(err => console.error(err))
       .finally(() => setLoading(false));
   }
 
