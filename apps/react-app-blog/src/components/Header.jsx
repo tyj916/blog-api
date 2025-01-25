@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import { createModal, isLoggedIn } from "../utils/index";
-import AuthenticationForm from "./Authentication";
+import { useNavigate, Link } from "react-router-dom";
+import { isLoggedIn } from "../utils/index";
 
 function Logo() {
   return (
@@ -37,19 +36,22 @@ function Menu() {
     <ul>
       <li><a href="/">Home</a></li>
       <li>
-        <button onClick={() => createModal(<AuthenticationForm type='signUp' text='Create an account to start writing.' />)}>
+        {/* Create an account to start writing. */}
+        <Link to='signUp'>
           Write
-        </button>
+        </Link>
       </li>
       <li>
-        <button onClick={() => createModal(<AuthenticationForm type='login' text='Welcome Back.' />)}>
+        {/* Welcome Back. */}
+        <Link to='login'>
           Log In
-        </button>
+        </Link>
       </li>
       <li>
-        <button onClick={() => createModal(<AuthenticationForm type='signUp' text='Join Us.' />)}>
+        {/* Join Us. */}
+        <Link to='signUp'>
           Get Started
-        </button>
+        </Link>
       </li>
     </ul>
   );

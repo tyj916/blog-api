@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import { createModal } from "../utils";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function sendLoginRequest(username, password, setMessage, setLoading) {
   fetch('http://localhost:3000/api/login', {
@@ -155,7 +155,7 @@ function SignUpForm({text}) {
           <li>
             <button type="submit">Sign Up</button>
           </li>
-          <p>Already have an account? <button type="button" onClick={() => createModal(<AuthenticationForm type='login' text='Welcome Back.' />)}>Log In</button></p>
+          <p>Already have an account? <Link to='/login'>Log In</Link></p>
         </ul>
       </form>
     </div>
@@ -208,14 +208,14 @@ function LoginForm({text}) {
           <li>
             <button type="submit">Log In</button>
           </li>
-          <p>No Account? <button type="button" onClick={() => createModal(<AuthenticationForm type='signUp' text='Join Us.' />)}>Create One</button></p>
+          <p>No Account? <Link to='/signUp'>Create One</Link></p>
         </ul>
       </form>
     </div>
   );
 }
 
-function AuthenticationForm({type, text}) {
+function AuthenticationForm({type = 'login', text = 'Welcome Back.'}) {
   if (type === 'login') {
     return <LoginForm text={text} />
   } else {
