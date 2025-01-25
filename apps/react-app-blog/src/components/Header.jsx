@@ -35,24 +35,9 @@ function Menu() {
   return (
     <ul>
       <li><a href="/">Home</a></li>
-      <li>
-        {/* Create an account to start writing. */}
-        <Link to='signUp'>
-          Write
-        </Link>
-      </li>
-      <li>
-        {/* Welcome Back. */}
-        <Link to='login'>
-          Log In
-        </Link>
-      </li>
-      <li>
-        {/* Join Us. */}
-        <Link to='signUp'>
-          Get Started
-        </Link>
-      </li>
+      <li><Link to='register/writer'>Write</Link></li>
+      <li><Link to='login'>Log In</Link></li>
+      <li><Link to='register'>Get Started</Link></li>
     </ul>
   );
 }
