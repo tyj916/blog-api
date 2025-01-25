@@ -7,6 +7,7 @@ import Post from './components/Post.jsx'
 import Home from './components/Home.jsx';
 import Profile from './components/Profile.jsx'
 import NotFound from './components/error/NotFound.jsx';
+import Unauthorized from './components/error/Unauthorized.jsx';
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: '/posts/:postId', element: <Post />, errorElement: <NotFound /> },
-      { path: '/profile', element: <Profile /> },
+      { path: '/profile', element: <Profile />, errorElement: <Unauthorized /> },
       { path: '/profile/:userId', element: <Profile />, errorElement: <NotFound /> },
     ]
   },
