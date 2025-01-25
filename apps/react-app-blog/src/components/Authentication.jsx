@@ -2,48 +2,6 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function sendLoginRequest(username, password, setMessage, setLoading) {
-  fetch('http://localhost:3000/api/login', {
-    method: 'post',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      username,
-      password,
-    }),
-    redirect: 'manual'
-  })
-  .then((response) => {
-    if (response.status >= 500) {
-      throw new Error("Something is wrong with the server... Please try again later.");
-    }
-
-    return response.json();
-  })
-  .then((response) => {
-    if (response.token) {
-      const { userId, username, token } = response;
-      localStorage.setItem('jwt', JSON.stringify({
-        userId,
-        username,
-        token,
-        timestamp: new Date(),
-      }));
-      location.reload();
-      return;
-    }
-
-    setMessage(response.message);
-  })
-  .catch(err => {
-    console.error(err);
-    setMessage(err);
-  })
-  .finally(() => setLoading(false));
-}
-
 function SignUpForm({text}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -51,6 +9,7 @@ function SignUpForm({text}) {
   const [displayName, setDisplayName] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,35 +28,49 @@ function SignUpForm({text}) {
         displayName,
       }),
     })
-    .then((response) => {
-      if (response.status >= 500) {
-        throw new Error("Something is wrong with the server... Please try again later.");
-      }
-
-      return response.json();
-    })
-    .then((response) => {
-      if (response.username) {
-        setMessage(`You are registered! You'll be login automatically in 5 sec...`);
-
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.username) {
         let count = 5;
         const countdown = setInterval(() => {
-          if (count > 0) {
-            count--;
+          if (count >= 0) {
             setMessage(`You are registered! You'll be login automatically in ${count} sec...`);
+            count--;
           } else {
             clearInterval(countdown);
-            sendLoginRequest(username, password, setMessage, setLoading);
+            return fetch('http://localhost:3000/api/login', {
+              method: 'post',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                username,
+                password,
+              }),
+              redirect: 'manual'
+            })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.token) {
+                const { userId, username, token } = data;
+                localStorage.setItem('jwt', JSON.stringify({
+                  userId,
+                  username,
+                  token,
+                  timestamp: new Date(),
+                }));
+                navigate('/');
+              }
+            })
+            .catch(err => console.error(err));
           }
         }, 1000);
-        return;
+      } else {
+        setMessage(data.message);
       }
-      setMessage(response.message);
     })
-    .catch(err => {
-      console.error(err);
-      setMessage(err);
-    })
+    .catch(err => console.error(err))
     .finally(() => setLoading(false));
   }
 
