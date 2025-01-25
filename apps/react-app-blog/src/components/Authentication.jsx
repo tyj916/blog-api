@@ -208,7 +208,7 @@ function LoginForm({text}) {
           <li>
             <button type="submit">Log In</button>
           </li>
-          <p>No Account? <Link to='/signUp'>Create One</Link></p>
+          <p>No Account? <Link to='/register'>Create One</Link></p>
         </ul>
       </form>
     </div>
