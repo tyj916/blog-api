@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function sendLoginRequest(username, password, setMessage, setLoading) {
   fetch('http://localhost:3000/api/login', {
@@ -167,13 +167,51 @@ function LoginForm({text}) {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setMessage('');
     setLoading(true);
 
-    sendLoginRequest(username, password, setMessage, setLoading);
+    fetch('http://localhost:3000/api/login', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+      redirect: 'manual'
+    })
+      .then((response) => {
+        if (response.status >= 500) {
+          throw new Error("Something is wrong with the server... Please try again later.");
+        }
+    
+        return response.json();
+      })
+      .then((response) => {
+        if (response.token) {
+          const { userId, username, token } = response;
+          localStorage.setItem('jwt', JSON.stringify({
+            userId,
+            username,
+            token,
+            timestamp: new Date(),
+          }));
+          navigate('/');
+        }
+    
+        setMessage(response.message);
+      })
+      .catch(err => {
+        console.error(err);
+        setMessage(err);
+      })
+      .finally(() => setLoading(false));
   }
 
   return (
