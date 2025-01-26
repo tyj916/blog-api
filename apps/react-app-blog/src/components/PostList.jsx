@@ -11,7 +11,7 @@ function Post({data}) {
   return (
     <div>
       <Link to={`/posts/${id}`}>
-        <p>{authorName}</p>
+        <p><Link to={`/profile/` + author.username}>{authorName}</Link></p>
         <h3>{title}</h3>
         <p>{description}</p>
         <p>{time}</p>

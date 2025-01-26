@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getTimestamp } from "../utils";
 import PropTypes from "prop-types";
 
@@ -10,7 +10,7 @@ function Comment({comment}) {
 
   return (
     <div>
-      <p>{authorName} {time}</p>
+      <p><Link to={author.username}>{authorName}</Link> {time}</p>
       <p>{content}</p>
     </div>
   );
@@ -47,11 +47,10 @@ function Post() {
       })
       .then(response => {
         const { author, content, comment } = response;
-        const authorName = author.displayName || author.username;
         const time = getTimestamp(response.updatedAt);
 
         setTitle(response.title);
-        setAuthor(authorName);
+        setAuthor(author);
         setTime(time);
         setContent(content);
         setComment(comment);
@@ -69,7 +68,7 @@ function Post() {
   return (
     <div>
       <h1>{title}</h1>
-      <p>{author} {time}</p>
+      <p><Link to={author.username}>{author.displayName || author.username}</Link> {time}</p>
       <section>{content}</section>
       <CommentSection commentList={comment} />
     </div>
