@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       { path: '/register/writer', element: <AuthenticationForm type='signUp' text='Create an account to start writing.' /> },
       { path: '/posts/:postId', element: <Post />, errorElement: <NotFound /> },
       { path: '/profile', element: <Profile />, errorElement: <Unauthorized /> },
-      { path: '/profile/:userId', element: <Profile />, errorElement: <NotFound /> },
+      { path: '/profile/:username', element: <Profile />, errorElement: <NotFound /> },
     ]
   },
 ]);

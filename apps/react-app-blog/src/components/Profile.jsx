@@ -7,10 +7,10 @@ function Profile() {
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const jwt = JSON.parse(localStorage.getItem('jwt'));
-  const userId = useParams().userId || jwt.userId; // if params not provided then get current user profile
+  const username = useParams().username || jwt.username; // if params not provided then get current user profile
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/users/${userId}/posts`, { mode: 'cors' })
+    fetch(`http://localhost:3000/api/users/${username}/posts`, { mode: 'cors' })
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("Something is wrong with the server... Please try again later.");
@@ -24,7 +24,7 @@ function Profile() {
         setErrorMessage(err);
       })
       .finally(() => setLoading(false));
-  }, [userId]);
+  }, [username]);
 
   if (loading) return <p>Loading...</p>;
   if (errorMessage) return <p>{errorMessage}</p>
