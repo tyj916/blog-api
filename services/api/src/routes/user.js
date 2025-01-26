@@ -6,7 +6,8 @@ const router = Router();
 
 router.get('/', controllers.user.getAllUsers);
 router.get('/:userId', controllers.user.getUserByUserId);
-router.get('/:userId/posts', controllers.user.getUserPostsByUserId);
+router.get('/id/:userId/posts', controllers.user.getUserPostsByUserId);
+router.get('/:username/posts', controllers.user.getUserPostsByUsername);
 router.get('/:authorId/comments', controllers.comment.getCommentsByAuthorId);
 
 router.use(passport.authenticate('jwt', { session: false }));
