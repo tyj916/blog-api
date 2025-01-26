@@ -10,7 +10,7 @@ function Comment({comment}) {
 
   return (
     <div>
-      <p><Link to={author.username}>{authorName}</Link> {time}</p>
+      <p><Link to={`/profile/${author.username}`}>{authorName}</Link> {time}</p>
       <p>{content}</p>
     </div>
   );
@@ -68,7 +68,7 @@ function Post() {
   return (
     <div>
       <h1>{title}</h1>
-      <p><Link to={author.username}>{author.displayName || author.username}</Link> {time}</p>
+      <p><Link to={`/profile/${author.username}`}>{author.displayName || author.username}</Link> {time}</p>
       <section>{content}</section>
       <CommentSection commentList={comment} />
     </div>
