@@ -218,11 +218,16 @@ function LoginForm({text}) {
 }
 
 function AuthenticationForm({type = 'login', text = 'Welcome Back.'}) {
-  if (type === 'login') {
-    return <LoginForm text={text} />
-  } else {
-    return <SignUpForm text={text} />
-  }
+  return (
+    <div>
+      <Link to='/'>&lt; Home</Link>
+      {
+        type === 'login' 
+          ? <LoginForm text={text} /> 
+          : <SignUpForm text={text} />
+      }
+    </div>
+  );
 }
 
 LoginForm.propTypes = {

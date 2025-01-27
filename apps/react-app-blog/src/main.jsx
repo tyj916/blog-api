@@ -17,9 +17,6 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Home /> },
-      { path: '/login', element: <AuthenticationForm type='login' text='Welcome Back.' /> },
-      { path: '/register', element: <AuthenticationForm type='signUp' text='Join Us.' /> },
-      { path: '/register/writer', element: <AuthenticationForm type='signUp' text='Create an account to start writing.' /> },
       { path: '/posts/:postId', element: <Post />, errorElement: <NotFound /> },
       { 
         path: '/profile', 
@@ -27,7 +24,20 @@ const router = createBrowserRouter([
         errorElement: <Unauthorized /> 
       },
       { path: '/profile/:username', element: <Profile />, errorElement: <NotFound /> },
-    ]
+    ],
+    errorElement: <NotFound />,
+  },
+  {
+    path: '/login', 
+    element: <AuthenticationForm type='login' text='Welcome Back.' />
+  },
+  {
+    path: '/register',
+    element: <AuthenticationForm type='signUp' text='Join Us.' />
+  },
+  { 
+    path: '/register/writer', 
+    element: <AuthenticationForm type='signUp' text='Create an account to start writing.' /> 
   },
 ]);
 
