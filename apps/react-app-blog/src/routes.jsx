@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import App from './App.jsx'
 import Post from './components/Post.jsx'
 import Home from './components/Home.jsx';
@@ -8,7 +8,7 @@ import Unauthorized from './components/error/Unauthorized.jsx';
 import AuthenticationForm from './components/Authentication.jsx';
 import { isLoggedIn } from './utils/index.jsx';
 
-const router = createBrowserRouter([
+const routes = [
   {
     path: "/",
     element: <App />,
@@ -36,6 +36,6 @@ const router = createBrowserRouter([
     path: '/register/writer', 
     element: <AuthenticationForm type='signUp' text='Create an account to start writing.' /> 
   },
-]);
+];
 
-export default router;
+export default routes;
