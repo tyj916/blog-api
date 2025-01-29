@@ -17,12 +17,14 @@ function Comment({comment}) {
 }
 
 function CommentSection({commentList}) {
+  const hasComment = commentList.length !== 0;
+
   return (
     <section>
       <h2>Comments</h2>
-      {commentList.map(comment => {
+      {hasComment ? commentList.map(comment => {
         return <Comment key={comment.id} comment={comment} />
-      })}
+      }) : <p>No comment yet.</p>}
     </section>
   )
 }
