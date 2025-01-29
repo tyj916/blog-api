@@ -19,6 +19,7 @@ function Comment({comment}) {
 function CommentSection({commentList}) {
   return (
     <section>
+      <h2>Comments</h2>
       {commentList.map(comment => {
         return <Comment key={comment.id} comment={comment} />
       })}
