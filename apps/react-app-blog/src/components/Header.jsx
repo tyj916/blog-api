@@ -1,5 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import { isLoggedIn } from "../utils/index";
+import styles from '../styles/Header.module.css';
 
 function Logo() {
   return (
@@ -19,7 +20,7 @@ function Menu() {
 
   if (isLoggedIn()) {
     return (
-      <ul>
+      <ul className={styles.menu}>
         <li><a href="/">Home</a></li>
         <li><a href="/write">Write</a></li>
         <li><a href='/profile'>Profile</a></li>
@@ -33,7 +34,7 @@ function Menu() {
   }
 
   return (
-    <ul>
+    <ul className={styles.menu}>
       <li><a href="/">Home</a></li>
       <li><Link to='register/writer'>Write</Link></li>
       <li><Link to='login'>Log In</Link></li>
@@ -45,7 +46,7 @@ function Menu() {
 function Header() {
   return (
     <header>
-      <div className='container'>
+      <div className={styles.container}>
         <Logo />
         <Menu />
       </div>
