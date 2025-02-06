@@ -17,10 +17,10 @@ a:visited {
   padding: 8px 24px;
 }
 
-.link-container {
+.linkContainer {
   cursor: pointer;
 }
 
-.link-container:hover {
+.linkContainer:hover {
   background-color: #f0f0f0;
 }

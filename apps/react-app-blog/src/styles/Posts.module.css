@@ -1,0 +1,7 @@
+.posts {
+  padding: 18px;
+}
+
+.linkContainer {
+  composes: linkContainer from './index.css';
+}
