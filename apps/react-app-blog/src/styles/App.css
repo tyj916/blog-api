@@ -3,11 +3,3 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
-
-.link-container {
-  cursor: pointer;
-}
-
-.link-container:hover {
-  background-color: #f0f0f0;
-}
