@@ -14,12 +14,20 @@ header .container {
   align-items: center;
 }
 
-.logo {
-  margin: 0;
-}
-
 .menu {
   list-style: none;
   display: flex;
   gap: 16px;
+}
+
+.menu a {
+  color: black;
+}
+
+.menu a:visited {
+  color: black;
+}
+
+.logo {
+  margin: 0;
 }
