@@ -5,7 +5,7 @@ import styles from '../styles/Header.module.css';
 function Logo() {
   return (
     <a href="/">
-      <h1>Logo</h1>
+      <h1 className={styles.logo}>Logo</h1>
     </a>
   );
 }
