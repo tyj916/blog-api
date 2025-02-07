@@ -24,3 +24,9 @@ a:visited {
 .linkContainer:hover {
   background-color: #f0f0f0;
 }
+
+#root {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
