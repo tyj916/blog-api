@@ -15,7 +15,7 @@ function Post({data}) {
   }
 
   return (
-    <div>
+    <div className={styles.post}>
       <div className={styles.linkContainer} onClick={handleNavigate}>
         <p><Link to={`/profile/` + author.username}>{authorName}</Link></p>
         <h3>{title}</h3>

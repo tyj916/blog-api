@@ -1,7 +1,12 @@
-.posts {
-  padding: 18px;
-}
-
 .linkContainer {
   composes: linkContainer from './index.css';
+  padding: 8px;
+}
+
+.post {
+  border-bottom: 2px solid #eee;
+}
+
+.post:last-child {
+  border: none;
 }
