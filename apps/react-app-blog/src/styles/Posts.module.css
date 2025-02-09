@@ -1,6 +1,6 @@
 .linkContainer {
   composes: linkContainer from './index.css';
-  padding: 16px;
+  padding: 16px 0;
 }
 
 .buttonLink {

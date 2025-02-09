@@ -21,10 +21,6 @@ a:visited {
   cursor: pointer;
 }
 
-.linkContainer:hover {
-  background-color: #f0f0f0;
-}
-
 .buttonLink {
   border: none;
   background: none;
