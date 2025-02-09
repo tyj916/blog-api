@@ -1,27 +1,22 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getTimestamp } from '../utils';
 import PropTypes from 'prop-types';
 import styles from '../styles/Posts.module.css';
 
 function Post({data}) {
-  const navigate = useNavigate();
   const { id, author, title, content, updatedAt } = data;
   const authorName = author.displayName || author.username;
   const description = content.length > 20 ? content.slice(0, 20) + '...' : content;
   const time = getTimestamp(updatedAt);
 
-  const handleNavigate = () => {
-    navigate(`/posts/${id}`);
-  }
-
   return (
     <div className={styles.post}>
-      <div className={styles.linkContainer} onClick={handleNavigate}>
+      <Link to={`/posts/${id}`} className={styles.linkContainer}>
         <p><Link to={`/profile/` + author.username}>{authorName}</Link></p>
         <h3>{title}</h3>
         <p>{description}</p>
         <p>{time}</p>
-      </div>
+      </Link>
     </div>
   );
 }
