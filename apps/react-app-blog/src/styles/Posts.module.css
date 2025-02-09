@@ -5,6 +5,7 @@
 
 .post {
   border-bottom: 2px solid #eee;
+  position: relative;
 }
 
 .post:last-child {
