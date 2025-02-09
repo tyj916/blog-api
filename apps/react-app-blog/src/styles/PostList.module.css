@@ -1,3 +1,7 @@
+.posts {
+  max-width: 640px;
+}
+
 .posts h2 {
   margin-bottom: 0;
   padding-bottom: 8px;
@@ -15,7 +19,6 @@
 
 .post {
   border-bottom: 2px solid #eee;
-  position: relative;
 }
 
 .post:last-child {
@@ -28,4 +31,13 @@
 
 .post p:last-child {
   margin-bottom: 0;
+}
+
+.post p {
+  color: #666;
+}
+
+.post .title {
+  font-size: 1.5em;
+  margin: 0;
 }

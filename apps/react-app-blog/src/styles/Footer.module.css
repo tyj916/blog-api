@@ -3,6 +3,6 @@ footer {
   border-top: 1px solid black;
 }
 
-.copyright {
-  margin: 8px;
+footer p {
+  font-size: 0.9em;
 }

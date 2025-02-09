@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { getTimestamp } from '../utils';
 import PropTypes from 'prop-types';
-import styles from '../styles/Posts.module.css';
+import styles from '../styles/PostList.module.css';
 
 function Post({data}) {
   const { id, author, title, content, updatedAt } = data;
@@ -20,10 +20,10 @@ function Post({data}) {
     <div className={styles.post}>
       <Link to={`/posts/${id}`}>
         <div className={styles.linkContainer}>
-          <p><button className={styles.buttonLink} onClick={handleNavigate}>{authorName}</button></p>
-          <h3>{title}</h3>
-          <p>{description}</p>
-          <p>{time}</p>
+          <p className={styles.author}><button className={styles.buttonLink} onClick={handleNavigate}>{authorName}</button></p>
+          <h3 className={styles.title}>{title}</h3>
+          <p className={styles.description}>{description}</p>
+          <p className={styles.time}>{time}</p>
         </div>
       </Link>
     </div>
