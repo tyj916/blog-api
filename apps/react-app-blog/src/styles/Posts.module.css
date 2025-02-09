@@ -1,6 +1,6 @@
 .linkContainer {
   composes: linkContainer from './index.css';
-  padding: 8px;
+  padding: 16px;
 }
 
 .post {
@@ -9,4 +9,12 @@
 
 .post:last-child {
   border: none;
+}
+
+.post p:first-child {
+  margin-top: 0;
+}
+
+.post p:last-child {
+  margin-bottom: 0;
 }
