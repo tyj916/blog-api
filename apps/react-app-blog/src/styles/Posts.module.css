@@ -3,6 +3,10 @@
   padding: 16px;
 }
 
+.buttonLink {
+  composes: buttonLink from './index.css';
+}
+
 .post {
   border-bottom: 2px solid #eee;
   position: relative;

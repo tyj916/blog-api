@@ -20,7 +20,7 @@ function Post({data}) {
     <div className={styles.post}>
       <Link to={`/posts/${id}`}>
         <div className={styles.linkContainer}>
-          <p><button onClick={handleNavigate}>{authorName}</button></p>
+          <p><button className={styles.buttonLink} onClick={handleNavigate}>{authorName}</button></p>
           <h3>{title}</h3>
           <p>{description}</p>
           <p>{time}</p>
