@@ -33,7 +33,6 @@ function Post({data}) {
 function PostList({posts}) {
   return (
     <section className={styles.posts}>
-      <h2>Posts</h2>
       {posts && posts.length > 0 && (
         <div>
           {posts.map((post) => {

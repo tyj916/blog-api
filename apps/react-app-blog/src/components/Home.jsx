@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import Heading from "./Heading";
 import PostList from "./PostList";
+import styles from '../styles/Home.module.css';
 
 function Home() {
   const [posts, setPosts] = useState(null);
@@ -27,7 +29,10 @@ function Home() {
   if (error) return <p>A network error was encountered. Please try again later.</p>;
 
   return (
-    <PostList posts={posts} />
+    <div className={styles.home}>
+      <Heading title='Posts'/>
+      <PostList posts={posts} />
+    </div>
   )
 }
 
