@@ -1,5 +1,8 @@
 header {
   background-color: var(--custom-color-black);
+}
+
+header a {
   color: var(--custom-color-beige-100);
 }
 
