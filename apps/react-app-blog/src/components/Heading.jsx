@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from '../styles/Heading.module.css'
 
 function Heading({title, description=''}) {
@@ -7,6 +8,11 @@ function Heading({title, description=''}) {
       {description && <p>{description}</p>}
     </div>
   );
+}
+
+Heading.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
 }
 
 export default Heading;
