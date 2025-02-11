@@ -1,4 +1,8 @@
 .heading {
-  background-color: var(--custom-color-beige-900);
-  padding: 16px 0;
+  background-color: var(--custom-color-beige-500);
+}
+
+.container {
+  composes: container from './index.css';
+  
 }

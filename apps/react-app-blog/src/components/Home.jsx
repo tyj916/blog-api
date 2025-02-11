@@ -31,7 +31,9 @@ function Home() {
   return (
     <div className={styles.home}>
       <Heading title='Posts'/>
-      <PostList posts={posts} />
+      <div className={styles.container}>
+        <PostList posts={posts} />
+      </div>
     </div>
   )
 }
