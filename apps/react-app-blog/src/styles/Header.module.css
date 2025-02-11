@@ -1,5 +1,6 @@
 header {
-  border-bottom: 1px solid black;
+  background-color: var(--custom-color-black);
+  color: var(--custom-color-beige-100);
 }
 
 .container {
@@ -13,14 +14,6 @@ header {
   list-style: none;
   display: flex;
   gap: 16px;
-}
-
-.menu a {
-  color: black;
-}
-
-.menu a:visited {
-  color: black;
 }
 
 .logo {

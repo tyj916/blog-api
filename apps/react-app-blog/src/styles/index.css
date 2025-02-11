@@ -1,18 +1,27 @@
+:root {
+  --custom-color-black: #1e1e1e;
+  --custom-color-grey: #505050;
+  --custom-color-beige-900: #e8e3db;
+  --custom-color-beige-500: #f5f3ee;
+  --custom-color-beige-100: #fcfbf9;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--custom-color-black);
 }
 
 a {
   text-decoration: none;
-  color: #555;
+  color: var(--custom-color-grey);
 }
 
-a:visited {
-  color: #333;
+a:hover {
+  text-decoration: underline;
 }
 
 .container {
