@@ -1,9 +1,13 @@
 footer {
   text-align: center;
-  border-top: 1px solid black;
+  background-color: var(--custom-color-black);
+  color: var(--custom-color-beige-100);
+}
+
+footer a {
+  color: var(--custom-color-beige-100);
 }
 
 footer p {
   font-size: 0.9em;
-  margin: 0.5em;
 }
