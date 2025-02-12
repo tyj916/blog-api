@@ -6,3 +6,7 @@
   composes: container from './index.css';
   
 }
+
+.title {
+  margin: 0;
+}

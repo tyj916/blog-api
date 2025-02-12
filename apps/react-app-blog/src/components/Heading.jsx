@@ -5,7 +5,7 @@ function Heading({title, description=''}) {
   return (
     <div className={styles.heading}>
       <div className={styles.container}>
-        <h2>{title}</h2>
+        <h2 className={styles.title}>{title}</h2>
         {description && <p>{description}</p>}
       </div>
     </div>
