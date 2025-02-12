@@ -31,18 +31,14 @@ a:hover {
   padding: 8px 24px;
 }
 
-.linkContainer {
-  cursor: pointer;
-}
-
-.buttonLink {
+.linkButton {
   border: none;
   background: none;
   padding: 0;
   cursor: pointer;
 }
 
-.buttonLink:hover {
+.linkButton:hover {
   text-decoration: underline;
 }
 

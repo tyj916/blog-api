@@ -13,18 +13,18 @@ function Post({data}) {
   const handleNavigate = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    navigate(`/profile/` + author.username);
+    navigate(`/profile/${author.username}`)
   }
 
   return (
     <div className={styles.post}>
       <Link to={`/posts/${id}`}>
-        <div className={styles.linkContainer}>
-          <p className={styles.author}><button className={styles.buttonLink} onClick={handleNavigate}>{authorName}</button></p>
-          <h3 className={styles.title}>{title}</h3>
-          <p className={styles.description}>{description}</p>
-          <p className={styles.time}>{time}</p>
-        </div>
+        <p className={styles.author}>
+          <button className={styles.linkButton} onClick={handleNavigate}>{authorName}</button>
+        </p>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.description}>{description}</p>
+        <p className={styles.time}>{time}</p>
       </Link>
     </div>
   );
@@ -33,13 +33,11 @@ function Post({data}) {
 function PostList({posts}) {
   return (
     <section className={styles.posts}>
-      {posts && posts.length > 0 && (
-        <div>
-          {posts.map((post) => {
-            return <Post key={post.id} data={post} />
-          })}
-        </div>
-      )}
+      {posts && posts.length > 0 &&
+        posts.map((post) => {
+          return <Post key={post.id} data={post} />
+        })
+      }
       {posts && posts.length === 0 && (
         <p>No posts yet.</p>
       )}

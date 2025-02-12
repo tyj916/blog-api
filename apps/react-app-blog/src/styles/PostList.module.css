@@ -1,5 +1,7 @@
 .posts {
   max-width: 640px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .posts h2 {
@@ -13,35 +15,37 @@
   padding: 16px 0;
 }
 
-.buttonLink {
-  composes: buttonLink from './index.css';
+.linkButton {
+  composes: linkButton from './index.css';
 }
 
 .post {
-  border-bottom: 2px solid #eee;
+  border-left: 2px solid var(--custom-color-beige-900);
+  padding-left: 1em;
 }
 
-.post:last-child {
-  border: none;
+.post:hover {
+  border-left-color: var(--custom-color-black);
 }
 
-.post p:first-child {
+.post p,
+.post .title {
+  margin: 8px 0;
+}
+
+.post .author {
   margin-top: 0;
-}
-
-.post p:last-child {
-  margin-bottom: 0;
-}
-
-.post p {
-  color: #666;
 }
 
 .post .title {
   font-size: 1.5em;
-  margin: 0;
+}
+
+.post .description {
+  font-size: 0.9em;
 }
 
 .post .time {
-  font-size: 0.9em;
+  margin-bottom: 0;
+  font-size: 0.8em;
 }
