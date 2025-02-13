@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getTimestamp } from "../utils";
+import { getTimestamp, getAuthorName } from "../utils";
 import PropTypes from "prop-types";
 import Heading from "./Heading";
+import styles from '../styles/Post.module.css';
 
 function Comment({comment}) {
   const { author, createdAt, content } = comment;
-  const authorName = author.displayName || author.username;
+  const authorName = getAuthorName(author);
   const time = getTimestamp(createdAt);
 
   return (
@@ -72,8 +73,10 @@ function Post() {
   return (
     <>
       <Heading title={title} author={author} time={time}/>
-      <section>{content}</section>
-      <CommentSection commentList={comment} />
+      <div className={styles.container}>
+        <section>{content}</section>
+        <CommentSection commentList={comment} />
+      </div>
     </>
   );
 }
