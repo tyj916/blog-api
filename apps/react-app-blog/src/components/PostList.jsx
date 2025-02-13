@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { getTimestamp } from '../utils';
+import { getTimestamp, getAuthorName } from '../utils';
 import PropTypes from 'prop-types';
 import styles from '../styles/PostList.module.css';
 
 function Post({data}) {
   const { id, author, title, content, updatedAt } = data;
-  const authorName = author.displayName || author.username;
+  const authorName = getAuthorName(author);
   const description = content.length > 20 ? content.slice(0, 20) + '...' : content;
   const time = getTimestamp(updatedAt);
   const navigate = useNavigate();

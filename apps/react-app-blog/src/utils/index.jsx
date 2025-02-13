@@ -37,6 +37,10 @@ function getTimestamp(timestamp) {
   return Math.round(timeDifference / (1000)) + ' s';
 }
 
+function getAuthorName(author) {
+  return author.displayName || author.username;
+}
+
 function isJwtExpired(jwt) {
   const expiryTime = (7 * 24 * 60 * 60 * 1000) - (new Date() - new Date(jwt.timestamp));
   return expiryTime > 0;
@@ -53,5 +57,6 @@ function isLoggedIn() {
 
 export {
   getTimestamp,
+  getAuthorName,
   isLoggedIn,
 }
