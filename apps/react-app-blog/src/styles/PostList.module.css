@@ -25,7 +25,11 @@
 }
 
 .post:hover {
-  border-left-color: var(--custom-color-black);
+  border-left-color: var(--custom-color-maroon);
+}
+
+.post a:hover {
+  text-decoration: none;
 }
 
 .post p,
@@ -34,18 +38,31 @@
 }
 
 .post .author {
-  margin-top: 0;
+  color: var(--custom-color-grey);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.post .author:hover {
+  text-decoration: underline 1px;
+  text-decoration-color: var(--custom-color-maroon);
 }
 
 .post .title {
   font-size: 1.5em;
+  color: var(--custom-color-black);
+}
+
+.post .title:hover {
+  text-decoration: underline 1px;
+  text-decoration-color: var(--custom-color-maroon);
 }
 
 .post .description {
-  font-size: 0.9em;
+  font-size: 0.9rem;
 }
 
 .post .time {
   margin-bottom: 0;
-  font-size: 0.8em;
+  font-size: 0.8rem;
 }

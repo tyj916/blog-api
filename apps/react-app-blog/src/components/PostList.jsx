@@ -19,9 +19,10 @@ function Post({data}) {
   return (
     <div className={styles.post}>
       <Link to={`/posts/${id}`}>
-        <p className={styles.author}>
-          <button className={styles.linkButton} onClick={handleNavigate}>{authorName}</button>
-        </p>
+        <button 
+          className={[styles.linkButton, styles.author].join(' ')} 
+          onClick={handleNavigate}
+        >{authorName}</button>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.description}>{description}</p>
         <p className={styles.time}>{time}</p>
