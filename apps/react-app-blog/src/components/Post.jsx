@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getTimestamp } from "../utils";
 import PropTypes from "prop-types";
+import Heading from "./Heading";
 
 function Comment({comment}) {
   const { author, createdAt, content } = comment;
@@ -69,12 +70,11 @@ function Post() {
   if (loading) return <p>Loading...</p>
 
   return (
-    <div>
-      <h1>{title}</h1>
-      <p><Link to={`/profile/${author.username}`}>{author.displayName || author.username}</Link> {time}</p>
+    <>
+      <Heading title={title} author={author} time={time}/>
       <section>{content}</section>
       <CommentSection commentList={comment} />
-    </div>
+    </>
   );
 }
 
