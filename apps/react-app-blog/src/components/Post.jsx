@@ -11,9 +11,13 @@ function Comment({comment}) {
   const time = getTimestamp(createdAt);
 
   return (
-    <div>
-      <p><Link to={`/profile/${author.username}`}>{authorName}</Link> {time}</p>
-      <p>{content}</p>
+    <div className={styles.comment}>
+      <p className={styles.info}>
+        <Link to={`/profile/${author.username}`} className={styles.author}>{authorName}</Link>
+        <span> </span>
+        <span className={styles.time}>{time}</span>
+      </p>
+      <p className={styles.content}>{content}</p>
     </div>
   );
 }
@@ -22,11 +26,13 @@ function CommentSection({commentList}) {
   const hasComment = commentList.length !== 0;
 
   return (
-    <section>
-      <h2>Comments</h2>
-      {hasComment ? commentList.map(comment => {
-        return <Comment key={comment.id} comment={comment} />
-      }) : <p>No comment yet.</p>}
+    <section className={styles.comments}>
+      <h2 className={styles.title}>Comments</h2>
+      <div className={styles.commentList}>
+        {hasComment ? commentList.map(comment => {
+          return <Comment key={comment.id} comment={comment} />
+        }) : <p>No comment yet.</p>}
+      </div>
     </section>
   )
 }
@@ -75,6 +81,7 @@ function Post() {
       <Heading title={title} author={author} time={time}/>
       <div className={styles.container}>
         <section>{content}</section>
+        <div className={styles.sectionDivider}></div>
         <CommentSection commentList={comment} />
       </div>
     </>
