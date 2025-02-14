@@ -1,12 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
+import styles from '../styles/Breadcrumbs.module.css';
 
-function NavBar() {
+function Breadcrumbs() {
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter(path => path);
   let path = '';
 
   return (
-    <nav>
+    <nav className={styles.breadcrumbs}>
       <Link to='/'>Home</Link>
       {pathnames.map((name, index) => {
         const isLast = index === pathnames.length -1;
@@ -15,7 +16,7 @@ function NavBar() {
         return (
           <>
             <span> &gt; </span>
-            {isLast 
+            {isLast
               ? <span>{name}</span>
               : <Link to={path}>{name}</Link>
             }
@@ -26,4 +27,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default Breadcrumbs;
