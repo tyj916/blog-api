@@ -14,7 +14,7 @@ function Heading({title, description='', author=null, time=''}) {
         }
         {authorName && 
           <p className={styles.author}>
-            <Link to={author.username}>{authorName}</Link>
+            <Link to={`/profile/${author.username}`}>{authorName}</Link>
           </p>
         }
         {time && 
