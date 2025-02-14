@@ -29,14 +29,14 @@ function Home() {
   if (error) return <p>A network error was encountered. Please try again later.</p>;
 
   return (
-    <div className={styles.home}>
+    <>
       <Heading 
         title="Blog Posts"
       />
       <div className={styles.container}>
         <PostList posts={posts} />
       </div>
-    </div>
+    </>
   )
 }
 
