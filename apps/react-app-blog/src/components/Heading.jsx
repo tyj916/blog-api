@@ -9,9 +9,17 @@ function Heading({title, description='', author=null, time=''}) {
     <div className={styles.heading}>
       <div className={styles.container}>
         <h2 className={styles.title}>{title}</h2>
-        {description && <p>{description}</p>}
-        {authorName && <Link to={author.username}>{authorName}</Link>}
-        {time && <p>{time}</p>}
+        {description && 
+          <p className={styles.description}>{description}</p>
+        }
+        {authorName && 
+          <p className={styles.author}>
+            <Link to={author.username}>{authorName}</Link>
+          </p>
+        }
+        {time && 
+          <p className={styles.time}>{time}</p>
+        }
       </div>
     </div>
   );
