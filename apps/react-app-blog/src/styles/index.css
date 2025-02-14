@@ -30,7 +30,8 @@ a:hover {
   max-width: 960px;
   width: 100%;
   margin: 0 auto;
-  padding: 24px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .linkButton {

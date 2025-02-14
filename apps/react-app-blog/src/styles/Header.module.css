@@ -8,6 +8,8 @@ header a {
 
 .container {
   composes: container from './index.css';
+  padding-top: 12px;
+  padding-bottom: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,10 +17,12 @@ header a {
 
 .menu {
   list-style: none;
+  margin: 0;
   display: flex;
   gap: 16px;
 }
 
 .logo {
   margin: 0;
+  font-size: 1.5rem;
 }
