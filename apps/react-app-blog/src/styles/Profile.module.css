@@ -1,0 +1,5 @@
+.container {
+  composes: container from './index.css';
+  padding-top: 24px;
+  padding-bottom: 24px;
+}

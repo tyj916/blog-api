@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PostList from "./PostList";
 import Heading from "./Heading";
+import styles from "../styles/Profile.module.css";
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -33,11 +34,11 @@ function Profile() {
   return (
     <>
       <Heading title={user.displayName} description={`@${user.username}`}  />
-      <h1>{user.username}</h1>
-      <h2>{user.displayName}</h2>
-      <PostList posts={user.writtenPost.map((post) => {
-        return {...post, author: user}
-      })} />
+      <section className={styles.container}>
+        <PostList posts={user.writtenPost.map((post) => {
+          return {...post, author: user}
+        })} />
+      </section>
     </>
   );
 }
