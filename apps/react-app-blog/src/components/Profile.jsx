@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import PostList from "./PostList";
+import Heading from "./Heading";
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -30,13 +31,14 @@ function Profile() {
   if (errorMessage) return <p>{errorMessage}</p>
 
   return (
-    <section>
+    <>
+      <Heading title={user.displayName} description={`@${user.username}`}  />
       <h1>{user.username}</h1>
       <h2>{user.displayName}</h2>
       <PostList posts={user.writtenPost.map((post) => {
         return {...post, author: user}
       })} />
-    </section>
+    </>
   );
 }
 
