@@ -1,5 +1,6 @@
 import App from './App.jsx'
 import Post from './components/Post.jsx'
+import BlogPosts from './components/BlogPosts.jsx';
 import Home from './components/Home.jsx';
 import Profile from './components/Profile.jsx'
 import NotFound from './components/error/NotFound.jsx';
@@ -12,6 +13,7 @@ const routes = [
     element: <App />,
     children: [
       { index: true, element: <Home /> },
+      { path: '/posts', element: <BlogPosts />, errorElement: <NotFound /> },
       { path: '/posts/:postId', element: <Post />, errorElement: <NotFound /> },
       { path: '/profile/:username', element: <Profile />, errorElement: <NotFound /> },
       { 
