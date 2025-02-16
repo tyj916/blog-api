@@ -9,10 +9,14 @@ import ProtectedRoutes from './components/ProtectedRoutes.jsx';
 
 const routes = [
   {
+    path: '/',
+    element: <Home />,
+    errorElement: <NotFound />
+  },
+  {
     path: "/",
     element: <App />,
     children: [
-      { index: true, element: <Home /> },
       { path: '/posts', element: <BlogPosts />, errorElement: <NotFound /> },
       { path: '/posts/:postId', element: <Post />, errorElement: <NotFound /> },
       { path: '/profile/:username', element: <Profile />, errorElement: <NotFound /> },

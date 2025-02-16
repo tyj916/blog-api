@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Header from "./Header";
+import Footer from "./Footer";
 import Heading from "./Heading";
 import PostList from "./PostList";
 import styles from '../styles/Home.module.css';
@@ -30,12 +32,14 @@ function Home() {
 
   return (
     <>
+      <Header />
       <Heading 
         title="Blog Posts"
       />
       <div className={styles.container}>
         <PostList posts={posts} />
       </div>
+      <Footer />
     </>
   )
 }
