@@ -11,7 +11,7 @@ function Breadcrumbs() {
       <Link to='/'>Home</Link>
       {pathnames.map((name, index) => {
         const isLast = index === pathnames.length -1;
-        const excludedPaths = ['posts', 'profile'];
+        const excludedPaths = ['profile'];
         path += `/${name}`;
 
         return (
