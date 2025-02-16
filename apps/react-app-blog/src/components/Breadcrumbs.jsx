@@ -15,13 +15,13 @@ function Breadcrumbs() {
         path += `/${name}`;
 
         return (
-          <>
+          <span key={name}>
             <span> &gt; </span>
             {isLast || excludedPaths.includes(name)
               ? <span>{name}</span>
               : <Link to={path}>{name}</Link>
             }
-          </>
+          </span>
         )
       })}
     </nav>
