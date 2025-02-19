@@ -33,14 +33,18 @@ function Home() {
     <>
       <Header />
       <main>
-        <div className={styles.container}>
-          <h2 className={styles.title}>Latest Posts</h2>
-          <PostList posts={posts} />
-        </div>
-        <div className={styles.container}>
+        <section className={styles.starred}>
           <h2 className={styles.title}>Most Popular</h2>
+          <div className={styles.container}>
+            <PostList posts={posts} />
+          </div>
+        </section>
+        
+        <div className={styles.container}>
+          <h2 className={styles.title}>Recent Posts</h2>
           <PostList posts={posts} />
         </div>
+
         <section className={styles.about}>
           <div className={styles.container}>
             <h2 className={styles.title}>About the Blog</h2>

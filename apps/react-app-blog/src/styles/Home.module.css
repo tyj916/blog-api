@@ -2,10 +2,21 @@
   composes: container from './index.css';
 }
 
-.about {
-  background-color: var(--custom-color-beige-900);
+.title {
+  text-align: center;
 }
 
-.about .title {
-  text-align: center;
+.starred {
+  background-color: var(--custom-color-beige-500);
+  padding-bottom: 48px;
+}
+
+.starred .container {
+  background-color: var(--custom-color-beige-100);
+  padding: 36px;
+  border: 2px solid var(--custom-color-beige-900);
+}
+
+.about {
+  background-color: var(--custom-color-beige-900);
 }
