@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import Heading from "./Heading";
 import PostList from "./PostList";
 import styles from '../styles/Home.module.css';
 
@@ -33,19 +32,21 @@ function Home() {
   return (
     <>
       <Header />
-      <div className={styles.container}>
-        <h2>Latest Posts</h2>
-        <PostList posts={posts} />
-      </div>
-      <div className={styles.container}>
-        <h2>Most Popular</h2>
-        <PostList posts={posts} />
-      </div>
-      <div className={styles.container}>
-        <h2>About the Blog</h2>
-        <p>Built to learn programming. Optimized to showcase my skill. Nothing shines but it&apos;s a working site. Feel free to play around and even better if you&apos;d create an account and write a blog on this site.</p>
-        <p>Built with JavaScript ES6, Node.js, React, PostgreSQL, along with RESTful API, JWT authentication, Prisma ORM, Vite, etc.</p>
-      </div>
+      <main>
+        <div className={styles.container}>
+          <h2>Latest Posts</h2>
+          <PostList posts={posts} />
+        </div>
+        <div className={styles.container}>
+          <h2>Most Popular</h2>
+          <PostList posts={posts} />
+        </div>
+        <div className={styles.container}>
+          <h2>About the Blog</h2>
+          <p>Built to learn programming. Optimized to showcase my skill. Nothing shines but it&apos;s a working site. Feel free to play around and even better if you&apos;d create an account and write a blog on this site.</p>
+          <p>Built with JavaScript ES6, Node.js, React, PostgreSQL, along with RESTful API, JWT authentication, Prisma ORM, Vite, etc.</p>
+        </div>
+      </main>
       <Footer />
     </>
   )
