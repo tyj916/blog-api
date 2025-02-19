@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import styles from '../styles/Authentication.module.css';
 
 function SignUpForm({text}) {
   const [username, setUsername] = useState('');
@@ -219,13 +220,17 @@ function LoginForm({text}) {
 
 function AuthenticationForm({type = 'login', text = 'Welcome Back.'}) {
   return (
-    <div>
-      <Link to='/'>&lt; Home</Link>
-      {
-        type === 'login' 
-          ? <LoginForm text={text} /> 
-          : <SignUpForm text={text} />
-      }
+    <div id={styles.authForm}>
+      <div className={styles.container}>
+        <div>
+          <Link to='/'>&lt; Home</Link>
+          {
+            type === 'login' 
+              ? <LoginForm text={text} /> 
+              : <SignUpForm text={text} />
+          }
+        </div>
+      </div>
     </div>
   );
 }

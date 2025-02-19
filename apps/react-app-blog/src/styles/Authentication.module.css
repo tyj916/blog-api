@@ -1,0 +1,17 @@
+#authForm {
+  min-height: 100vh;
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--custom-color-beige-500);
+}
+
+.container {
+  background-color: var(--custom-color-beige-100);
+  border: 2px solid var(--custom-color-beige-900);
+  min-width: 640px;
+  padding: 48px;
+  display: flex;
+  justify-content: center;
+}
