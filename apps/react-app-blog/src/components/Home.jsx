@@ -33,17 +33,19 @@ function Home() {
     <>
       <Header />
       <main>
-        <section className={styles.starred}>
+        <section className={[styles.starred, styles.postsContainer].join(' ')}>
           <h2 className={styles.title}>Most Popular</h2>
           <div className={styles.container}>
             <PostList posts={posts} />
           </div>
         </section>
         
-        <div className={styles.container}>
+        <section className={[styles.recent, styles.postsContainer].join(' ')}>
           <h2 className={styles.title}>Recent Posts</h2>
-          <PostList posts={posts} />
-        </div>
+          <div className={styles.container}>
+            <PostList posts={posts} />
+          </div>
+        </section>
 
         <section className={styles.about}>
           <div className={styles.container}>

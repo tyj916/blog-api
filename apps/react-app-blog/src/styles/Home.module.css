@@ -6,15 +6,20 @@
   text-align: center;
 }
 
+.postsContainer {
+  overflow: auto;
+  margin-bottom: 24px;
+}
+
 .starred {
   background-color: var(--custom-color-beige-500);
-  padding-bottom: 48px;
 }
 
 .starred .container {
   background-color: var(--custom-color-beige-100);
   padding: 36px;
   border: 2px solid var(--custom-color-beige-900);
+  margin-bottom: 48px;
 }
 
 .about {
