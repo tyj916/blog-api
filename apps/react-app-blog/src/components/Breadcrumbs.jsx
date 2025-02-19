@@ -8,22 +8,24 @@ function Breadcrumbs() {
 
   return (
     <nav className={styles.breadcrumbs}>
-      <Link to='/'>Home</Link>
-      {pathnames.map((name, index) => {
-        const isLast = index === pathnames.length -1;
-        const excludedPaths = ['profile'];
-        path += `/${name}`;
+      <div className={styles.container}>
+        <Link to='/'>Home</Link>
+        {pathnames.map((name, index) => {
+          const isLast = index === pathnames.length -1;
+          const excludedPaths = ['profile'];
+          path += `/${name}`;
 
-        return (
-          <span key={name}>
-            <span> &gt; </span>
-            {isLast || excludedPaths.includes(name)
-              ? <span>{name}</span>
-              : <Link to={path}>{name}</Link>
-            }
-          </span>
-        )
-      })}
+          return (
+            <span key={name}>
+              <span> &gt; </span>
+              {isLast || excludedPaths.includes(name)
+                ? <span>{name}</span>
+                : <Link to={path}>{name}</Link>
+              }
+            </span>
+          )
+        })}
+      </div>
     </nav>
   );
 }

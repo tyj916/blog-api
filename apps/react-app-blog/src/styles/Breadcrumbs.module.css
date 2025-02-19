@@ -1,10 +1,12 @@
 .breadcrumbs {
-  composes: container from './index.css';
-  margin: 0;
-  padding-top: 12px;
-  padding-bottom: 12px;
   background-color: var(--custom-color-beige-900);
   font-size: 0.8rem;
+}
+
+.container {
+  composes: container from './index.css';
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .breadcrumbs a {
