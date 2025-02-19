@@ -8,8 +8,6 @@ header a {
 
 .container {
   composes: container from './index.css';
-  padding-top: 12px;
-  padding-bottom: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
