@@ -1,3 +1,11 @@
 .container {
   composes: container from './index.css';
 }
+
+.about {
+  background-color: var(--custom-color-beige-900);
+}
+
+.about .title {
+  text-align: center;
+}
