@@ -129,7 +129,7 @@ function SignUpForm({text}) {
           <li>
             <button type="submit">Sign Up</button>
           </li>
-          <p>Already have an account? <Link to='/login'>Log In</Link></p>
+          <p>Already have an account? <Link to='/login' className={styles.otherOptions}>Log In</Link></p>
         </ul>
       </form>
     </div>
