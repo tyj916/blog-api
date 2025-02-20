@@ -76,10 +76,10 @@ function SignUpForm({text}) {
   }
 
   return (
-    <div className="authentication-form-container">
-      <h1 className="form-title">{text}</h1>
-      <form onSubmit={handleSubmit} >
-        <ul>
+    <div className={styles.formContainer}>
+      <h1 className={styles.title}>{text}</h1>
+      <form onSubmit={handleSubmit} className={styles.form} >
+        <ul className={styles.formItems}>
           <li>
             <label htmlFor="username">Username</label>
             <input 

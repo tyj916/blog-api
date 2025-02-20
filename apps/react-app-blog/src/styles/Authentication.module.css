@@ -10,8 +10,23 @@
 .container {
   background-color: var(--custom-color-beige-100);
   border: 2px solid var(--custom-color-beige-900);
-  min-width: 640px;
   padding: 48px;
   display: flex;
   justify-content: center;
+}
+
+.formContainer {
+  max-width: 360px;
+}
+
+.formItems {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.formItems li {
+  display: flex;
+  flex-direction: column;
 }
