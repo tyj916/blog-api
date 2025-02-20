@@ -37,3 +37,17 @@
 .formItems li label {
   font-size: 0.9em;
 }
+
+.formItems li button {
+  margin-top: 28px;
+  padding: 8px;
+  border-radius: 24px;
+  background-color: var(--custom-color-black);
+  color: var(--custom-color-beige-100);
+}
+
+.formItems li button:hover {
+  cursor: pointer;
+  background-color: var(--custom-color-beige-100);
+  color: var(--custom-color-black);
+}
