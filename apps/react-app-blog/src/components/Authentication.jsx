@@ -180,10 +180,10 @@ function LoginForm({text}) {
   }
 
   return (
-    <div className="authentication-form-container">
-      <h1 className="form-title">{text}</h1>
-      <form onSubmit={handleSubmit} >
-        <ul>
+    <div className={styles.formContainer}>
+      <h1 className={styles.title}>{text}</h1>
+      <form onSubmit={handleSubmit} className={styles.form} >
+        <ul className={styles.formItems}>
           <li>
             <label htmlFor="username">Username</label>
             <input 
@@ -211,7 +211,7 @@ function LoginForm({text}) {
           <li>
             <button type="submit">Log In</button>
           </li>
-          <p>No Account? <Link to='/register'>Create One</Link></p>
+          <p>No Account? <Link to='/register' className={styles.otherOptions}>Create One</Link></p>
         </ul>
       </form>
     </div>
