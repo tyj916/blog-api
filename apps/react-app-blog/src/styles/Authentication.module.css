@@ -10,13 +10,14 @@
 .container {
   background-color: var(--custom-color-beige-100);
   border: 2px solid var(--custom-color-beige-900);
+  width: min(100%, 480px);
   padding: 48px;
   display: flex;
   justify-content: center;
 }
 
 .formContainer {
-  max-width: 360px;
+  max-width: 280px;
 }
 
 .formItems {
