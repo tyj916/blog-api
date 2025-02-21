@@ -6,6 +6,11 @@ header a {
   color: var(--custom-color-beige-100);
 }
 
+.linkButton {
+  composes: linkButton from './index.css';
+  color: var(--custom-color-beige-100);
+}
+
 .container {
   composes: container from './index.css';
   display: flex;

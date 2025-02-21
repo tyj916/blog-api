@@ -25,7 +25,7 @@ function Menu() {
         <li><a href="/write">Write</a></li>
         <li><a href='/profile'>Profile</a></li>
         <li>
-          <button onClick={logOut}>
+          <button onClick={logOut} className={styles.linkButton}>
             Log Out
           </button>
         </li>
