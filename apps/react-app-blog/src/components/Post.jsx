@@ -5,6 +5,29 @@ import PropTypes from "prop-types";
 import Heading from "./Heading";
 import styles from '../styles/Post.module.css';
 
+function NewComment() {
+  const [content, setContent] = useState();
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(content);
+  }
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <textarea 
+          name="content" 
+          placeholder="Add a comment"
+          onChange={e => setContent(e.target.value)}
+          required
+        ></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  )
+}
+
 function Comment({comment}) {
   const { author, createdAt, content } = comment;
   const authorName = getAuthorName(author);
@@ -28,6 +51,7 @@ function CommentSection({commentList}) {
   return (
     <section className={styles.comments}>
       <h2 className={styles.title}>Comments</h2>
+      <NewComment />
       <div className={styles.commentList}>
         {hasComment ? commentList.map(comment => {
           return <Comment key={comment.id} comment={comment} />
@@ -82,7 +106,7 @@ function Post() {
       <div className={styles.container}>
         <section>{content}</section>
         <div className={styles.sectionDivider}></div>
-        <CommentSection commentList={comment} />
+        <CommentSection postId={postId} commentList={comment} />
       </div>
     </>
   );
