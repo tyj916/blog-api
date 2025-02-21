@@ -5,12 +5,29 @@ import PropTypes from "prop-types";
 import Heading from "./Heading";
 import styles from '../styles/Post.module.css';
 
-function NewComment() {
+function NewComment({postId}) {
   const [content, setContent] = useState();
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(content);
+    
+    fetch(`http://localhost:3000/api/posts/${postId}/comments`, {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        content,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.id) {
+          window.location.reload();
+        }
+      })
+      .catch(err => console.error(err))
   }
 
   return (
@@ -45,13 +62,13 @@ function Comment({comment}) {
   );
 }
 
-function CommentSection({commentList}) {
+function CommentSection({postId, commentList}) {
   const hasComment = commentList.length !== 0;
 
   return (
     <section className={styles.comments}>
       <h2 className={styles.title}>Comments</h2>
-      <NewComment />
+      <NewComment postId={postId} />
       <div className={styles.commentList}>
         {hasComment ? commentList.map(comment => {
           return <Comment key={comment.id} comment={comment} />
