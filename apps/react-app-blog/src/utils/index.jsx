@@ -41,6 +41,15 @@ function getAuthorName(author) {
   return author.displayName || author.username;
 }
 
+function getAuthToken() {
+  return JSON.parse(localStorage.getItem('jwt')).token;
+}
+
+function getCurrentUserId() {
+  const jwt = JSON.parse(localStorage.getItem('jwt'));
+  return jwt.userId;
+}
+
 function isJwtExpired(jwt) {
   const expiryTime = (7 * 24 * 60 * 60 * 1000) - (new Date() - new Date(jwt.timestamp));
   return expiryTime > 0;
@@ -58,5 +67,7 @@ function isLoggedIn() {
 export {
   getTimestamp,
   getAuthorName,
+  getAuthToken,
+  getCurrentUserId,
   isLoggedIn,
 }

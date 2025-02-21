@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getTimestamp, getAuthorName } from "../utils";
+import { getTimestamp, getAuthorName, getCurrentUserId, getAuthToken } from "../utils";
 import PropTypes from "prop-types";
 import Heading from "./Heading";
 import styles from '../styles/Post.module.css';
 
 function NewComment({postId}) {
   const [content, setContent] = useState();
+  const authToken = getAuthToken();
+  const authorId = getCurrentUserId();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,9 +18,12 @@ function NewComment({postId}) {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`,
       },
       body: JSON.stringify({
         content,
+        postId,
+        authorId,
       }),
     })
       .then(response => response.json())
