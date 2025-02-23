@@ -3,6 +3,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from '../styles/Authentication.module.css';
 
+const { VITE_API_URL } = import.meta.env;
+console.log(VITE_API_URL);
+
 function SignUpForm({text}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +20,7 @@ function SignUpForm({text}) {
     setMessage('');
     setLoading(true);
 
-    fetch('http://localhost:3000/api/register', {
+    fetch(`${VITE_API_URL}/register`, {
       method: 'post',
       headers: {
         'Accept': 'application/json',
@@ -39,7 +42,7 @@ function SignUpForm({text}) {
             count--;
           } else {
             clearInterval(countdown);
-            return fetch('http://localhost:3000/api/login', {
+            return fetch(`${VITE_API_URL}/login`, {
               method: 'post',
               headers: {
                 'Accept': 'application/json',
@@ -148,7 +151,7 @@ function LoginForm({text}) {
     setMessage('');
     setLoading(true);
 
-    fetch('http://localhost:3000/api/login', {
+    fetch(`${VITE_API_URL}/login`, {
       method: 'post',
       headers: {
         'Accept': 'application/json',
