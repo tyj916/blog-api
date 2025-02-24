@@ -4,9 +4,9 @@ import styles from '../styles/Header.module.css';
 
 function Logo() {
   return (
-    <a href="/">
+    <Link to="/">
       <h1 className={styles.logo}>Logo</h1>
-    </a>
+    </Link>
   );
 }
 
@@ -21,9 +21,9 @@ function Menu() {
   if (isLoggedIn()) {
     return (
       <ul className={styles.menu}>
-        <li><a href="/">Home</a></li>
-        <li><a href="/write">Write</a></li>
-        <li><a href='/profile'>Profile</a></li>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/write">Write</Link></li>
+        <li><Link to='/profile'>Profile</Link></li>
         <li>
           <button onClick={logOut} className={styles.linkButton}>
             Log Out
@@ -35,7 +35,7 @@ function Menu() {
 
   return (
     <ul className={styles.menu}>
-      <li><a href="/">Home</a></li>
+      <li><Link to="/">Home</Link></li>
       <li><Link to='register/writer'>Write</Link></li>
       <li><Link to='login'>Log In</Link></li>
       <li><Link to='register'>Get Started</Link></li>
