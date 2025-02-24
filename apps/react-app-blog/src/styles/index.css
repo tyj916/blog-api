@@ -37,6 +37,11 @@ button:hover {
   cursor: pointer;
 }
 
+input,
+textarea {
+  padding: 4px 8px;
+}
+
 .container-template {
   max-width: 960px;
   width: 100%;

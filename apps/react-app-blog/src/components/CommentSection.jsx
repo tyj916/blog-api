@@ -35,7 +35,7 @@ function NewComment({postId}) {
   }
 
   return (
-    <div>
+    <div className={styles.newComment}>
       <form onSubmit={handleSubmit}>
         <textarea 
           name="content" 
@@ -43,7 +43,9 @@ function NewComment({postId}) {
           onChange={e => setContent(e.target.value)}
           required
         ></textarea>
-        <button type="submit">Submit</button>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
       </form>
     </div>
   )

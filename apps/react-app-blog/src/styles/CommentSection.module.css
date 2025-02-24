@@ -1,7 +1,3 @@
-.comments .title {
-  margin-bottom: 0;
-}
-
 .commentList {
   display: flex;
   flex-direction: column;
@@ -33,4 +29,25 @@
 .comment .time {
   color: var(--custom-color-grey);
   font-size: 0.8em;
+}
+
+.newComment {
+  border-bottom: 2px solid var(--custom-color-beige-900);
+  padding-bottom: 24px;
+}
+
+.newComment form {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 8px;
+}
+
+.newComment form textarea {
+  width: 100%;
+  padding: 8px;
+}
+
+.newComment form button {
+  padding: 8px 24px;
 }
