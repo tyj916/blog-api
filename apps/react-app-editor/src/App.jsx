@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom'
 import './styles/App.css'
 
 function App() {
@@ -13,7 +14,9 @@ function App() {
           </ul>
         </div>
       </nav>
-      <main>Main</main>
+      <main>
+        <Outlet />
+      </main>
     </>
   )
 }
