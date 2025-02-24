@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import './styles/App.css'
 
 function App() {
@@ -6,11 +6,11 @@ function App() {
     <>
       <nav>
         <div>
-          <a href="/"><h1>title</h1></a>
+          <Link to='/'><h1>title</h1></Link>
           <ul>
-            <li><a href="/">Dashboard</a></li>
-            <li><a href="/new">Create New</a></li>
-            <li><a href="/logout">Log Out</a></li>
+            <li><Link to="/">Dashboard</Link></li>
+            <li><Link to="/new">Create New</Link></li>
+            <li><Link to="/logout">Log Out</Link></li>
           </ul>
         </div>
       </nav>
