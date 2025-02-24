@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { getTimestamp, getAuthorName, getCurrentUserId, getAuthToken } from "../utils";
+import { getTimestamp, getAuthorName, getCurrentUserId, getAuthToken, isLoggedIn } from "../utils";
 import PropTypes from "prop-types";
 import styles from '../styles/CommentSection.module.css';
 
@@ -80,7 +80,7 @@ function CommentSection({postId, commentList}) {
   return (
     <section className={styles.comments}>
       <h2 className={styles.title}>Comments</h2>
-      <NewComment postId={postId} />
+      {isLoggedIn() && <NewComment postId={postId} />}
       <div className={styles.commentList}>
         {hasComment ? commentList.map(comment => {
           return <Comment key={comment.id} comment={comment} />
