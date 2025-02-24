@@ -1,0 +1,36 @@
+.comments .title {
+  margin-bottom: 0;
+}
+
+.commentList {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment {
+  border-bottom: 1px solid var(--custom-color-beige-900);
+  padding: 8px 0;
+}
+
+.comment:last-child {
+  border-bottom: none;
+}
+
+.comment p {
+  margin: 8px 0;
+}
+
+.comment .info {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.comment .author {
+  color: var(--custom-color-maroon);
+}
+
+.comment .time {
+  color: var(--custom-color-grey);
+  font-size: 0.8em;
+}
