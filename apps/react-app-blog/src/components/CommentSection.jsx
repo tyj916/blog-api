@@ -6,11 +6,13 @@ import styles from '../styles/CommentSection.module.css';
 
 function NewComment({postId}) {
   const [content, setContent] = useState();
+  const [loading, setLoading] = useState();
   const authToken = getAuthToken();
   const authorId = getCurrentUserId();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     
     fetch(`http://localhost:3000/api/posts/${postId}/comments`, {
       method: 'post',
@@ -32,6 +34,7 @@ function NewComment({postId}) {
         }
       })
       .catch(err => console.error(err))
+      .finally(() => setLoading(false));
   }
 
   return (
@@ -44,7 +47,10 @@ function NewComment({postId}) {
           required
         ></textarea>
         <div>
-          <button type="submit">Submit</button>
+          {
+            loading ? <button disabled="disabled">Loading...</button>
+              : <button type="submit">Submit</button>
+          }
         </div>
       </form>
     </div>

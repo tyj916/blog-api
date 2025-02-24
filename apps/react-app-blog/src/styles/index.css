@@ -37,6 +37,10 @@ button:hover {
   cursor: pointer;
 }
 
+button:disabled {
+  background-color: var(--custom-color-grey);
+}
+
 input,
 textarea {
   padding: 4px 8px;
