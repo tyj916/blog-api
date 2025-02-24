@@ -12,6 +12,7 @@ function Editor() {
               <input type="text" name="title" id="title" />
             </li>
             <li>
+              <label>Content</label>
               <TinyMCE />
             </li>
             <li>
