@@ -4,14 +4,7 @@
 }
 
 section.error button {
-  background-color: var(--custom-color-maroon);
-  color: var(--custom-color-beige-100);
   text-transform: uppercase;
   padding: 8px 16px;
-  border: none;
   font-weight: bold;
-}
-
-section.error button:hover {
-  cursor: pointer;
 }

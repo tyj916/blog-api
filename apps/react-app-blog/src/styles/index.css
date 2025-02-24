@@ -26,6 +26,17 @@ a:hover {
   text-underline-offset: 0.25em;
 }
 
+button {
+  background-color: var(--custom-color-maroon);
+  color: var(--custom-color-beige-100);
+  padding: 4px 16px;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 .container-template {
   max-width: 960px;
   width: 100%;
