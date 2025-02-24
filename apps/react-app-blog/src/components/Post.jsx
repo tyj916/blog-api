@@ -134,11 +134,16 @@ function Post() {
   );
 }
 
+NewComment.propTypes = {
+  postId: PropTypes.string,
+}
+
 Comment.propTypes = {
   comment: PropTypes.object,
 }
 
 CommentSection.propTypes = {
+  postId: PropTypes.string,
   commentList: PropTypes.array,
 }
 
