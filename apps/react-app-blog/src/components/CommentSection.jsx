@@ -7,13 +7,13 @@ import styles from '../styles/CommentSection.module.css';
 function NewComment({postId}) {
   const [content, setContent] = useState();
   const [loading, setLoading] = useState();
-  const authToken = getAuthToken();
-  const authorId = getCurrentUserId();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    
+    const authToken = getAuthToken();
+    const authorId = getCurrentUserId();
+
     fetch(`http://localhost:3000/api/posts/${postId}/comments`, {
       method: 'post',
       headers: {
@@ -37,22 +37,30 @@ function NewComment({postId}) {
       .finally(() => setLoading(false));
   }
 
+  if (isLoggedIn()) {
+    return (
+      <div className={styles.newComment}>
+        <form onSubmit={handleSubmit}>
+          <textarea 
+            name="content" 
+            placeholder="Add a comment"
+            onChange={e => setContent(e.target.value)}
+            required
+          ></textarea>
+          <div>
+            {
+              loading ? <button disabled="disabled">Loading...</button>
+                : <button type="submit">Submit</button>
+            }
+          </div>
+        </form>
+      </div>
+    );
+  }
+
   return (
-    <div className={styles.newComment}>
-      <form onSubmit={handleSubmit}>
-        <textarea 
-          name="content" 
-          placeholder="Add a comment"
-          onChange={e => setContent(e.target.value)}
-          required
-        ></textarea>
-        <div>
-          {
-            loading ? <button disabled="disabled">Loading...</button>
-              : <button type="submit">Submit</button>
-          }
-        </div>
-      </form>
+    <div className={[styles.newComment, styles.loginMessage].join(' ')}>
+      <p>You must be <Link to='/login'>logged in</Link> to post a comment.</p>
     </div>
   )
 }
@@ -80,7 +88,7 @@ function CommentSection({postId, commentList}) {
   return (
     <section className={styles.comments}>
       <h2 className={styles.title}>Comments</h2>
-      {isLoggedIn() && <NewComment postId={postId} />}
+      <NewComment postId={postId} />
       <div className={styles.commentList}>
         {hasComment ? commentList.map(comment => {
           return <Comment key={comment.id} comment={comment} />

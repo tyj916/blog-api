@@ -51,3 +51,12 @@
 .newComment form button {
   padding: 8px 24px;
 }
+
+.loginMessage {
+  display: flex;
+  justify-content: center;
+}
+
+.loginMessage a {
+  color: var(--custom-color-maroon);
+}
