@@ -3,7 +3,7 @@ import { Editor } from '@tinymce/tinymce-react';
 function TinyMCE() {
   return (
     <Editor
-      apiKey='dv048tm8ry39e4cyn6wp5h8nm8qwtfkd0pvm0f3ltvyqij3g'
+      apiKey={import.meta.env.VITE_TINY_MCE_API}
       init={{
         plugins: [
           // Core editing features
