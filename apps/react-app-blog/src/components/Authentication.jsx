@@ -234,7 +234,7 @@ function AuthenticationForm({type = 'login', text = 'Welcome Back.'}) {
     <div id={styles.authForm}>
       <div className={styles.container}>
         <div>
-          <Link to={targetUrl}>&lt; Home</Link>
+          <Link to={targetUrl}>&lt; Back</Link>
           {
             type === 'login' 
               ? <LoginForm text={text} targetUrl={targetUrl} /> 
