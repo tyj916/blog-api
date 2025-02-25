@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import styles from '../styles/Authentication.module.css';
 
 const { VITE_API_URL } = import.meta.env;
@@ -12,7 +12,6 @@ function SignUpForm({text, targetUrl}) {
   const [displayName, setDisplayName] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -143,7 +142,6 @@ function LoginForm({text, targetUrl}) {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
