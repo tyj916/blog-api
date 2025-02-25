@@ -221,7 +221,8 @@ function LoginForm({text, prevPath}) {
 }
 
 function AuthenticationForm({type = 'login', text = 'Welcome Back.'}) {
-  const prevPath = useLocation().state.prevPath || null;
+  const locationState = useLocation().state || null;
+  const prevPath = locationState ? locationState.prevPath : '/';
 
   return (
     <div id={styles.authForm}>
