@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from '../styles/Authentication.module.css';
 
 const { VITE_API_URL } = import.meta.env;
 console.log(VITE_API_URL);
 
-function SignUpForm({text}) {
+function SignUpForm({text, prevPath}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -64,7 +64,7 @@ function SignUpForm({text}) {
                   token,
                   timestamp: new Date(),
                 }));
-                navigate('/');
+                navigate(prevPath);
               }
             })
             .catch(err => console.error(err));
@@ -132,14 +132,14 @@ function SignUpForm({text}) {
           <li>
             <button type="submit">Sign Up</button>
           </li>
-          <p>Already have an account? <Link to='/login' className={styles.otherOptions}>Log In</Link></p>
+          <p>Already have an account? <Link to='/login' state={{prevPath: prevPath}} className={styles.otherOptions}>Log In</Link></p>
         </ul>
       </form>
     </div>
   );
 }
 
-function LoginForm({text}) {
+function LoginForm({text, prevPath}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -173,7 +173,7 @@ function LoginForm({text}) {
             token,
             timestamp: new Date(),
           }));
-          navigate('/');
+          navigate(prevPath);
         }
     
         setMessage(data.message);
@@ -214,7 +214,7 @@ function LoginForm({text}) {
           <li>
             <button type="submit">Log In</button>
           </li>
-          <p>No Account? <Link to='/register' className={styles.otherOptions}>Create One</Link></p>
+          <p>No Account? <Link to='/register' state={{prevPath: prevPath}} className={styles.otherOptions}>Create One</Link></p>
         </ul>
       </form>
     </div>
@@ -222,15 +222,17 @@ function LoginForm({text}) {
 }
 
 function AuthenticationForm({type = 'login', text = 'Welcome Back.'}) {
+  const prevPath = useLocation().state.prevPath || null;
+
   return (
     <div id={styles.authForm}>
       <div className={styles.container}>
         <div>
-          <Link to='/'>&lt; Home</Link>
+          <Link to={prevPath}>&lt; Home</Link>
           {
             type === 'login' 
-              ? <LoginForm text={text} /> 
-              : <SignUpForm text={text} />
+              ? <LoginForm text={text} prevPath={prevPath} /> 
+              : <SignUpForm text={text} prevPath={prevPath} />
           }
         </div>
       </div>
