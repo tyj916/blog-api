@@ -36,9 +36,21 @@ function Menu() {
   return (
     <ul className={styles.menu}>
       <li><Link to="/">Home</Link></li>
-      <li><Link to='register/writer' state={{prevPath: location.pathname}}>Write</Link></li>
-      <li><Link to='login' state={{prevPath: location.pathname}}>Log In</Link></li>
-      <li><Link to='register' state={{prevPath: location.pathname}}>Get Started</Link></li>
+      <li><Link 
+        to={{ 
+          pathname: 'register/writer',
+          search: `?from=${location.pathname}`
+        }}>Write</Link></li>
+      <li><Link 
+        to={{
+          pathname: 'login',
+          search: `?from=${location.pathname}`
+        }}>Log In</Link></li>
+      <li><Link 
+        to={{
+          pathname: 'register',
+          search: `?from=${location.pathname}`
+        }}>Get Started</Link></li>
     </ul>
   );
 }

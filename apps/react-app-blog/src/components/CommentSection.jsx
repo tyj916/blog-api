@@ -60,7 +60,11 @@ function NewComment({postId}) {
 
   return (
     <div className={[styles.newComment, styles.loginMessage].join(' ')}>
-      <p>You must be <Link to='/login' state={{prevPath: location.pathname}}>logged in</Link> to post a comment.</p>
+      <p>You must be <Link 
+        to={{
+          pathname: '/login',
+          search: `?from=${location.pathname}`
+        }}>logged in</Link> to post a comment.</p>
     </div>
   )
 }

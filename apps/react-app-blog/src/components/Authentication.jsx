@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import styles from '../styles/Authentication.module.css';
 
 const { VITE_API_URL } = import.meta.env;
 
-function SignUpForm({text, prevPath}) {
+function SignUpForm({text, targetUrl}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -63,7 +63,7 @@ function SignUpForm({text, prevPath}) {
                   token,
                   timestamp: new Date(),
                 }));
-                navigate(prevPath);
+                navigate(targetUrl);
               }
             })
             .catch(err => console.error(err));
@@ -131,14 +131,14 @@ function SignUpForm({text, prevPath}) {
           <li>
             <button type="submit">Sign Up</button>
           </li>
-          <p>Already have an account? <Link to='/login' state={{prevPath: prevPath}} className={styles.otherOptions}>Log In</Link></p>
+          <p>Already have an account? <Link to='/login' state={{targetUrl: targetUrl}} className={styles.otherOptions}>Log In</Link></p>
         </ul>
       </form>
     </div>
   );
 }
 
-function LoginForm({text, prevPath}) {
+function LoginForm({text, targetUrl}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -172,7 +172,7 @@ function LoginForm({text, prevPath}) {
             token,
             timestamp: new Date(),
           }));
-          navigate(prevPath);
+          navigate(targetUrl);
         }
     
         setMessage(data.message);
@@ -213,7 +213,7 @@ function LoginForm({text, prevPath}) {
           <li>
             <button type="submit">Log In</button>
           </li>
-          <p>No Account? <Link to='/register' state={{prevPath: prevPath}} className={styles.otherOptions}>Create One</Link></p>
+          <p>No Account? <Link to='/register' state={{targetUrl: targetUrl}} className={styles.otherOptions}>Create One</Link></p>
         </ul>
       </form>
     </div>
@@ -221,18 +221,18 @@ function LoginForm({text, prevPath}) {
 }
 
 function AuthenticationForm({type = 'login', text = 'Welcome Back.'}) {
-  const locationState = useLocation().state || null;
-  const prevPath = locationState ? locationState.prevPath : '/';
+  const [searchParams] = useSearchParams();
+  const targetUrl = searchParams.get('from') || '/';
 
   return (
     <div id={styles.authForm}>
       <div className={styles.container}>
         <div>
-          <Link to={prevPath}>&lt; Home</Link>
+          <Link to={targetUrl}>&lt; Home</Link>
           {
             type === 'login' 
-              ? <LoginForm text={text} prevPath={prevPath} /> 
-              : <SignUpForm text={text} prevPath={prevPath} />
+              ? <LoginForm text={text} targetUrl={targetUrl} /> 
+              : <SignUpForm text={text} targetUrl={targetUrl} />
           }
         </div>
       </div>
@@ -242,18 +242,18 @@ function AuthenticationForm({type = 'login', text = 'Welcome Back.'}) {
 
 LoginForm.propTypes = {
   text: PropTypes.string,
-  prevPath: PropTypes.string,
+  targetUrl: PropTypes.string,
 }
 
 SignUpForm.propTypes = {
   text: PropTypes.string,
-  prevPath: PropTypes.string,
+  targetUrl: PropTypes.string,
 }
 
 AuthenticationForm.propTypes = {
   type: PropTypes.string,
   text: PropTypes.string,
-  prevPath: PropTypes.string,
+  targetUrl: PropTypes.string,
 }
 
 export default AuthenticationForm;
