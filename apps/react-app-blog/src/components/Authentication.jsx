@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from '../styles/Authentication.module.css';
 
 const { VITE_API_URL } = import.meta.env;
-console.log(VITE_API_URL);
 
 function SignUpForm({text, prevPath}) {
   const [username, setUsername] = useState('');
@@ -242,15 +241,18 @@ function AuthenticationForm({type = 'login', text = 'Welcome Back.'}) {
 
 LoginForm.propTypes = {
   text: PropTypes.string,
+  prevPath: PropTypes.string,
 }
 
 SignUpForm.propTypes = {
   text: PropTypes.string,
+  prevPath: PropTypes.string,
 }
 
 AuthenticationForm.propTypes = {
   type: PropTypes.string,
   text: PropTypes.string,
+  prevPath: PropTypes.string,
 }
 
 export default AuthenticationForm;
