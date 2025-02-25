@@ -63,7 +63,7 @@ function SignUpForm({text, targetUrl}) {
                   token,
                   timestamp: new Date(),
                 }));
-                navigate(targetUrl);
+                window.location.href = targetUrl;
               }
             })
             .catch(err => console.error(err));
@@ -172,7 +172,7 @@ function LoginForm({text, targetUrl}) {
             token,
             timestamp: new Date(),
           }));
-          navigate(targetUrl);
+          window.location.href = targetUrl;
         }
     
         setMessage(data.message);
