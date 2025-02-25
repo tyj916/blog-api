@@ -22,7 +22,7 @@ function Menu() {
     return (
       <ul className={styles.menu}>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/write">Write</Link></li>
+        <li><Link to={import.meta.env.VITE_EDITOR_URL}>Write</Link></li>
         <li><Link to='/profile'>Profile</Link></li>
         <li>
           <button onClick={logOut} className={styles.linkButton}>
