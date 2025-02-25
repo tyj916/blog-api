@@ -130,7 +130,11 @@ function SignUpForm({text, targetUrl}) {
           <li>
             <button type="submit">Sign Up</button>
           </li>
-          <p>Already have an account? <Link to='/login' state={{targetUrl: targetUrl}} className={styles.otherOptions}>Log In</Link></p>
+          <p>Already have an account? <Link 
+            to={{
+              pathname: '/login',
+              search: `?from=${targetUrl}`
+            }} className={styles.otherOptions}>Log In</Link></p>
         </ul>
       </form>
     </div>
@@ -211,7 +215,11 @@ function LoginForm({text, targetUrl}) {
           <li>
             <button type="submit">Log In</button>
           </li>
-          <p>No Account? <Link to='/register' state={{targetUrl: targetUrl}} className={styles.otherOptions}>Create One</Link></p>
+          <p>No Account? <Link 
+            to={{
+              pathname: '/register',
+              search: `?from=${targetUrl}`
+            }} className={styles.otherOptions}>Create One</Link></p>
         </ul>
       </form>
     </div>
