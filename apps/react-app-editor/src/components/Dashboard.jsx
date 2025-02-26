@@ -1,5 +1,16 @@
+import { useEffect, useState } from "react";
+import { getCurrentUsername } from "../utils";
+
 function Dashboard() {
-  const posts = [];
+  const [posts, setPosts] = useState();
+  const username = getCurrentUsername();
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/users/${username}/posts`, {mode: "cors"})
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .catch(err => console.error(err))
+  }, [username])
 
   return (
     <>
