@@ -8,7 +8,9 @@ function Dashboard() {
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/users/${username}/posts`, {mode: "cors"})
       .then(response => response.json())
-      .then(json => console.log(json))
+      .then(json => {
+        setPosts(json.writtenPost);
+      })
       .catch(err => console.error(err))
   }, [username])
 
