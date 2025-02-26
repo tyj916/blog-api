@@ -1,4 +1,4 @@
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { isLoggedIn } from "../utils/index";
 import styles from '../styles/Header.module.css';
 
@@ -11,24 +11,13 @@ function Logo() {
 }
 
 function Menu() {
-  const navigate = useNavigate();
-
-  const logOut = () => {
-    localStorage.removeItem('jwt');
-    navigate('/');
-  }
-
   if (isLoggedIn()) {
     return (
       <ul className={styles.menu}>
         <li><Link to="/">Home</Link></li>
         <li><Link to={import.meta.env.VITE_EDITOR_URL}>Write</Link></li>
         <li><Link to='/profile'>Profile</Link></li>
-        <li>
-          <button onClick={logOut} className={styles.linkButton}>
-            Log Out
-          </button>
-        </li>
+        <li><Link to='/logout'>Log Out</Link></li>
       </ul>
     );
   }

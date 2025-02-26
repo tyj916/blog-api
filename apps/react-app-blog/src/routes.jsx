@@ -6,6 +6,7 @@ import Profile from './components/Profile.jsx'
 import NotFound from './components/error/NotFound.jsx';
 import AuthenticationForm from './components/Authentication.jsx';
 import ProtectedRoutes from './components/ProtectedRoutes.jsx';
+import LogOut from './components/LogOut.jsx';
 
 const routes = [
   {
@@ -40,6 +41,10 @@ const routes = [
   { 
     path: '/register/writer', 
     element: <AuthenticationForm type='signUp' text='Create an account to start writing.' /> 
+  },
+  {
+    path: '/logout',
+    element: <LogOut />,
   },
 ];
 

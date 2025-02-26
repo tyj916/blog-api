@@ -11,7 +11,7 @@ function App() {
             <li><Link to="/">Dashboard</Link></li>
             <li><Link to="/new">Create New</Link></li>
             <li><a href='http://localhost:5173/login?from=http://localhost:5174'>Login</a></li>
-            <li><Link to="/logout">Log Out</Link></li>
+            <li><a href={`${import.meta.env.VITE_BLOG_APP_URL}/logout`}>Log Out</a></li>
           </ul>
         </div>
       </nav>
