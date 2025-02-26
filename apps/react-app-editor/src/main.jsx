@@ -10,10 +10,13 @@ window.addEventListener("message", (e) => {
     return;
   }
 
-  const jwt = JSON.parse(e.data);
-  if (jwt) {
-    localStorage.setItem('jwt', jwt);
+  const data = JSON.parse(e.data);
+  if (data.message && data.message === 'logout') {
+    localStorage.removeItem('jwt');
+    return;
   }
+
+  localStorage.setItem('jwt', data);
 });
 
 createRoot(document.getElementById('root')).render(
