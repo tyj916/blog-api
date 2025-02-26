@@ -64,10 +64,22 @@ function isLoggedIn() {
   return isJwtExpired(jwt);
 }
 
+
+// post log in message to editor app
+function postLogInMessage() {
+  const iframe = document.querySelector('#shareLocalStorage');
+  const jwt = localStorage.getItem('jwt');
+  iframe.contentWindow.postMessage(JSON.stringify({
+    message: 'login',
+    jwt
+  }), import.meta.env.VITE_EDITOR_URL);
+}
+
 export {
   getTimestamp,
   getAuthorName,
   getAuthToken,
   getCurrentUserId,
   isLoggedIn,
+  postLogInMessage,
 }

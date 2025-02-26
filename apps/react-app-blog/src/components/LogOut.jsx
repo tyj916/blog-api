@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 
 function postLogOutMessage() {
-  const iframe = document.querySelector('#shareJwt');
+  const iframe = document.querySelector('#shareLocalStorage');
   iframe.contentWindow.postMessage(JSON.stringify({message: 'logout'}), import.meta.env.VITE_EDITOR_URL);
 }
 
