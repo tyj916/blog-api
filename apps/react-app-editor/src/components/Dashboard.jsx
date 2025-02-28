@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCurrentUsername } from "../utils";
+import { convertTimestamp, getCurrentUsername } from "../utils";
 
 function Dashboard() {
   const [posts, setPosts] = useState();
@@ -34,7 +34,7 @@ function Dashboard() {
                 <tr key={post.id}>
                   <td><a href={`/post/${post.id}`}>{post.title}</a></td>
                   <td>{post.status}</td>
-                  <td>{post.updatedAt}</td>
+                  <td>{convertTimestamp(post.updatedAt)}</td>
                   <td>
                     <button>Edit</button>
                     <button>Delete</button>
