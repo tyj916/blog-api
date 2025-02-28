@@ -10,3 +10,8 @@
 .tableBody {
   display: contents;
 }
+
+.tableMessage {
+  grid-column: 1 / 5;
+  justify-self: center;
+}

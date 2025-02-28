@@ -22,7 +22,6 @@ function Dashboard() {
       <div>
         <h1>Dashboard</h1>
         <h2>Your Posts</h2>
-        {loading && <p>Loading...</p>}
         <section className={styles.postsTable}>
           <div className={[styles.tableRow, styles.tableHead].join(' ')}>
             <p>Title</p>
@@ -31,6 +30,7 @@ function Dashboard() {
             <p></p>
           </div>
           <div className={styles.tableBody}>
+            {loading && <p className={styles.tableMessage}>Loading...</p>}
             {posts && posts.map(post => {
               return (
                 <div key={post.id} className={[styles.tableRow, styles.rowItem].join(' ')}>
