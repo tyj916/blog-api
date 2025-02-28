@@ -3,6 +3,7 @@ import { convertTimestamp, getCurrentUsername } from "../utils";
 
 function Dashboard() {
   const [posts, setPosts] = useState();
+  const [loading, setLoading] = useState(true);
   const username = getCurrentUsername();
 
   useEffect(() => {
@@ -12,7 +13,8 @@ function Dashboard() {
         setPosts(json.writtenPost);
       })
       .catch(err => console.error(err))
-  }, [username])
+      .finally(() => setLoading(false));
+  }, [username]);
 
   return (
     <>
@@ -29,6 +31,7 @@ function Dashboard() {
             </tr>
           </thead>
           <tbody>
+            {loading && <p>Loading...</p>}
             {posts && posts.map(post => {
               return (
                 <tr key={post.id}>
