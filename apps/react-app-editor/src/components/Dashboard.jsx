@@ -4,6 +4,7 @@ import styles from '../styles/Dashboard.module.css';
 
 function Dashboard() {
   const [posts, setPosts] = useState();
+  const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(true);
   const username = getCurrentUsername();
 
@@ -13,7 +14,10 @@ function Dashboard() {
       .then(json => {
         setPosts(json.writtenPost);
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        console.error(err);
+        setErrorMessage("Something went wrong... Please try again later.");
+      })
       .finally(() => setLoading(false));
   }, [username]);
 
@@ -30,6 +34,7 @@ function Dashboard() {
             <p></p>
           </div>
           <div className={styles.tableBody}>
+            {errorMessage && <p className={styles.tableMessage}>{errorMessage}</p>}
             {loading && <p className={styles.tableMessage}>Loading...</p>}
             {posts && posts.map(post => {
               return (
