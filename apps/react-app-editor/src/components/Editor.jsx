@@ -5,6 +5,7 @@ import { getAuthToken } from "../utils";
 function Editor() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const authToken = getAuthToken();
@@ -23,7 +24,7 @@ function Editor() {
       body: JSON.stringify({
         title,
         content,
-        status: 'published',
+        status,
       }),
     }).then(response => response.json())
       .then(data => console.log(data))
@@ -38,7 +39,7 @@ function Editor() {
     <div>
       <h1>Editor</h1>
       <section>
-        <form>
+        <form onSubmit={handleSubmit}>
           <ul>
             <li>
               <label htmlFor="title">Post Title</label>
@@ -58,8 +59,14 @@ function Editor() {
             <li>
               {loading ? <p>Loading...</p>
                 : <>
-                  <button>Save to draft</button>
-                  <button type="submit" onClick={handleSubmit}>Publish</button>
+                  <button 
+                    type="submit"
+                    onClick={() => setStatus('Draft')}
+                  >Save to draft</button>
+                  <button 
+                    type="submit"
+                    onClick={() => setStatus('Published')}
+                  >Publish</button>
                 </>}
             </li>
             {errorMessage && <li>
