@@ -27,7 +27,10 @@ function Editor() {
         status,
       }),
     }).then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data);
+        errorMessage('');
+      })
       .catch(err => {
         console.error(err);
         setErrorMessage('Something went wrong while submitting, please try again later.');
