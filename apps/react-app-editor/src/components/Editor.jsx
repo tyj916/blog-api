@@ -1,21 +1,30 @@
 import { useState } from "react";
 import TinyMCE from "./TinyMCE";
-import { getCurrentUserId } from "../utils";
+import { getAuthToken } from "../utils";
 
 function Editor() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const currentUserId = getCurrentUserId();
+  const authToken = getAuthToken();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.table({
-      title,
-      content,
-      status: 'published',
-      authorId: currentUserId,
-    })
+    fetch(`${import.meta.env.VITE_API_URL}/posts`, {
+      method: 'post',
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + authToken,
+      },
+      body: JSON.stringify({
+        title,
+        content,
+        status: 'published',
+      }),
+    }).then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.error(err))
   }
 
   return (

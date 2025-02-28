@@ -37,6 +37,10 @@ function convertTimestamp(timestamp) {
   return Math.round(timeDifference / (1000)) + ' s';
 }
 
+function getAuthToken() {
+  return JSON.parse(localStorage.getItem('jwt')).token;
+}
+
 function getCurrentUserId() {
   const jwt = JSON.parse(localStorage.getItem('jwt'));
   return jwt.userId;
@@ -49,6 +53,7 @@ function getCurrentUsername() {
 
 export {
   convertTimestamp,
+  getAuthToken,
   getCurrentUserId,
   getCurrentUsername,
 }
