@@ -5,10 +5,12 @@ import { getAuthToken } from "../utils";
 function Editor() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [loading, setLoading] = useState(false);
   const authToken = getAuthToken();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     fetch(`${import.meta.env.VITE_API_URL}/posts`, {
       method: 'post',
@@ -25,6 +27,7 @@ function Editor() {
     }).then(response => response.json())
       .then(data => console.log(data))
       .catch(err => console.error(err))
+      .finally(() => setLoading(false));
   }
 
   return (
@@ -49,8 +52,11 @@ function Editor() {
               <TinyMCE content={content} setContent={setContent} />
             </li>
             <li>
-              <button>Save to draft</button>
-              <button type="submit" onClick={handleSubmit}>Publish</button>
+              {loading ? <p>Loading...</p>
+                : <>
+                  <button>Save to draft</button>
+                  <button type="submit" onClick={handleSubmit}>Publish</button>
+                </>}
             </li>
           </ul>
         </form>
