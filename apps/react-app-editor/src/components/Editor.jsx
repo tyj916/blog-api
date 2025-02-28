@@ -6,6 +6,7 @@ function Editor() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const authToken = getAuthToken();
 
   const handleSubmit = (e) => {
@@ -26,7 +27,10 @@ function Editor() {
       }),
     }).then(response => response.json())
       .then(data => console.log(data))
-      .catch(err => console.error(err))
+      .catch(err => {
+        console.error(err);
+        setErrorMessage('Something went wrong while submitting, please try again later.');
+      })
       .finally(() => setLoading(false));
   }
 
@@ -58,6 +62,9 @@ function Editor() {
                   <button type="submit" onClick={handleSubmit}>Publish</button>
                 </>}
             </li>
+            {errorMessage && <li>
+              <p>{errorMessage}</p>
+            </li>}
           </ul>
         </form>
       </section>
