@@ -37,6 +37,11 @@ function convertTimestamp(timestamp) {
   return Math.round(timeDifference / (1000)) + ' s';
 }
 
+function getCurrentUserId() {
+  const jwt = JSON.parse(localStorage.getItem('jwt'));
+  return jwt.userId;
+}
+
 function getCurrentUsername() {
   const jwt = JSON.parse(localStorage.getItem('jwt'));
   return jwt.username;
@@ -44,5 +49,6 @@ function getCurrentUsername() {
 
 export {
   convertTimestamp,
+  getCurrentUserId,
   getCurrentUsername,
 }

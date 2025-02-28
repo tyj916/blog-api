@@ -1,6 +1,6 @@
 import { Editor } from '@tinymce/tinymce-react';
 
-function TinyMCE() {
+function TinyMCE({content, setContent}) {
   return (
     <Editor
       apiKey={import.meta.env.VITE_TINY_MCE_API}
@@ -18,7 +18,9 @@ function TinyMCE() {
         ],
         ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
       }}
-      initialValue="Start writing here!"
+      initialValue='Start writing here!'
+      value={content}
+      onEditorChange={(newValue, editor) => setContent(newValue)}
     />
   );
 }
