@@ -36,6 +36,7 @@ async function getPostByPostId(postId) {
       include: {
         author: {
           select: {
+            id: true,
             displayName: true,
             username: true,
           }
@@ -44,6 +45,7 @@ async function getPostByPostId(postId) {
           include: {
             author: {
               select: {
+                id: true,
                 displayName: true,
                 username: true,
               }
