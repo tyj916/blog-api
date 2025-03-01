@@ -41,10 +41,12 @@ function Editor() {
   }
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/posts/${postId}`, { mode: 'cors' })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(err => console.error(err));
+    if (postId) {
+      fetch(`${import.meta.env.VITE_API_URL}/posts/${postId}`, { mode: 'cors' })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(err => console.error(err));
+    }
   }, [postId]);
 
   return (
