@@ -39,7 +39,7 @@ function Dashboard() {
             {posts && posts.map(post => {
               return (
                 <div key={post.id} className={[styles.tableRow, styles.rowItem].join(' ')}>
-                  <p><a href={`/posts/${post.id}`}>{post.title}</a></p>
+                  <p><a href={`${import.meta.env.VITE_BLOG_APP_URL}/posts/${post.id}`}>{post.title}</a></p>
                   <p>{post.status}</p>
                   <p>{convertTimestamp(post.updatedAt)}</p>
                   <p>
