@@ -15,9 +15,10 @@ function Editor() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
+    const url = postId ? `${import.meta.env.VITE_API_URL}/posts/${postId}` : `${import.meta.env.VITE_API_URL}/posts`
 
-    fetch(`${import.meta.env.VITE_API_URL}/posts`, {
-      method: 'post',
+    fetch(url, {
+      method: postId ? 'put' : 'post',
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
@@ -31,7 +32,7 @@ function Editor() {
     }).then(response => response.json())
       .then(data => {
         console.log(data);
-        errorMessage('');
+        setErrorMessage('');
       })
       .catch(err => {
         console.error(err);
