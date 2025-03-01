@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { convertTimestamp, getCurrentUsername } from "../utils";
 import styles from '../styles/Dashboard.module.css';
 import { Link } from "react-router-dom";
+import DeletePostButton from "./DeletePostButton";
 
 function Dashboard() {
   const [posts, setPosts] = useState();
@@ -45,7 +46,7 @@ function Dashboard() {
                   <p>{convertTimestamp(post.updatedAt)}</p>
                   <p>
                     <Link to={`posts/${post.id}/edit`}>Edit</Link>
-                    <button>Delete</button>
+                    <DeletePostButton postId={post.id} />
                   </p>
                 </div>
               )
