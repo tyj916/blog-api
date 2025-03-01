@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getTimestamp } from "../utils";
+import { getCurrentUserId, getTimestamp } from "../utils";
 import Heading from "./Heading";
 import CommentSection from "./CommentSection";
 import styles from '../styles/Post.module.css';
@@ -14,6 +14,7 @@ function Post() {
   const [comment, setComment] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(true);
+  const currentUserId = getCurrentUserId();
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/posts/${postId}`, {mode: 'cors'})
@@ -47,6 +48,12 @@ function Post() {
   return (
     <>
       <Heading title={title} author={author} time={time}/>
+      {
+        currentUserId === author.id && 
+          <div className={styles.container}>
+            <button>Edit Post</button>
+          </div>
+      }
       <div className={styles.container}>
         <section>{content}</section>
         <div className={styles.sectionDivider}></div>
