@@ -12,6 +12,9 @@ function MyRoutes() {
         <Route path='/' element={<App />}>
           <Route index element={<Dashboard />} />
           <Route path='new' element={<Editor />} />
+          <Route path='posts'>
+            <Route path=':postId/edit' element={<Editor />} />
+          </Route>
           <Route path='*' element={<NotFound />} />
         </Route>
       </Route>

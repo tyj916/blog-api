@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { convertTimestamp, getCurrentUsername } from "../utils";
 import styles from '../styles/Dashboard.module.css';
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   const [posts, setPosts] = useState();
@@ -43,7 +44,7 @@ function Dashboard() {
                   <p>{post.status}</p>
                   <p>{convertTimestamp(post.updatedAt)}</p>
                   <p>
-                    <button>Edit</button>
+                    <Link to={`posts/${post.id}/edit`}>Edit</Link>
                     <button>Delete</button>
                   </p>
                 </div>
