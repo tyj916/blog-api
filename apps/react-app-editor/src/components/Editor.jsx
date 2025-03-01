@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 
 function Editor() {
   const { postId } = useParams();
+  const type = postId && 'edit';
+
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [status, setStatus] = useState('');
@@ -15,10 +17,12 @@ function Editor() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    const url = postId ? `${import.meta.env.VITE_API_URL}/posts/${postId}` : `${import.meta.env.VITE_API_URL}/posts`
+    const url = type === 'edit' 
+      ? `${import.meta.env.VITE_API_URL}/posts/${postId}` 
+      : `${import.meta.env.VITE_API_URL}/posts`;
 
     fetch(url, {
-      method: postId ? 'put' : 'post',
+      method: type === 'edit' ? 'put' : 'post',
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
@@ -86,7 +90,7 @@ function Editor() {
                   <button 
                     type="submit"
                     onClick={() => setStatus('Published')}
-                  >Publish</button>
+                  >{ type === 'edit' ? 'Update Post' : 'Publish'}</button>
                 </>}
             </li>
             {errorMessage && <li>
