@@ -44,7 +44,12 @@ function Editor() {
     if (postId) {
       fetch(`${import.meta.env.VITE_API_URL}/posts/${postId}`, { mode: 'cors' })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+          const { title, content, status } = data;
+          setTitle(title);
+          setContent(content);
+          setStatus(status);
+        })
         .catch(err => console.error(err));
     }
   }, [postId]);
