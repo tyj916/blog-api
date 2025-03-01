@@ -39,7 +39,7 @@ function Dashboard() {
             {posts && posts.map(post => {
               return (
                 <div key={post.id} className={[styles.tableRow, styles.rowItem].join(' ')}>
-                  <p><a href={`/post/${post.id}`}>{post.title}</a></p>
+                  <p><a href={`/posts/${post.id}`}>{post.title}</a></p>
                   <p>{post.status}</p>
                   <p>{convertTimestamp(post.updatedAt)}</p>
                   <p>
