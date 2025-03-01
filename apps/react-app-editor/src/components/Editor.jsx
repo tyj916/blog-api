@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TinyMCE from "./TinyMCE";
 import { getAuthToken } from "../utils";
+import { useParams } from "react-router-dom";
 
 function Editor() {
+  const { postId } = useParams();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [status, setStatus] = useState('');
@@ -37,6 +39,13 @@ function Editor() {
       })
       .finally(() => setLoading(false));
   }
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/posts/${postId}`, { mode: 'cors' })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(err => console.error(err));
+  }, [postId]);
 
   return (
     <div>
