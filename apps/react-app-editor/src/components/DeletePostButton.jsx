@@ -6,6 +6,12 @@ function DeletePostButton({ postId, redirectUrl }) {
 
   const handleDelete = (e) => {
     e.preventDefault();
+    const isConfirmed = confirm('Are you sure you want to delete the post?');
+
+    if (!isConfirmed) {
+      return;
+    }
+    
     fetch(`${import.meta.env.VITE_API_URL}/posts/${postId}`, {
       method: 'delete',
       headers: {
