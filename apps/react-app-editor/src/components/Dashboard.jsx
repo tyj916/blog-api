@@ -46,7 +46,7 @@ function Dashboard() {
                   <p>{convertTimestamp(post.updatedAt)}</p>
                   <p>
                     <Link to={`posts/${post.id}/edit`}>Edit</Link>
-                    <DeletePostButton postId={post.id} />
+                    <DeletePostButton postId={post.id} redirectUrl='/' />
                   </p>
                 </div>
               )

@@ -1,6 +1,6 @@
 import { getAuthToken } from "../utils";
 
-function DeletePostButton({ postId }) {
+function DeletePostButton({ postId, redirectUrl }) {
   const authToken = getAuthToken();
 
   const handleDelete = (e) => {
@@ -11,7 +11,10 @@ function DeletePostButton({ postId }) {
         'Authorization': 'Bearer ' + authToken,
       }
     }).then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data)
+        window.location.href = redirectUrl;
+      })
       .catch(err => console.error(err));
   }
 
