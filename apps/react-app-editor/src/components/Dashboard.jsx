@@ -27,7 +27,7 @@ function Dashboard() {
     <>
       <div>
         <h1>Dashboard</h1>
-        <h2>Your Posts</h2>
+        <h2 className={styles.subtitle}>Your Posts</h2>
         <section className={styles.postsTable}>
           <div className={[styles.tableRow, styles.tableHead].join(' ')}>
             <p>Title</p>
