@@ -35,10 +35,10 @@ function Editor() {
       }),
     }).then(response => response.json())
       .then(data => {
-        console.log(data);
         setErrorMessage('');
+        window.location.href = `${import.meta.env.VITE_BLOG_APP_URL}/posts/${data.id}`;
       })
-      .catch(err => {
+      .catch(err => {[]
         console.error(err);
         setErrorMessage('Something went wrong while submitting, please try again later.');
       })
