@@ -36,7 +36,8 @@ function Editor() {
     }).then(response => response.json())
       .then(data => {
         setErrorMessage('');
-        window.location.href = `${import.meta.env.VITE_BLOG_APP_URL}/posts/${data.id}`;
+        window.location.href = status === 'Draft' ? '/'
+          : `${import.meta.env.VITE_BLOG_APP_URL}/posts/${data.id}`;
       })
       .catch(err => {[]
         console.error(err);
