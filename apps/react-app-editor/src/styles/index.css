@@ -30,18 +30,30 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+button,
+.button {
   background-color: var(--custom-color-maroon);
   color: var(--custom-color-beige-100);
   padding: 4px 16px;
   border: none;
 }
 
-button:hover {
+.button {
+  display: flex;
+  align-items: center;
+}
+
+button:hover,
+.button:hover {
   cursor: pointer;
 }
 
-button:disabled {
+a.button:hover {
+  text-decoration: none;
+}
+
+button:disabled,
+.button:disabled {
   background-color: var(--custom-color-grey);
 }
 

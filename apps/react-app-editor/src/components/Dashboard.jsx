@@ -44,10 +44,10 @@ function Dashboard() {
                   <p><a href={`${import.meta.env.VITE_BLOG_APP_URL}/posts/${post.id}`}>{post.title}</a></p>
                   <p>{post.status}</p>
                   <p>{convertTimestamp(post.updatedAt)}</p>
-                  <p>
-                    <Link to={`posts/${post.id}/edit`}>Edit</Link>
+                  <div className={styles.buttonsContainer}>
+                    <Link to={`posts/${post.id}/edit`} className={styles.button}>Edit</Link>
                     <DeletePostButton postId={post.id} redirectUrl='/' />
-                  </p>
+                  </div>
                 </div>
               )
             })}

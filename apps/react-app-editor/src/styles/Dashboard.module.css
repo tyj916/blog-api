@@ -35,3 +35,12 @@
   grid-column: 1 / 5;
   justify-self: center;
 }
+
+.buttonsContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.button {
+  composes: button from './index.css';
+}
