@@ -1,9 +1,9 @@
 import { Link, Outlet } from 'react-router-dom'
-import './styles/App.css'
+import styles from './styles/App.module.css'
 
 function App() {
   return (
-    <>
+    <div className={styles.app}>
       <nav>
         <div>
           <Link to='/'><h1>title</h1></Link>
@@ -17,7 +17,7 @@ function App() {
       <main>
         <Outlet />
       </main>
-    </>
+    </div>
   )
 }
 
