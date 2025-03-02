@@ -1,16 +1,28 @@
 :root {
+  --custom-color-black: #1e1e1e;
+  --custom-color-grey: #505050;
+  --custom-color-beige-900: #e8e3db;
+  --custom-color-beige-500: #f5f3ee;
+  --custom-color-beige-100: #fcfbf9;
+  --custom-color-maroon: #781313;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
+  color: var(--custom-color-grey);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  text-decoration: underline 1px;
+  text-underline-offset: 0.25em;
 }
 
 body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--custom-color-black);
 }
 
 h1 {
@@ -19,13 +31,21 @@ h1 {
 }
 
 button {
-
+  background-color: var(--custom-color-maroon);
+  color: var(--custom-color-beige-100);
+  padding: 4px 16px;
+  border: none;
 }
+
 button:hover {
-
+  cursor: pointer;
 }
-button:focus,
-button:focus-visible {
-  
 
+button:disabled {
+  background-color: var(--custom-color-grey);
+}
+
+input,
+textarea {
+  padding: 4px 8px;
 }
