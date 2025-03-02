@@ -1,4 +1,5 @@
 import { Editor } from '@tinymce/tinymce-react';
+import PropTypes from 'prop-types';
 
 function TinyMCE({content, setContent}) {
   return (
@@ -22,6 +23,11 @@ function TinyMCE({content, setContent}) {
       onEditorChange={(newValue, editor) => setContent(newValue)}
     />
   );
+}
+
+TinyMCE.propTypes = {
+  content: PropTypes.string,
+  setContent: PropTypes.string,
 }
 
 export default TinyMCE;

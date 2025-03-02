@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { getAuthToken } from "../utils";
 
 function DeletePostButton({ postId, redirectUrl }) {
@@ -21,6 +22,11 @@ function DeletePostButton({ postId, redirectUrl }) {
   return (
     <button onClick={handleDelete}>Delete</button>
   )
+}
+
+DeletePostButton.propTypes = {
+  postId: PropTypes.string,
+  redirectUrl: PropTypes.string,
 }
 
 export default DeletePostButton;
