@@ -1,4 +1,5 @@
 .app {
+  min-height: 100vh;
   display: grid;
   grid-template-columns: minmax(auto, 180px) 1fr;
 }
@@ -7,6 +8,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  background-color: var(--custom-color-beige-900);
+}
+
+.app nav a {
+  font-weight: bold;
 }
 
 .app nav ul {
@@ -14,5 +21,5 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
 }
