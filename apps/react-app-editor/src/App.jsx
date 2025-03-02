@@ -6,7 +6,7 @@ function App() {
     <div className={styles.app}>
       <nav>
         <div>
-          <Link to='/'><h1>title</h1></Link>
+          <Link to='/'><h1>The Editor</h1></Link>
           <ul>
             <li><Link to="/">Dashboard</Link></li>
             <li><Link to="/new">Create New</Link></li>

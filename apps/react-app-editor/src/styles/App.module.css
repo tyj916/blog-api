@@ -1,7 +1,7 @@
 .app {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: minmax(auto, 180px) 1fr;
+  grid-template-columns: minmax(auto, 220px) 1fr;
 }
 
 .app nav {
