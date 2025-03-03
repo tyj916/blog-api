@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import TinyMCE from "./TinyMCE";
 import { getAuthToken } from "../utils";
 import { useParams } from "react-router-dom";
+import styles from '../styles/Editor.module.css';
 
 function Editor() {
   const { postId } = useParams();
@@ -64,7 +65,7 @@ function Editor() {
     <div>
       <h1>Editor</h1>
       <section>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.editorForm}>
           <ul>
             <li>
               <label htmlFor="title">Post Title</label>
@@ -81,7 +82,7 @@ function Editor() {
               <label>Content</label>
               <TinyMCE content={content} setContent={setContent} />
             </li>
-            <li>
+            <li className={styles.formButtonsContainer}>
               {loading ? <p>Loading...</p>
                 : <>
                   <button 

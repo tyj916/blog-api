@@ -1,0 +1,24 @@
+.editorForm ul {
+  list-style: none;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.editorForm ul li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.editorForm .formButtonsContainer {
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.editorForm label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
