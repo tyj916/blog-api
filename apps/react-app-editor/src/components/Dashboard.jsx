@@ -45,6 +45,7 @@ function Dashboard() {
                   <p>{post.status}</p>
                   <p>{convertTimestamp(post.updatedAt)}</p>
                   <div className={styles.buttonsContainer}>
+                    <a href={`${import.meta.env.VITE_BLOG_APP_URL}/posts/${post.id}`} className={styles.button}>View</a>
                     <Link to={`posts/${post.id}/edit`} className={styles.button}>Edit</Link>
                     <DeletePostButton postId={post.id} redirectUrl='/' />
                   </div>
