@@ -62,7 +62,7 @@ function Editor() {
   }, [postId]);
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Editor</h1>
       <section>
         <form onSubmit={handleSubmit} className={styles.editorForm}>
