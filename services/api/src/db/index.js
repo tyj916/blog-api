@@ -59,6 +59,32 @@ async function getPostByPostId(postId) {
   }
 }
 
+async function getPublishedPosts(limit) {
+  try {
+    return await prisma.post.findMany({
+      where: {
+        status: 'Published' || 'published',
+      },
+      take: +limit || undefined,
+      orderBy: [
+        {
+          createdAt: 'desc',
+        }
+      ],
+      include: {
+        author: {
+          select: {
+            displayName: true,
+            username: true,
+          }
+        },
+      }
+    })
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function getRecentPosts(limit) {
   try {
     return await prisma.post.findMany({
@@ -286,6 +312,7 @@ module.exports = {
   createPost,
   getAllPosts,
   getPostByPostId,
+  getPublishedPosts,
   getRecentPosts,
   updatePost,
   deletePostByPostId,

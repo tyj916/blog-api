@@ -35,6 +35,16 @@ async function getPostByPostId(req, res) {
   }
 }
 
+async function getPublishedPosts(req, res) {
+  try {
+    const { limit } = req.query;
+    const publishedPosts = await db.getPublishedPosts(limit);
+    res.send(publishedPosts);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function getRecentPosts(req, res) {
   try {
     const { limit } = req.query;
@@ -75,6 +85,7 @@ module.exports = {
   createPost,
   getAllPosts,
   getPostByPostId,
+  getPublishedPosts,
   getRecentPosts,
   updatePost,
   deletePost,

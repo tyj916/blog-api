@@ -5,6 +5,7 @@ const controllers = require('../controllers');
 const router = Router();
 
 router.get('/', controllers.post.getAllPosts);
+router.get('/published', controllers.post.getPublishedPosts);
 router.get('/recent', controllers.post.getRecentPosts);
 router.get('/:postId', controllers.post.getPostByPostId);
 
