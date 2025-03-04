@@ -5,7 +5,7 @@ const db = require('../db');
 
 async function handleRegister(req, res, next) {
   const { username } = req.body;
-  const user = await db.getUserByUsername(username);
+  const user = await db.user.getUserByUsername(username);
 
   if (user) {
     return res.status(400).send({
@@ -31,7 +31,7 @@ function hashPassword(req, res, next) {
 
 async function processLogin(req, res) {
   const { username, password } = req.body;
-  const user = await db.getUserByUsername(username);
+  const user = await db.user.getUserByUsername(username);
 
   if (!user) {
     return res.status(400).send({
