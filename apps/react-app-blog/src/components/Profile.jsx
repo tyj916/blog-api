@@ -30,7 +30,7 @@ function Profile() {
   }, [username]);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/posts/author/username/${username}`, { mode: 'cors' })
+    fetch(`${import.meta.env.VITE_API_URL}/posts/author/username/${username}?status=Published`, { mode: 'cors' })
       .then(response => response.json())
       .then(data => setPosts(data))
       .catch(err => console.error(err))

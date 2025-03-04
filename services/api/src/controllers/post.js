@@ -58,7 +58,8 @@ async function getPostsByAuthorId(req, res) {
 async function getPostsByAuthorUsername(req, res) {
   try {
     const { username } = req.params;
-    const posts = await db.post.getPostsByAuthorUsername(username);
+    const { status } = req.query;
+    const posts = await db.post.getPostsByAuthorUsername(username, status);
     res.send(posts);
   } catch(err) {
     console.error(err);

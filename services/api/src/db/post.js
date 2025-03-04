@@ -127,13 +127,14 @@ async function getPostsByAuthorId(authorId) {
   }
 }
 
-async function getPostsByAuthorUsername(username) {
+async function getPostsByAuthorUsername(username, status) {
   try {
     return await prisma.post.findMany({
       where: {
         author: {
           username,
-        }
+        },
+        status,
       },
       include: {
         author: {
