@@ -37,7 +37,8 @@ async function getPostByPostId(req, res) {
 
 async function getRecentPosts(req, res) {
   try {
-    const recentPosts = await db.getRecentPosts();
+    const { limit } = req.query;
+    const recentPosts = await db.getRecentPosts(limit);
     res.send(recentPosts);
   } catch {
     console.error(err);

@@ -59,9 +59,10 @@ async function getPostByPostId(postId) {
   }
 }
 
-async function getRecentPosts() {
+async function getRecentPosts(limit) {
   try {
     return await prisma.post.findMany({
+      take: +limit || undefined,
       orderBy: [
         {
           createdAt: 'desc',
