@@ -45,6 +45,16 @@ async function getPublishedPosts(req, res) {
   }
 }
 
+async function getPostsByAuthorId(req, res) {
+  try {
+    const { authorId } = req.params;
+    const posts = await db.post.getPostsByAuthorId(authorId);
+    res.send(posts);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function updatePost(req, res) {
   try {
     const postId = req.params.postId;
@@ -76,6 +86,7 @@ module.exports = {
   getAllPosts,
   getPostByPostId,
   getPublishedPosts,
+  getPostsByAuthorId,
   updatePost,
   deletePost,
 }

@@ -109,6 +109,18 @@ async function getPublishedPosts(limit, sortBy = 'recent') {
   }
 }
 
+async function getPostsByAuthorId(authorId) {
+  try {
+    return await prisma.post.findMany({
+      where: {
+        authorId: +authorId,
+      }
+    })
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function updatePost(postId, data) {
   try {
     return await prisma.post.update({
@@ -139,6 +151,7 @@ module.exports = {
   getAllPosts,
   getPostByPostId,
   getPublishedPosts,
+  getPostsByAuthorId,
   updatePost,
   deletePostByPostId,
 }
