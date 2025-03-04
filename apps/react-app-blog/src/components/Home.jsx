@@ -8,7 +8,7 @@ function RecentPosts() {
   const [recentPosts, setRecentPosts] = useState();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/posts/recent?limit=8`, {mode: 'cors'})
+    fetch(`${import.meta.env.VITE_API_URL}/posts/published?limit=8`, {mode: 'cors'})
       .then(response => response.json())
       .then(data => setRecentPosts(data))
       .catch(err => console.error(err))

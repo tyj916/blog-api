@@ -6,7 +6,6 @@ const router = Router();
 
 router.get('/', controllers.post.getAllPosts);
 router.get('/published', controllers.post.getPublishedPosts);
-router.get('/recent', controllers.post.getRecentPosts);
 router.get('/:postId', controllers.post.getPostByPostId);
 
 router.use(passport.authenticate('jwt', { session: false }));
