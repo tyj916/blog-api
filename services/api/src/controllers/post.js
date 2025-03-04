@@ -35,6 +35,15 @@ async function getPostByPostId(req, res) {
   }
 }
 
+async function getRecentPosts(req, res) {
+  try {
+    const recentPosts = await db.getRecentPosts();
+    res.send(recentPosts);
+  } catch {
+    console.error(err);
+  }
+}
+
 async function updatePost(req, res) {
   try {
     const postId = req.params.postId;
@@ -65,6 +74,7 @@ module.exports = {
   createPost,
   getAllPosts,
   getPostByPostId,
+  getRecentPosts,
   updatePost,
   deletePost,
 }
