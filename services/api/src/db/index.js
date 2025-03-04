@@ -71,20 +71,8 @@ async function getRecentPosts(limit) {
       include: {
         author: {
           select: {
-            id: true,
             displayName: true,
             username: true,
-          }
-        },
-        comment: {
-          include: {
-            author: {
-              select: {
-                id: true,
-                displayName: true,
-                username: true,
-              }
-            }
           }
         },
       },
