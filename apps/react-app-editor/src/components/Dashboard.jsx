@@ -11,10 +11,10 @@ function Dashboard() {
   const username = getCurrentUsername();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/users/${username}/posts`, {mode: "cors"})
+    fetch(`${import.meta.env.VITE_API_URL}/posts/author/username/${username}`, {mode: "cors"})
       .then(response => response.json())
-      .then(json => {
-        setPosts(json.writtenPost);
+      .then(data => {
+        setPosts(data);
       })
       .catch(err => {
         console.error(err);
