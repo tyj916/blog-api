@@ -6,6 +6,7 @@ const router = Router();
 
 router.get('/', controllers.post.getAllPosts);
 router.get('/published', controllers.post.getPublishedPosts);
+router.get('/author/:username', controllers.post.getPostsByAuthorUsername);
 router.get('/author/:authorId', controllers.post.getPostsByAuthorId);
 router.get('/:postId', controllers.post.getPostByPostId);
 

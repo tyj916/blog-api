@@ -55,6 +55,16 @@ async function getPostsByAuthorId(req, res) {
   }
 }
 
+async function getPostsByAuthorUsername(req, res) {
+  try {
+    const { username } = req.params;
+    const posts = await db.post.getPostsByAuthorUsername(username);
+    res.send(posts);
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function updatePost(req, res) {
   try {
     const postId = req.params.postId;
@@ -87,6 +97,7 @@ module.exports = {
   getPostByPostId,
   getPublishedPosts,
   getPostsByAuthorId,
+  getPostsByAuthorUsername,
   updatePost,
   deletePost,
 }

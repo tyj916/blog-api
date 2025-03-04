@@ -121,6 +121,20 @@ async function getPostsByAuthorId(authorId) {
   }
 }
 
+async function getPostsByAuthorUsername(username) {
+  try {
+    return await prisma.post.findMany({
+      where: {
+        author: {
+          username,
+        }
+      }
+    })
+  } catch(err) {
+    console.error(err);
+  }
+}
+
 async function updatePost(postId, data) {
   try {
     return await prisma.post.update({
@@ -152,6 +166,7 @@ module.exports = {
   getPostByPostId,
   getPublishedPosts,
   getPostsByAuthorId,
+  getPostsByAuthorUsername,
   updatePost,
   deletePostByPostId,
 }
