@@ -88,7 +88,7 @@ async function getRecentPosts() {
         },
       },
     });
-  } catch {
+  } catch(err) {
     console.error(err);
   }
 }
