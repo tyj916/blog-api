@@ -30,7 +30,7 @@ function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/posts/published`, {mode: 'cors'})
+    fetch(`${import.meta.env.VITE_API_URL}/posts/published?sortBy=popularity`, {mode: 'cors'})
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("Something is wrong with the server... Please try again later.");
