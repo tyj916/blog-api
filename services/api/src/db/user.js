@@ -42,36 +42,6 @@ async function getUserByUsername(username) {
   }
 }
 
-async function getUserPostsByUserId(userId) {
-  try {
-    return await prisma.user.findUnique({
-      where: {
-        id: +userId,
-      },
-      include: {
-        writtenPost: true,
-      },
-    });
-  } catch(err) {
-    console.error(err);
-  }
-}
-
-async function getUserPostsByUsername(username) {
-  try {
-    return await prisma.user.findUnique({
-      where: {
-        username,
-      },
-      include: {
-        writtenPost: true,
-      },
-    });
-  } catch(err) {
-    console.error(err);
-  }
-}
-
 async function updateUser(userId, data) {
   try {
     return await prisma.user.update({
@@ -102,8 +72,6 @@ module.exports = {
   createUser,
   getUserByUserId,
   getUserByUsername,
-  getUserPostsByUserId,
-  getUserPostsByUsername,
   updateUser,
   deleteUserByUserId,
 }
