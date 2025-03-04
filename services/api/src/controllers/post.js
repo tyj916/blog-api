@@ -37,8 +37,8 @@ async function getPostByPostId(req, res) {
 
 async function getPublishedPosts(req, res) {
   try {
-    const { limit } = req.query;
-    const publishedPosts = await db.getPublishedPosts(limit);
+    const { limit, sortBy } = req.query;
+    const publishedPosts = await db.getPublishedPosts(limit, sortBy);
     res.send(publishedPosts);
   } catch(err) {
     console.error(err);

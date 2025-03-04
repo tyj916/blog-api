@@ -59,18 +59,31 @@ async function getPostByPostId(postId) {
   }
 }
 
-async function getPublishedPosts(limit) {
+function getOrderBy(query) {
+  switch (query) {
+    case 'recent':
+      return [
+        {
+          createdAt: 'desc',
+        }
+      ];
+    case 'oldest':
+      return [
+        {
+          createdAt: 'asc',
+        }
+      ];
+  }
+}
+
+async function getPublishedPosts(limit, sortBy = 'recent') {
   try {
     return await prisma.post.findMany({
       where: {
         status: 'Published' || 'published',
       },
       take: +limit || undefined,
-      orderBy: [
-        {
-          createdAt: 'desc',
-        }
-      ],
+      orderBy: getOrderBy(sortBy),
       include: {
         author: {
           select: {
