@@ -6,6 +6,7 @@ import styles from '../styles/Home.module.css';
 
 function Home() {
   const [posts, setPosts] = useState(null);
+  const [recentPosts, setRecentPosts] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -26,6 +27,14 @@ function Home() {
       .finally(() => setLoading(false));
   }, []);
 
+  // get recent posts
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/posts/recent`, {mode: 'cors'})
+      .then(response => response.json())
+      .then(data => setRecentPosts(data))
+      .catch(err => console.error(err))
+  }, []);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>A network error was encountered. Please try again later.</p>;
 
@@ -43,7 +52,7 @@ function Home() {
         <section className={[styles.recent, styles.postsContainer].join(' ')}>
           <h2 className={styles.title}>Recent Posts</h2>
           <div className={styles.container}>
-            <PostList posts={posts} />
+            <PostList posts={recentPosts} />
           </div>
         </section>
 
