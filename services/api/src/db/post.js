@@ -128,6 +128,15 @@ async function getPostsByAuthorUsername(username) {
         author: {
           username,
         }
+      },
+      include: {
+        author: {
+          select: {
+            id: true,
+            username: true,
+            displayName: true,
+          }
+        }
       }
     })
   } catch(err) {
