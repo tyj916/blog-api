@@ -84,10 +84,16 @@ function getOrderBy(query) {
           createdAt: 'desc',
         }
       ]
+    default:
+      return [
+        {
+          createdAt: 'desc',
+        }
+      ]
   }
 }
 
-async function getPublishedPosts(limit, sortBy = 'recent') {
+async function getPublishedPosts(limit, sortBy) {
   try {
     return await prisma.post.findMany({
       where: {
