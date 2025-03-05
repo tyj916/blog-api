@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
+import htmlParse from 'html-react-parser';
 import { getTimestamp, getAuthorName } from '../utils';
 import PropTypes from 'prop-types';
 import styles from '../styles/PostList.module.css';
@@ -6,7 +7,7 @@ import styles from '../styles/PostList.module.css';
 function Post({data}) {
   const { id, author, title, content, updatedAt } = data;
   const authorName = getAuthorName(author);
-  const description = content.length > 20 ? content.slice(0, 20) + '...' : content;
+  const description = content.length > 50 ? content.slice(0, 20) + '...' : content;
   const time = getTimestamp(updatedAt);
   const navigate = useNavigate();
 
@@ -24,7 +25,7 @@ function Post({data}) {
           onClick={handleNavigate}
         >{authorName}</button>
         <h3 className={styles.title}>{title}</h3>
-        <p className={styles.description}>{description}</p>
+        <p className={styles.description}>{htmlParse(description)}</p>
         <p className={styles.time}>{time}</p>
       </Link>
     </div>

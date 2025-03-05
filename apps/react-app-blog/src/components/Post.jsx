@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import htmlParse from 'html-react-parser';
 import { getCurrentUserId, getTimestamp, isLoggedIn } from "../utils";
 import Heading from "./Heading";
 import CommentSection from "./CommentSection";
@@ -54,7 +55,7 @@ function Post() {
         </div>
       }
       <div className={styles.container}>
-        <section>{content}</section>
+        <section>{htmlParse(content)}</section>
         <div className={styles.sectionDivider}></div>
         <CommentSection postId={postId} commentList={comment} />
       </div>
