@@ -9,7 +9,7 @@ function BlogPosts() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/posts", {mode: 'cors'})
+    fetch(`${import.meta.env.VITE_API_URL}/posts/published`, {mode: 'cors'})
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("Something is wrong with the server... Please try again later.");
