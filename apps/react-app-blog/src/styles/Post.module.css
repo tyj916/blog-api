@@ -6,6 +6,11 @@
   composes: button from './index.css';
 }
 
+.editPostContainer {
+  display: flex;
+  justify-content: center;
+}
+
 .sectionDivider {
   margin: 24px 0;
   border-bottom: 4px double var(--custom-color-beige-900);
