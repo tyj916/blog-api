@@ -50,7 +50,7 @@ function Post() {
       <Heading title={title} author={author} time={time}/>
       {currentUserId === author.id && 
         <div className={styles.container}>
-          <button>Edit Post</button>
+          <a href={`${import.meta.env.VITE_EDITOR_URL}/posts/${postId}/edit`} className={styles.button}>Edit Post</a>
         </div>
       }
       <div className={styles.container}>

@@ -2,6 +2,10 @@
   composes: container from './index.css';
 }
 
+.button {
+  composes: button from './index.css';
+}
+
 .sectionDivider {
   margin: 24px 0;
   border-bottom: 4px double var(--custom-color-beige-900);
