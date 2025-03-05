@@ -48,9 +48,11 @@ function Post() {
   return (
     <>
       <Heading title={title} author={author} time={time}/>
-      {currentUserId && <div className={styles.container}>
-        <button>Edit Post</button>
-      </div>}
+      {currentUserId === author.id && 
+        <div className={styles.container}>
+          <button>Edit Post</button>
+        </div>
+      }
       <div className={styles.container}>
         <section>{content}</section>
         <div className={styles.sectionDivider}></div>
