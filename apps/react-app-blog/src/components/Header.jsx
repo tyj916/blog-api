@@ -25,6 +25,7 @@ function Menu() {
   return (
     <ul className={styles.menu}>
       <li><Link to="/">Home</Link></li>
+      <li><Link to="/posts">Blog</Link></li>
       <li><Link 
         to={{ 
           pathname: 'register/writer',
