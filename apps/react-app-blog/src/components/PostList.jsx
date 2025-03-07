@@ -77,7 +77,7 @@ Post.propTypes = {
 }
 
 PostList.propTypes = {
-  posts: PropTypes.array,
+  url: PropTypes.string,
 }
 
 export default PostList;
