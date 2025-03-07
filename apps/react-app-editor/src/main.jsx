@@ -7,7 +7,8 @@ import MyRoutes from './Routes'
 
 // the script is used to sync localStorage with blog app
 window.addEventListener("message", (e) => {
-  if (e.origin !== import.meta.env.VITE_BLOG_APP_URL) {
+  if (e.origin !== import.meta.env.VITE_BLOG_APP_URL
+    || e.origin !== import.meta.env.VITE_BLOG_APP_URL + '/') {
     return;
   }
 
