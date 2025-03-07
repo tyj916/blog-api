@@ -6,7 +6,6 @@ import styles from "../styles/Profile.module.css";
 
 function Profile() {
   const [user, setUser] = useState(null);
-  const [posts, setPosts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const jwt = JSON.parse(localStorage.getItem('jwt'));
@@ -29,13 +28,6 @@ function Profile() {
       .finally(() => setLoading(false));
   }, [username]);
 
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/posts/author/username/${username}?status=Published`, { mode: 'cors' })
-      .then(response => response.json())
-      .then(data => setPosts(data))
-      .catch(err => console.error(err))
-  }, [username]);
-
   if (loading) return <p>Loading...</p>;
   if (errorMessage) return <p>{errorMessage}</p>
 
@@ -43,7 +35,7 @@ function Profile() {
     <>
       <Heading title={user.displayName} description={`@${user.username}`}  />
       <section className={styles.container}>
-        <PostList posts={posts} />
+        <PostList url={`${import.meta.env.VITE_API_URL}/posts/author/username/${username}?status=Published`} />
       </section>
     </>
   );
