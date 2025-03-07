@@ -60,14 +60,12 @@ function PostList({url}) {
 
   return (
     <section className={styles.posts}>
-      {posts && posts.length > 0 &&
-        posts.map((post) => {
+      {posts && posts.length > 0
+        ? posts.map((post) => {
           return <Post key={post.id} data={post} />
         })
+        : <p>No posts yet.</p>
       }
-      {posts && posts.length === 0 && (
-        <p>No posts yet.</p>
-      )}
     </section>
   );
 }
