@@ -36,7 +36,7 @@ function Post({data}) {
 function PostList({url}) {
   const [posts, setPosts] = useState();
   const [error, setError] = useState();
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(url, {mode: 'cors'})
