@@ -55,7 +55,7 @@ function PostList({url}) {
       .finally(() => setLoading(false));
   }, [url]);
 
-  if (loading) return <p>Loading...</p>
+  if (loading) return <p>Loading... It may take up to 1 min because I am using free account on my backend service provider.</p>
   if (error) return <p>A network error was encountered. Please try again later.</p>
 
   return (
