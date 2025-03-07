@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import htmlParse from 'html-react-parser';
 import { getTimestamp, getAuthorName } from '../utils';
@@ -32,7 +33,31 @@ function Post({data}) {
   );
 }
 
-function PostList({posts}) {
+function PostList({url}) {
+  const [posts, setPosts] = useState();
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState();
+
+  useEffect(() => {
+    fetch(url, {mode: 'cors'})
+      .then((response) => {
+        if (response.status >= 400) {
+          throw new Error("Something is wrong with the server... Please try again later.");
+        }
+
+        return response.json();
+      })
+      .then((data) => setPosts(data))
+      .catch((err) => {
+        console.error(err);
+        setError(err);
+      })
+      .finally(() => setLoading(false));
+  }, [url]);
+
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>A network error was encountered. Please try again later.</p>
+
   return (
     <section className={styles.posts}>
       {posts && posts.length > 0 &&
