@@ -16,7 +16,7 @@ function isLoggedIn() {
 
 function ProtectedRoute() {
   if (isLoggedIn()) {
-    return <Outlet />
+    return <Outlet />;
   } else {
     window.location.href = import.meta.env.VITE_BLOG_APP_URL + '/login/?from=' + window.location.href;
   }
