@@ -5,6 +5,14 @@ import 'normalize.css';
 import './styles/index.css'
 import MyRoutes from './Routes'
 
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <BrowserRouter>
+      <MyRoutes />
+    </BrowserRouter>
+  </StrictMode>,
+)
+
 // the script is used to sync localStorage with blog app
 window.addEventListener("message", (e) => {
   if (e.origin !== import.meta.env.VITE_BLOG_APP_URL) {
@@ -23,11 +31,3 @@ window.addEventListener("message", (e) => {
     return;
   }
 });
-
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <MyRoutes />
-    </BrowserRouter>
-  </StrictMode>,
-)
