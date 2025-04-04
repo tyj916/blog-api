@@ -22,6 +22,7 @@ window.addEventListener("message", (e) => {
       return;
     }
   } else {
+    console.log(`Invalid message origin: ${e.origin}, ${import.meta.VITE_BLOG_APP_URL}`);
     return;
   }
 });
