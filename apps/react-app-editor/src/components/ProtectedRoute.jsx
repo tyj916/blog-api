@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 function isJwtExpired(jwt) {
   const expiryTime = (7 * 24 * 60 * 60 * 1000) - (new Date() - new Date(jwt.timestamp));
@@ -18,7 +18,7 @@ function ProtectedRoute() {
   if (isLoggedIn()) {
     return <Outlet />
   } else {
-    return <Navigate to='/login' />;
+    window.location.href = import.meta.env.VITE_BLOG_APP_URL + '/login/?from=' + window.location.href;
   }
 }
 
