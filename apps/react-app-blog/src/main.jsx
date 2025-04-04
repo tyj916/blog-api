@@ -15,6 +15,6 @@ root.render(
     <RouterProvider router={router} />
 
     {/* this iframe is used to share localstorage with editor app */}
-    <iframe id='shareLocalStorage' src={import.meta.env.VITE_EDITOR_URL + '/'} style={{display: 'none'}} onLoad={postJwtMessage}></iframe>
+    <iframe id='shareLocalStorage' src={import.meta.env.VITE_EDITOR_URL + '/'} style={{display: 'none'}} onLoad={() => postJwtMessage()}></iframe>
   </StrictMode>,
 )
