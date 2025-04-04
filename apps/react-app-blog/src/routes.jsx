@@ -38,10 +38,6 @@ const routes = [
     path: '/register',
     element: <AuthenticationForm type='signUp' text='Join Us.' />
   },
-  { 
-    path: '/register/writer', 
-    element: <AuthenticationForm type='signUp' text='Create an account to start writing.' /> 
-  },
   {
     path: '/logout',
     element: <LogOut />,
