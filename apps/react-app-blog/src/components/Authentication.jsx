@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import styles from '../styles/Authentication.module.css';
+import { postJwtMessage } from "../utils";
 
 const { VITE_API_URL } = import.meta.env;
 
@@ -62,6 +63,7 @@ function SignUpForm({text, targetUrl}) {
                   token,
                   timestamp: new Date(),
                 }));
+                postJwtMessage();
                 window.location.href = targetUrl;
               }
             })
@@ -174,6 +176,7 @@ function LoginForm({text, targetUrl}) {
             token,
             timestamp: new Date(),
           }));
+          postJwtMessage();
           window.location.href = targetUrl;
         }
     
