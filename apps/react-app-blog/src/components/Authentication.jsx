@@ -229,9 +229,17 @@ function LoginForm({text, targetUrl}) {
   );
 }
 
+function getTargetUrl(url) {
+  if (!url || url === import.meta.env.VITE_EDITOR_URL + '/') {
+    return '/';
+  }
+
+  return url;
+}
+
 function AuthenticationForm({type = 'login', text = 'Welcome Back.'}) {
   const [searchParams] = useSearchParams();
-  const targetUrl = searchParams.get('from') || '/';
+  const targetUrl = getTargetUrl(searchParams.get('from'));
 
   return (
     <div id={styles.authForm}>
