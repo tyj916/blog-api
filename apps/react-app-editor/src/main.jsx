@@ -7,23 +7,19 @@ import MyRoutes from './Routes'
 
 // the script is used to sync localStorage with blog app
 window.addEventListener("message", (e) => {
-  if (
-    e.origin === import.meta.env.VITE_BLOG_APP_URL
-    || e.origin === import.meta.env.VITE_BLOG_APP_URL + '/'
-  ) {
-    console.log(e.origin);
-    const data = JSON.parse(e.data);
-    if (data.message === 'login') {
-      localStorage.setItem('jwt', data.jwt);
-      return;
-    }
-
-    if (data.message === 'logout') {
-      localStorage.removeItem('jwt');
-      return;
-    }
-  } else {
+  if (e.origin !== import.meta.env.VITE_BLOG_APP_URL) {
     console.log(`Invalid message origin: ${e.origin}, ${import.meta.VITE_BLOG_APP_URL}`);
+    return;
+  }
+  console.log(e.origin);
+  const data = JSON.parse(e.data);
+  if (data.message === 'login') {
+    localStorage.setItem('jwt', data.jwt);
+    return;
+  }
+
+  if (data.message === 'logout') {
+    localStorage.removeItem('jwt');
     return;
   }
 });
