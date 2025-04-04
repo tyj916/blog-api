@@ -71,7 +71,7 @@ function postJwtMessage() {
   iframe.contentWindow.postMessage(JSON.stringify({
     message: isLoggedIn() ? 'login' : 'logout',
     jwt: localStorage.getItem('jwt'),
-  }), import.meta.env.VITE_EDITOR_URL + '/');
+  }), '*');
 }
 
 export {

@@ -11,6 +11,7 @@ window.addEventListener("message", (e) => {
     e.origin === import.meta.env.VITE_BLOG_APP_URL
     || e.origin === import.meta.env.VITE_BLOG_APP_URL + '/'
   ) {
+    console.log(e.origin);
     const data = JSON.parse(e.data);
     if (data.message === 'login') {
       localStorage.setItem('jwt', data.jwt);
