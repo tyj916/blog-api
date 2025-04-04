@@ -18,7 +18,8 @@ function ProtectedRoute() {
   if (isLoggedIn()) {
     return <Outlet />;
   } else {
-    window.location.href = import.meta.env.VITE_BLOG_APP_URL + '/login/?from=' + window.location.href;
+    console.log('protected route');
+    // window.location.href = import.meta.env.VITE_BLOG_APP_URL + '/login/?from=' + window.location.href;
   }
 }
 
