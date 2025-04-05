@@ -25,16 +25,16 @@ function getTimestamp(timestamp) {
   
   if (timeDifference > PER_HOUR) {
     // return time in hours
-    return Math.round(timeDifference / (60 * 60 * 1000)) + ' h';
+    return Math.round(timeDifference / (60 * 60 * 1000)) + 'h ago';
   }
   
   if (timeDifference > PER_MINUTE) {
     // return time in minutes
-    return Math.round(timeDifference / (60 * 1000)) + ' m';
+    return Math.round(timeDifference / (60 * 1000)) + 'm ago';
   }
 
   // return time in seconds
-  return Math.round(timeDifference / (1000)) + ' s';
+  return Math.round(timeDifference / (1000)) + 's ago';
 }
 
 function getAuthorName(author) {

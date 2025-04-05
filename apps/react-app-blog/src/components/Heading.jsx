@@ -18,7 +18,7 @@ function Heading({title, description='', author=null, time=''}) {
           </p>
         }
         {time && 
-          <p className={styles.time}>{time}</p>
+          <p className={styles.time}>Last update: {time}</p>
         }
       </div>
     </div>
