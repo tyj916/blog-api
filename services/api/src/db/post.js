@@ -76,7 +76,18 @@ function getOrderBy(query) {
     case 'popularity':
       return [
         {
-          upvotedUser : {
+          upvotedUser: {
+            _count: 'desc',
+          }
+        },
+        {
+          createdAt: 'desc',
+        }
+      ]
+    case 'comments':
+      return [
+        {
+          comment: {
             _count: 'desc',
           }
         },

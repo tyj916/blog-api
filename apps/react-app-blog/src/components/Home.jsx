@@ -22,7 +22,7 @@ function Home() {
         <section className={[styles.starred, styles.postsContainer].join(' ')}>
           <h2 className={styles.title}>Most Popular</h2>
           <div className={styles.container}>
-            <PostList url={`${import.meta.env.VITE_API_URL}/posts/published?sortBy=popularity`} />
+            <PostList url={`${import.meta.env.VITE_API_URL}/posts/published?sortBy=comments`} />
           </div>
         </section>
 
