@@ -23,7 +23,7 @@ window.addEventListener("message", (e) => {
     console.log(`Invalid message origin: ${e.origin}, ${import.meta.VITE_BLOG_APP_URL}`);
     return;
   }
-  console.log(e.origin);
+
   const data = JSON.parse(e.data);
   if (data.message === 'login') {
     localStorage.setItem('jwt', JSON.stringify(data.jwt));
