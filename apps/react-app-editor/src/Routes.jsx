@@ -5,6 +5,7 @@ import Editor from './components/Editor.jsx';
 import NotFound from './components/error/NotFound.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import AuthenticationForm from './components/Authentication.jsx';
+import AuthenticationRoute from './components/AuthenticationRoute.jsx';
 
 function MyRoutes() {
   return (
@@ -19,8 +20,10 @@ function MyRoutes() {
           <Route path='*' element={<NotFound />} />
         </Route>
       </Route>
-      <Route path='/login' element={<AuthenticationForm type='login' text='Welcome Back.' />} />
-      <Route path='/register' element={<AuthenticationForm type='signUp' text='Create an account to start writing.' />} />
+      <Route element={<AuthenticationRoute />}>
+        <Route path='/login' element={<AuthenticationForm type='login' text='Welcome Back.' />} />
+        <Route path='/register' element={<AuthenticationForm type='signUp' text='Create an account to start writing.' />} />
+      </Route>
     </Routes>
   )
 }
