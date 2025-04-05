@@ -5,6 +5,38 @@ import styles from '../styles/Authentication.module.css';
 
 const { VITE_API_URL } = import.meta.env;
 
+function handleLogin(username, password, targetUrl, setMessage, setLoading) {
+  fetch(`${VITE_API_URL}/login`, {
+    method: 'post',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username,
+      password,
+    }),
+    redirect: 'manual'
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.token) {
+        const { userId, username, token } = data;
+        localStorage.setItem('jwt', JSON.stringify({
+          userId,
+          username,
+          token,
+          timestamp: new Date(),
+        }));
+        window.location.href = targetUrl;
+      }
+  
+      setMessage(data.message);
+    })
+    .catch(err => console.error(err))
+    .finally(() => setLoading(false));
+}
+
 function SignUpForm({text, targetUrl}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -40,32 +72,7 @@ function SignUpForm({text, targetUrl}) {
             count--;
           } else {
             clearInterval(countdown);
-            return fetch(`${VITE_API_URL}/login`, {
-              method: 'post',
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                username,
-                password,
-              }),
-              redirect: 'manual'
-            })
-            .then((response) => response.json())
-            .then((data) => {
-              if (data.token) {
-                const { userId, username, token } = data;
-                localStorage.setItem('jwt', JSON.stringify({
-                  userId,
-                  username,
-                  token,
-                  timestamp: new Date(),
-                }));
-                window.location.href = targetUrl;
-              }
-            })
-            .catch(err => console.error(err));
+            handleLogin(username, password, targetUrl, setMessage, setLoading);
           }
         }, 1000);
       } else {
@@ -152,35 +159,7 @@ function LoginForm({text, targetUrl}) {
     setMessage('');
     setLoading(true);
 
-    fetch(`${VITE_API_URL}/login`, {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username,
-        password,
-      }),
-      redirect: 'manual'
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.token) {
-          const { userId, username, token } = data;
-          localStorage.setItem('jwt', JSON.stringify({
-            userId,
-            username,
-            token,
-            timestamp: new Date(),
-          }));
-          window.location.href = targetUrl;
-        }
-    
-        setMessage(data.message);
-      })
-      .catch(err => console.error(err))
-      .finally(() => setLoading(false));
+    handleLogin(username, password, targetUrl, setMessage, setLoading);
   }
 
   return (
