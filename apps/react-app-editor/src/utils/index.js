@@ -37,6 +37,20 @@ function convertTimestamp(timestamp) {
   return Math.round(timeDifference / (1000)) + ' s';
 }
 
+function isJwtExpired(jwt) {
+  const expiryTime = (7 * 24 * 60 * 60 * 1000) - (new Date() - new Date(jwt.timestamp));
+  return expiryTime > 0;
+}
+
+function isLoggedIn() {
+  if (!localStorage.getItem('jwt')) {
+    return false;
+  }
+
+  const jwt = JSON.parse(localStorage.getItem('jwt'));
+  return isJwtExpired(jwt);
+}
+
 function getAuthToken() {
   return JSON.parse(localStorage.getItem('jwt')).token;
 }
@@ -53,6 +67,7 @@ function getCurrentUsername() {
 
 export {
   convertTimestamp,
+  isLoggedIn,
   getAuthToken,
   getCurrentUserId,
   getCurrentUsername,

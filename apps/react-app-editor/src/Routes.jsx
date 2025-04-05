@@ -1,11 +1,26 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Outlet, Navigate } from 'react-router-dom';
 import App from './App.jsx';
 import Dashboard from './components/Dashboard.jsx';
 import Editor from './components/Editor.jsx';
 import NotFound from './components/error/NotFound.jsx';
-import ProtectedRoute from './components/ProtectedRoute.jsx';
 import AuthenticationForm from './components/Authentication.jsx';
-import AuthenticationRoute from './components/AuthenticationRoute.jsx';
+import { isLoggedIn } from './utils/index.js';
+
+function ProtectedRoute() {
+  if (isLoggedIn()) {
+    return <Outlet />
+  } else {
+    return <Navigate to='/login' />;
+  }
+}
+
+function AuthenticationRoute() {
+  if (isLoggedIn()) {
+    return <Navigate to='/' />;
+  } else {
+    return <Outlet />
+  }
+}
 
 function MyRoutes() {
   return (
