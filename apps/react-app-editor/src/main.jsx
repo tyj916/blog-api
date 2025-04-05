@@ -12,3 +12,26 @@ createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </StrictMode>,
 )
+
+window.addEventListener('load', () => {
+  window.parent.postMessage("Start listening...", import.meta.env.VITE_BLOG_APP_URL)
+});
+
+// the script is used to sync localStorage with blog app
+window.addEventListener("message", (e) => {
+  if (e.origin !== import.meta.env.VITE_BLOG_APP_URL) {
+    console.log(`Invalid message origin: ${e.origin}, ${import.meta.VITE_BLOG_APP_URL}`);
+    return;
+  }
+
+  const data = JSON.parse(e.data);
+  if (data.message === 'login') {
+    localStorage.setItem('jwt', JSON.stringify(data.jwt));
+    return;
+  }
+
+  if (data.message === 'logout') {
+    localStorage.removeItem('jwt');
+    return;
+  }
+});
