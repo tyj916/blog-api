@@ -18,7 +18,7 @@ function Post() {
   const currentUserId = isLoggedIn() ? getCurrentUserId() : null;
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/posts/${postId}`, {mode: 'cors'})
+    fetch(`${import.meta.env.VITE_API_URL}/posts/${postId}`, {mode: 'cors'})
       .then(response => {
         if (response.status >= 400) {
           throw new Error("Something is wrong with the server... Please try again later.");

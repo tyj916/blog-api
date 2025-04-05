@@ -14,7 +14,7 @@ function NewComment({postId}) {
     const authToken = getAuthToken();
     const authorId = getCurrentUserId();
 
-    fetch(`http://localhost:3000/api/posts/${postId}/comments`, {
+    fetch(`${import.meta.env.VITE_API_URL}/posts/${postId}/comments`, {
       method: 'post',
       headers: {
         'Accept': 'application/json',
