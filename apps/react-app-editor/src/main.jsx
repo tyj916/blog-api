@@ -13,6 +13,10 @@ createRoot(document.getElementById('root')).render(
   </StrictMode>,
 )
 
+window.addEventListener('load', () => {
+  window.parent.postMessage("Start listening...", import.meta.env.VITE_BLOG_APP_URL)
+});
+
 // the script is used to sync localStorage with blog app
 window.addEventListener("message", (e) => {
   if (e.origin !== import.meta.env.VITE_BLOG_APP_URL) {

@@ -70,7 +70,7 @@ function postJwtMessage() {
   const iframe = document.querySelector('#shareLocalStorage');
   iframe.contentWindow.postMessage(JSON.stringify({
     message: isLoggedIn() ? 'login' : 'logout',
-    jwt: localStorage.getItem('jwt'),
+    jwt: JSON.parse(localStorage.getItem('jwt')),
   }), import.meta.env.VITE_EDITOR_URL);
 }
 
