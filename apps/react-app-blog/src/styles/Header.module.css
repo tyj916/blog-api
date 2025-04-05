@@ -13,6 +13,25 @@ header a {
   align-items: center;
 }
 
+.toggleMenuButton {
+  padding: 0;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.toggleMenuButton:hover {
+  cursor: pointer;
+}
+
+.toggleMenuButton > div {
+  background-color: var(--custom-color-beige-100);
+  width: 36px;
+  height: 3px;
+  border-radius: 1px;
+}
+
 .menu {
   list-style: none;
   margin: 0;

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { isLoggedIn } from "../utils/index";
 import styles from '../styles/Header.module.css';
+import useWindowDimensions from "../utils/windowDimension";
 
 function Logo() {
   return (
@@ -41,11 +42,24 @@ function Menu() {
   );
 }
 
+function ToggleMenuButton() {
+  return (
+    <button className={styles.toggleMenuButton}>
+      <div></div>
+      <div></div>
+      <div></div>
+    </button>
+  );
+}
+
 function Header() {
+  const windowDimensions = useWindowDimensions();
+
   return (
     <header>
       <div className={styles.container}>
         <Logo />
+        {windowDimensions.width < 480 && <ToggleMenuButton />}
         <Menu />
       </div>
     </header>
