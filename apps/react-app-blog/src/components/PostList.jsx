@@ -8,7 +8,7 @@ import styles from '../styles/PostList.module.css';
 function Post({data}) {
   const { id, author, title, content, updatedAt } = data;
   const authorName = getAuthorName(author);
-  const description = content.length > 50 ? content.slice(0, 20) + '...' : content;
+  const description = content.length > 100 ? content.slice(0, 100) + '...' : content;
   const time = getTimestamp(updatedAt);
   const navigate = useNavigate();
 
