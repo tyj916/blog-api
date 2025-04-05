@@ -26,11 +26,7 @@ function Menu() {
     <ul className={styles.menu}>
       <li><Link to="/">Home</Link></li>
       <li><Link to="/posts">Blog</Link></li>
-      <li><Link 
-        to={{
-          pathname: 'login',
-          search: `?from=${location.pathname}`
-        }}>Write</Link></li>
+      <li><Link to={import.meta.env.VITE_EDITOR_URL}>Write</Link></li>
       <li><Link 
         to={{
           pathname: 'login',
