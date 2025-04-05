@@ -38,7 +38,7 @@ function Dashboard() {
           <div className={styles.tableBody}>
             {errorMessage && <p className={styles.tableMessage}>{errorMessage}</p>}
             {loading && <p className={styles.tableMessage}>Loading...</p>}
-            {posts && posts.map(post => {
+            {posts && posts.length > 0 ? posts.map(post => {
               return (
                 <div key={post.id} className={[styles.tableRow, styles.rowItem].join(' ')}>
                   <p><a href={`${import.meta.env.VITE_BLOG_APP_URL}/posts/${post.id}`}>{post.title}</a></p>
@@ -51,7 +51,7 @@ function Dashboard() {
                   </div>
                 </div>
               )
-            })}
+            }) : <p>No posts yet.</p>}
           </div>
         </section>
       </div>
