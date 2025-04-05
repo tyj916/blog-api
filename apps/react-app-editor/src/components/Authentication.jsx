@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from '../styles/Authentication.module.css';
 
 const { VITE_API_URL } = import.meta.env;
@@ -37,7 +37,7 @@ function handleLogin(username, password, setMessage, setLoading) {
     .finally(() => setLoading(false));
 }
 
-function LoginForm({text, backUrl}) {
+function LoginForm({text}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -86,7 +86,6 @@ function LoginForm({text, backUrl}) {
           <p>No Account? <Link 
             to={{
               pathname: '/register',
-              search: `?from=${backUrl}`,
             }} className={styles.otherOptions}>Create One</Link></p>
         </ul>
       </form>
@@ -94,7 +93,7 @@ function LoginForm({text, backUrl}) {
   );
 }
 
-function SignUpForm({text, backUrl}) {
+function SignUpForm({text}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -197,7 +196,6 @@ function SignUpForm({text, backUrl}) {
           <p>Already have an account? <Link 
             to={{
               pathname: '/login',
-              search: `?from=${backUrl}`,
             }} className={styles.otherOptions}>Log In</Link></p>
         </ul>
       </form>
@@ -206,18 +204,15 @@ function SignUpForm({text, backUrl}) {
 }
 
 function AuthenticationForm({type = 'login', text = 'Welcome Back.'}) {
-  const [searchParams] = useSearchParams();
-  const backUrl = searchParams.get('from') || import.meta.env.VITE_BLOG_APP_URL;
-
   return (
     <div id={styles.authForm}>
       <div className={styles.container}>
         <div>
-          <Link to={backUrl}>&lt; Back</Link>
+          <Link to={import.meta.env.VITE_BLOG_APP_URL}>&lt; Back</Link>
           {
             type === 'login' 
-              ? <LoginForm text={text} backUrl={backUrl} /> 
-              : <SignUpForm text={text} backUrl={backUrl} />
+              ? <LoginForm text={text} /> 
+              : <SignUpForm text={text} />
           }
         </div>
       </div>
@@ -227,18 +222,15 @@ function AuthenticationForm({type = 'login', text = 'Welcome Back.'}) {
 
 LoginForm.propTypes = {
   text: PropTypes.string,
-  backUrl: PropTypes.string,
 }
 
 SignUpForm.propTypes = {
   text: PropTypes.string,
-  backUrl: PropTypes.string,
 }
 
 AuthenticationForm.propTypes = {
   type: PropTypes.string,
   text: PropTypes.string,
-  targetUrl: PropTypes.string,
 }
 
 export default AuthenticationForm;
