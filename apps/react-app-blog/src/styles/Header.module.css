@@ -58,6 +58,7 @@ header a {
     width: 36px;
     height: 3px;
     border-radius: 1px;
+    transition: 350ms;
   }
 
   .toggleMenuButton.closed > div {
@@ -73,7 +74,7 @@ header a {
   }
 
   .toggleMenuButton.opened > div:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+    transform: translateY(-9px) rotate(135deg);
   }
 
   .menu {
@@ -85,10 +86,12 @@ header a {
     background-color: var(--custom-color-beige-100);
     z-index: 1;
     padding: 72px 0;
+    transition: 350ms;
   }
 
   .menu.hide {
-    left: -100vw;
+    left: 100vw;
+    opacity: 0;
     z-index: -1;
   }
 
