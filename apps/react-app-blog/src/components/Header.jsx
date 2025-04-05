@@ -63,7 +63,7 @@ function Links() {
 
 function Menu() {
   const windowDimensions = useWindowDimensions();
-  const [hideMenu, setHideMenu] = useState(windowDimensions.width < 480);
+  const [hideMenu, setHideMenu] = useState(false);
   const className = hideMenu ? styles.menu : styles.menu + ' ' + styles.hide;
 
   return (
@@ -72,11 +72,10 @@ function Menu() {
         <ToggleMenuButton hideMenu={hideMenu} setHideMenu={setHideMenu} />
       }
       <div className={className}>
-      
-      <ul className={styles.links}>
-        <Links />
-      </ul>
-    </div>
+        <ul className={styles.links}>
+          <Links />
+        </ul>
+      </div>
     </>
   );
 }
