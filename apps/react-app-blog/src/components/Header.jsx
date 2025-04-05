@@ -3,6 +3,7 @@ import { isLoggedIn } from "../utils/index";
 import styles from '../styles/Header.module.css';
 import useWindowDimensions from "../utils/windowDimension";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 function Logo() {
   return (
@@ -93,6 +94,11 @@ function Header() {
       </div>
     </header>
   );
+}
+
+ToggleMenuButton.propTypes = {
+  hideMenu: PropTypes.bool,
+  setHideMenu: PropTypes.object,
 }
 
 export default Header;
