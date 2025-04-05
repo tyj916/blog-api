@@ -22,7 +22,7 @@ window.addEventListener("message", (e) => {
   console.log(e.origin);
   const data = JSON.parse(e.data);
   if (data.message === 'login') {
-    localStorage.setItem('jwt', data.jwt);
+    localStorage.setItem('jwt', JSON.stringify(data.jwt));
     return;
   }
 
