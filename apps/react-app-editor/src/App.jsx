@@ -11,7 +11,9 @@ function App() {
             <li><Link to="/">Dashboard</Link></li>
             <li><Link to="/new">Create New</Link></li>
             <li><a href={`${import.meta.env.VITE_BLOG_APP_URL}`}>Back To App</a></li>
-            <li><a href={`${import.meta.env.VITE_BLOG_APP_URL}/logout`}>Log Out</a></li>
+            <li><a href={`${import.meta.env.VITE_BLOG_APP_URL}`} onClick={() => {
+              localStorage.removeItem('jwt');
+            }}>Log Out</a></li>
           </ul>
         </div>
       </nav>
