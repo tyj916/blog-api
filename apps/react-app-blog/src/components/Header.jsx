@@ -19,7 +19,10 @@ function ToggleMenuButton({hideMenu, setHideMenu}) {
   }
 
   return (
-    <button className={styles.toggleMenuButton} onClick={handleToggle}>
+    <button 
+      className={[styles.toggleMenuButton, hideMenu ? styles.opened : styles.closed].join(' ')} 
+      onClick={handleToggle}
+    >
       <div></div>
       <div></div>
       <div></div>
@@ -61,17 +64,20 @@ function Links() {
 function Menu() {
   const windowDimensions = useWindowDimensions();
   const [hideMenu, setHideMenu] = useState(windowDimensions.width < 480);
-  const className = hideMenu ? styles.links : styles.links + ' ' + styles.hide;
+  const className = hideMenu ? styles.menu : styles.menu + ' ' + styles.hide;
 
   return (
-    <div className={styles.menu}>
+    <>
       {windowDimensions.width < 480 && 
         <ToggleMenuButton hideMenu={hideMenu} setHideMenu={setHideMenu} />
       }
-      <ul className={className}>
+      <div className={className}>
+      
+      <ul className={styles.links}>
         <Links />
       </ul>
     </div>
+    </>
   );
 }
 
