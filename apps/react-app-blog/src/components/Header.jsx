@@ -98,7 +98,7 @@ function Header() {
 
 ToggleMenuButton.propTypes = {
   hideMenu: PropTypes.bool,
-  setHideMenu: PropTypes.object,
+  setHideMenu: PropTypes.func,
 }
 
 export default Header;
