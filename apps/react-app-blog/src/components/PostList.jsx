@@ -26,7 +26,7 @@ function Post({data}) {
           onClick={handleNavigate}
         >{authorName}</button>
         <h3 className={styles.title}>{title}</h3>
-        <p className={styles.description}>{htmlParse(description)}</p>
+        <div className={styles.description}>{htmlParse(description)}</div>
         <p className={styles.time}>{time}</p>
       </Link>
     </div>
