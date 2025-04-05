@@ -58,8 +58,9 @@
   text-decoration-color: var(--custom-color-maroon);
 }
 
-.post .description {
+.post .description * {
   font-size: 0.9rem;
+  font-weight: normal;
 }
 
 .post .time {
