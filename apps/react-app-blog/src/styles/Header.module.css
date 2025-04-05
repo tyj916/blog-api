@@ -64,6 +64,18 @@ header a {
     background-color: var(--custom-color-beige-100);
   }
 
+  .toggleMenuButton.opened > div:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .toggleMenuButton.opened > div:nth-child(2) {
+    opacity: 0;
+  }
+
+  .toggleMenuButton.opened > div:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
   .menu {
     position: fixed;
     width: 100%;
