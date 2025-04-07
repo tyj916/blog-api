@@ -20,7 +20,7 @@ window.addEventListener('message', (e) => {
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <iframe id='sharedStorage' src={import.meta.env.VITE_BLOG_APP_URL} style={{'display': 'none'}} onLoad={() => {
+    <iframe id='sharedStorage' src={import.meta.env.VITE_BLOG_APP_URL} style={{'display': 'none'}} title='sharedStorage' onLoad={() => {
       const iframe = document.querySelector('#sharedStorage');
       iframe.contentWindow.postMessage(JSON.stringify({ type: 'getJwt' }), import.meta.env.VITE_BLOG_APP_URL);
     }}></iframe>
